@@ -3,6 +3,8 @@
 #
 # Created by Nathan Felton (n8felton)
 
+import urllib2
+
 from autopkglib import Processor, ProcessorError
 
 __all__ = ["AppleSupportDownloader"]
@@ -28,9 +30,14 @@ class AppleSupportDownloader(Processor):
     }
     output_variables = {
         "url": {
-            "description": "The url for the KB article you want to download."
+            "description": "The full url for the file you want to download."
         }
     }
+
+    def get_url(self, download_url):
+        request = urllib2.Request(download_url)
+        response = urllib2.urlopen(request)
+        return response.geturl()
 
     def main(self):
         self.base_url = "http://support.apple.com"
@@ -45,7 +52,8 @@ class AppleSupportDownloader(Processor):
                 base_url=self.base_url,
                 article_number=self.article_number,
                 locale=self.locale)
-        self.env['url'] = self.download_url
+        self.full_url = self.get_url(self.download_url)
+        self.env['url'] = self.full_url
 
 if __name__ == "__main__":
     processor = AppleSupportDownloader()
