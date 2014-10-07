@@ -12,11 +12,11 @@ __all__ = ["AppleSupportDownloader"]
 
 class AppleSupportDownloader(Processor):
     description = "Provides links to downloads posted to the Apple support \
-                   knowledgebases."
+                   knowledge bases."
     input_variables = {
         "ARTICLE_NUMBER": {
             "required": True,
-            "description": "The KB artical number without the leading 'DL' \
+            "description": "The KB article number without the leading 'DL' \
                             e.g. http://support.apple.com/kb/dl907 \
                             ARTICLE_NUMBER = 907"
         },
@@ -35,8 +35,12 @@ class AppleSupportDownloader(Processor):
     }
 
     def get_url(self, download_url):
-        request = urllib2.Request(download_url)
-        response = urllib2.urlopen(request)
+        try:
+            request = urllib2.Request(download_url)
+            response = urllib2.urlopen(request)
+        except BaseException as e:
+            raise ProcessorError("Can't download %s: %s" % (download_url, e))
+
         return response.geturl()
 
     def main(self):
