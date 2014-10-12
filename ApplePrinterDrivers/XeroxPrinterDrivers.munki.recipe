@@ -32,15 +32,6 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>AppleSupportVersioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>path_name</key>
-                <string>%pathname%</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
             <string>MunkiPkginfoMerger</string>		
             <key>Arguments</key>
             <dict>
