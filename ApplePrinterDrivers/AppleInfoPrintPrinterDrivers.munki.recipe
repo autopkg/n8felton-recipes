@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided InfoPrint Printer Drivers and imports them into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.munki.InfoPrintPrinterDrivers</string>
+    <string>com.github.n8felton.munki.AppleInfoPrintPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
