@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of the Xerox Printer Drivers from Xerox.com</string>
+    <key>Identifier</key>
+    <string>com.github.n8felton.download.xerox.printerdrivers</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>XeroxPrinterDrivers</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>&lt;li&gt;&lt;strong&gt;Filename &lt;/strong&gt;(.*?)&lt;/li&gt;</string>
+                <key>result_output_var_name</key>
+                <string>filename</string>
+                <key>url</key>
+                <string>http://www.support.xerox.com/support/workcentre-3655/file-download/enus.html?operatingSystem=macosx1010&amp;fileLanguage=en&amp;contentId=131449&amp;from=downloads&amp;viewArchived=false</string>
+            </dict>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>URLDownloader</string>
+          <key>Arguments</key>
+          <dict>
+              <key>url</key>
+              <string>http://www.support.xerox.com/support/workcentre-3655/file-redirect/enus.html?operatingSystem=macosx1010&amp;fileLanguage=en&amp;contentId=131449</string>
+              <key>filename</key>
+              <string>%filename%</string>
+          </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
