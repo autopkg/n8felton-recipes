@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>FujiXeroxPrinterDrivers</string>
+        <string>AppleFujiXeroxPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

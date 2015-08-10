@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>SamsungPrinterDrivers</string>
+        <string>AppleSamsungPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>
