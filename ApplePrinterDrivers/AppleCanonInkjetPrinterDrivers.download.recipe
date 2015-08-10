@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Canon Inkjet Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.CanonInkjetPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleCanonInkjetPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

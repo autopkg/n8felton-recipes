@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Ricoh Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.RicohPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleRicohPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

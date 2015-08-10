@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Lanier Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.LanierPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleLanierPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

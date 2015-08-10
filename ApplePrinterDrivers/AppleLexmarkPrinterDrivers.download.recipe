@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Lexmark Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.LexmarkPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleLexmarkPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

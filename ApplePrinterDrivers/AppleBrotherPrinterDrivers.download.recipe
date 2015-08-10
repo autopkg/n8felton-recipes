@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Brother Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.BrotherPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleBrotherPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

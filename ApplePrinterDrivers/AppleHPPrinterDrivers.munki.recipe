@@ -27,7 +27,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.n8felton.download.HPPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleHPPrinterDrivers</string>
     <key>Process</key>
     <array>
         <dict>
