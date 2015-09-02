@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided HP Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.HPPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleHPPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>HPPrinterDrivers</string>
+        <string>AppleHPPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Gestetner Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.GestetnerPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleGestetnerPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>GestetnerPrinterDrivers</string>
+        <string>AppleGestetnerPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

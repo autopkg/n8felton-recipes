@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided HP Printer Drivers and imports them into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.munki.HPPrinterDrivers</string>
+    <string>com.github.n8felton.munki.AppleHPPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
@@ -27,7 +27,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.n8felton.download.HPPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleHPPrinterDrivers</string>
     <key>Process</key>
     <array>
         <dict>

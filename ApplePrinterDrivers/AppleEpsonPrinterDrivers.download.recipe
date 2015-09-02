@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Epson Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.EpsonPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleEpsonPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>EpsonPrinterDrivers</string>
+        <string>AppleEpsonPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

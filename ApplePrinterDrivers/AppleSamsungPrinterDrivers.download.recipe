@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Samsung Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.SamsungPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleSamsungPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>SamsungPrinterDrivers</string>
+        <string>AppleSamsungPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

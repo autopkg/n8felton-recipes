@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided NRG Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.NRGPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleNRGPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>NRGPrinterDrivers</string>
+        <string>AppleNRGPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

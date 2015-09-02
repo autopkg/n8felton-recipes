@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Canon Laser Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.CanonLaserPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleCanonLaserPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>CanonLaserPrinterDrivers</string>
+        <string>AppleCanonLaserPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>

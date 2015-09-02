@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Gutenprint Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.GutenprintPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleGutenprintPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>GutenprintPrinterDrivers</string>
+        <string>AppleGutenprintPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>
