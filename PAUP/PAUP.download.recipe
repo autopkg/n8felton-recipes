@@ -34,8 +34,6 @@ Note: This is for the current 'dev' verions found at http://people.sc.fsu.edu/~d
             <string>Unarchiver</string>		
             <key>Arguments</key>
             <dict>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/source</string>
                 <key>purge_destination</key>
                 <true/>
             </dict>
