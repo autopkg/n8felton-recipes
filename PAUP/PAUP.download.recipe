@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for PAUP*.
+Note: This is for the current 'dev' verions found at http://people.sc.fsu.edu/~dswofford/paup_test/</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.paup.download</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>PAUP</string>
+		<key>DOWNLOAD_URL</key>
+		<string>http://people.sc.fsu.edu/~dswofford/paup_test/PAUP_dev_icc.zip</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>		
+            <key>Arguments</key>
+            <dict>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+	</array>
+	<key>MinimumVersion</key>
+    <string>0.5.0</string>
+</dict>
+</plist>
