@@ -43,10 +43,6 @@
                 <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
             </dict>
         </dict>
-        <dict>
-            <key>Processor</key>
-            <string>MunkiPkginfoMerger</string>
-        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>		
