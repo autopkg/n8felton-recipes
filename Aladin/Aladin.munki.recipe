@@ -28,10 +28,10 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-            <key>requires</key>
-            <array>
-                <string>OracleJava8</string>
-            </array>
+			<key>requires</key>
+			<array>
+				<string>OracleJava8</string>
+			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -40,15 +40,6 @@
 	<string>com.github.n8felton.download.Aladin</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_path</key>
-				<string>%pathname%</string>
-			</dict>
-			<key>Processor</key>
-			<string>AppDmgVersioner</string>
-		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
