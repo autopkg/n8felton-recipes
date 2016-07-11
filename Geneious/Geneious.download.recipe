@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Download recipe for Geneious.
+	<key>Description</key>
+	<string>Download recipe for Geneious.
 Values for RELEASE are currently 'release' and 'beta'.
 Value for MAJOR_VERSION is typically the first digit of the RELEASE version.
 See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt for hints.</string>
@@ -57,6 +57,6 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		</dict>
 	</array>
 	<key>MinimumVersion</key>
-    <string>0.2.9</string>
+	<string>0.2.9</string>
 </dict>
 </plist>

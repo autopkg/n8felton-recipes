@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of Geneious as configured in com.github.n8felton.geneious.download.
-	
+	<key>Description</key>
+	<string>Downloads the latest version of Geneious as configured in com.github.n8felton.geneious.download.
+
 NOTE: R6,7,8 requires Java 6. See https://support.geneious.com/entries/22070732-Minimum-system-requirements-for-running-Geneious</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.geneious.munki</string>
@@ -12,31 +12,31 @@ NOTE: R6,7,8 requires Java 6. See https://support.geneious.com/entries/22070732-
 	<string>com.github.n8felton.geneious.download</string>
 	<key>Input</key>
 	<dict>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/Geneious</string>
-        <key>NAME</key>
-        <string>Geneious</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>catalogs</key>
-            <array>
-                <string>testing</string>
-            </array>
-            <key>description</key>
-            <string>A powerful and comprehensive suite of molecular biology tools</string>
-            <key>display_name</key>
-            <string>Geneious</string>
-            <key>minimum_os_version</key>
-            <string>10.6.0</string>
-            <key>name</key>
-            <string>%NAME%</string>
-        </dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/Geneious</string>
+		<key>NAME</key>
+		<string>Geneious</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>A powerful and comprehensive suite of molecular biology tools</string>
+			<key>display_name</key>
+			<string>Geneious</string>
+			<key>minimum_os_version</key>
+			<string>10.6.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+		</dict>
 	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>MunkiImporter</string>		
+			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -47,6 +47,6 @@ NOTE: R6,7,8 requires Java 6. See https://support.geneious.com/entries/22070732-
 		</dict>
 	</array>
 	<key>MinimumVersion</key>
-    <string>0.2.9</string>
+	<string>0.2.9</string>
 </dict>
 </plist>
