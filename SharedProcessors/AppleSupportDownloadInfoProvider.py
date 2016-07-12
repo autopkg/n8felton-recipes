@@ -30,7 +30,7 @@ class AppleSupportDownloadInfoProvider(Processor):
         "ARTICLE_NUMBER": {
             "required": True,
             "description": "The KB article number without the leading 'DL' \
-                            e.g. http://support.apple.com/kb/dl907 \
+                            e.g. https://support.apple.com/kb/dl907 \
                             ARTICLE_NUMBER = 907"
         },
         "LOCALE": {
@@ -89,7 +89,8 @@ class AppleSupportDownloadInfoProvider(Processor):
             raise ProcessorError("Unable to determine version")
 
     def get_version(self):
-        base_url = "http://support.apple.com"
+        """Retrives the version of the download from the article title."""
+        base_url = "https://support.apple.com"
         article_number = self.env['ARTICLE_NUMBER']
         article_url = "{base_url}/kb/DL{article_number}".format(
                       base_url=base_url,
@@ -105,7 +106,7 @@ class AppleSupportDownloadInfoProvider(Processor):
             raise ProcessorError("Unable to determine version.")
 
     def main(self):
-        base_url = "http://support.apple.com"
+        base_url = "https://support.apple.com"
         article_number = self.env['ARTICLE_NUMBER']
         if 'LOCALE' not in self.env:
             locale = "en_US"
