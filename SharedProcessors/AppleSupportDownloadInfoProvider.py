@@ -14,6 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+"""Shared processor to allow recipes to download Apple support downloads."""
 
 import urllib2
 import re
@@ -24,8 +25,10 @@ __all__ = ["AppleSupportDownloadInfoProvider"]
 
 
 class AppleSupportDownloadInfoProvider(Processor):
-    description = "Provides links to downloads posted to the Apple support \
-                   knowledge bases."
+    """Provides links to downloads posted to the Apple support \
+                   knowledge bases.
+    """
+    description = __doc__
     input_variables = {
         "ARTICLE_NUMBER": {
             "required": True,
@@ -50,7 +53,9 @@ class AppleSupportDownloadInfoProvider(Processor):
         }
     }
 
-    def get_url(self, download_url):
+    @classmethod
+    def get_url(cls, download_url):
+        """Follows HTTP 302 redirects to fetch the final url of a download."""
         try:
             request = urllib2.Request(download_url)
             response = urllib2.urlopen(request)
@@ -59,7 +64,8 @@ class AppleSupportDownloadInfoProvider(Processor):
 
         return response.geturl()
 
-    def get_html_title(self, article_url):
+    @classmethod
+    def get_html_title(cls, article_url):
         """Retrieve the HTML <title> from a webpage"""
 
         try:
@@ -81,7 +87,7 @@ class AppleSupportDownloadInfoProvider(Processor):
         head = response.read(8192)
         head = re.sub("[\r\n\t ]", " ", head)
 
-        title = re.search('(?i)\<title\>(.*?)\</title\>', head)
+        title = re.search(r'(?i)\<title\>(.*?)\</title\>', head)
         if title:
             title = title.group(1)
             return title
@@ -93,10 +99,10 @@ class AppleSupportDownloadInfoProvider(Processor):
         base_url = "https://support.apple.com"
         article_number = self.env['ARTICLE_NUMBER']
         article_url = "{base_url}/kb/DL{article_number}".format(
-                      base_url=base_url,
-                      article_number=article_number)
+            base_url=base_url,
+            article_number=article_number)
         title = self.get_html_title(article_url)
-        regex = '(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)'
+        regex = r'(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)'
         match = re.search(regex, title)
         if match:
             version = match.group(0)
@@ -132,5 +138,5 @@ class AppleSupportDownloadInfoProvider(Processor):
         self.env['version'] = self.get_version()
 
 if __name__ == "__main__":
-    processor = AppleSupportDownloader()
-    processor.execute_shell()
+    PROCESSOR = AppleSupportDownloadInfoProvider()
+    PROCESSOR.execute_shell()
