@@ -65,18 +65,18 @@ class AppleSupportDownloadInfoProvider(Processor):
         try:
             response = urllib2.urlopen(article_url)
         except urllib2.HTTPError, e:
-            raise ProcessorError("Unable to access %s: %s" % (download_url, e))
+            raise ProcessorError("Unable to access %s: %s" % (article_url, e))
         except urllib2.URLError, e:
-            raise ProcessorError("Unable to access %s: %s" % (download_url, e))
+            raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()
         try:
             content_type = info['Content-Type']
             if not re.match(".*/html.*", content_type):
-                raise ProcessorError("Unable to access %s: %s" % (
-                                     download_url, e))
+                raise ProcessorError("Unable to access %s: %s" % (article_url,
+                                                                  e))
         except:
-            raise ProcessorError("Unable to access %s: %s" % (download_url, e))
+            raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         head = response.read(8192)
         head = re.sub("[\r\n\t ]", " ", head)
