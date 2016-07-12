@@ -100,7 +100,10 @@ class AppleSupportDownloadInfoProvider(Processor):
         match = re.search(regex, title)
         if match:
             version = match.group(0)
-            self.output("Version is {version}".format(version=match.group(0)))
+            self.output("Article URL: {article_url}".format(
+                article_url=article_url),
+                        2)
+            self.output("Version is {version}".format(version=match.group(0)), 2)
             return version
         else:
             raise ProcessorError("Unable to determine version.")
@@ -119,6 +122,12 @@ class AppleSupportDownloadInfoProvider(Processor):
                 article_number=article_number,
                 locale=locale)
         full_url = self.get_url(download_url)
+        self.output("Download URL: {download_url}".format(
+            download_url=download_url),
+                    2)
+        self.output("Full URL: {full_url}".format(
+            full_url=full_url),
+                    2)
         self.env['url'] = full_url
         self.env['version'] = self.get_version()
 
