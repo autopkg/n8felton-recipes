@@ -12,6 +12,8 @@
         <string>apps/Mozilla</string>
         <key>NAME</key>
         <string>FirefoxDeveloperEdition</string>
+        <key>MUNKI_CATEGORY</key>
+        <string>Web Browser</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -25,6 +27,10 @@ Features will land in the Developer Edition every six weeks, after they have sta
             <string>Firefox Developer Edition</string>
             <key>name</key>
             <string>%NAME%</string>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
+            <key>developer</key>
+            <string>Mozilla</string>
             <key>unattended_install</key>
             <true/>
         </dict>

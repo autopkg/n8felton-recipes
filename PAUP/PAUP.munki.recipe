@@ -14,6 +14,8 @@
         <string>apps/PAUP</string>
         <key>NAME</key>
         <string>PAUP</string>
+        <key>MUNKI_CATEGORY</key>
+        <string>Math &amp; Science</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -28,6 +30,10 @@
             <string>10.5.0</string>
             <key>name</key>
             <string>%NAME%</string>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
+            <key>developer</key>
+            <string>David Swofford</string>
         </dict>
 	</dict>
 	<key>Process</key>

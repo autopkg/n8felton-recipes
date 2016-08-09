@@ -10,6 +10,8 @@
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>Printers/Drivers</string>
+        <key>MUNKI_CATEGORY</key>
+        <string>Drivers</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -22,6 +24,8 @@
             <string>Ricoh Printer Drivers</string>
             <key>name</key>
             <string>%NAME%</string>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
