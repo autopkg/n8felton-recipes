@@ -30,8 +30,8 @@
 			<string>%NAME%</string>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
-            <key>developer</key>
-            <string>Centre de Données astronomiques de Strasbourg</string>
+			<key>developer</key>
+			<string>Centre de Données astronomiques de Strasbourg</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>requires</key>

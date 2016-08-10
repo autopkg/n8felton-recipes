@@ -34,8 +34,8 @@ NOTE: R6,7,8 requires Java 6. See https://support.geneious.com/entries/22070732-
 			<string>%NAME%</string>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
-            <key>developer</key>
-            <string>Biomatters Limited</string>
+			<key>developer</key>
+			<string>Biomatters Limited</string>
 		</dict>
 	</dict>
 	<key>Process</key>
