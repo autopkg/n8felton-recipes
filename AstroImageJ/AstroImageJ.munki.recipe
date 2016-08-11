@@ -2,49 +2,55 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest AstroImageJ zip and wraps it into a pkg, then imports into Munki.</string>
-    <key>Identifier</key>
-    <string>com.github.n8felton.munki.AstroImageJ</string>
-    <key>Input</key>
-    <dict>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/AstroImageJ</string>
-        <key>pkginfo</key>
-        <dict>
-            <key>catalogs</key>
-            <array>
-                <string>testing</string>
-            </array>
-            <key>description</key>
-            <string>AstroImageJ is ImageJ with astronomy plugins and macros installed. It includes tools based on the Gottingen ImageJ astronomical resources with additions found to be useful.</string>
-            <key>display_name</key>
-            <string>AstroImageJ</string>
-            <key>name</key>
-            <string>%NAME%</string>
-            <key>requires</key>
-            <array>
-                <string>AppleJava6</string>
-            </array>
-        </dict>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.2.0</string>
-    <key>ParentRecipe</key>
-    <string>com.github.n8felton.pkg.AstroImageJ</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Comment</key>
-            <string>Import the pkg into Munki</string>
-            <key>Processor</key>
-            <string>MunkiImporter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>repo_subdirectory</key>
-                <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads the latest AstroImageJ zip and wraps it into a pkg, then imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.AstroImageJ</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/AstroImageJ</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>AstroImageJ is ImageJ with astronomy plugins and macros installed. It includes tools based on the Gottingen ImageJ astronomical resources with additions found to be useful.</string>
+			<key>display_name</key>
+			<string>AstroImageJ</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>developer</key>
+			<string>Karen Collins &amp; John Kielkopf</string>
+			<key>requires</key>
+			<array>
+				<string>AppleJava6</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.pkg.AstroImageJ</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Import the pkg into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

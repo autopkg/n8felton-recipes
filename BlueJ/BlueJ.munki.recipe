@@ -12,6 +12,8 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>BlueJ</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -26,6 +28,8 @@
 			<string>BlueJ</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
