@@ -1,0 +1,5 @@
+language: objective-c
+os: osx
+osx_image: xcode7.3
+script:
+  - find . -name *.recipe -print0 | xargs -0 plutil
