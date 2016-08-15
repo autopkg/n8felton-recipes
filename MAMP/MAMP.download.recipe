@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of MAMP.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.MAMP</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://downloads.mamp.info/MAMP-PRO/releases</string>
+		<key>NAME</key>
+		<string>MAMP</string>
+		<key>SEARCH_URL</key>
+		<string>https://www.mamp.info/en/downloads</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%SEARCH_URL%</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;filename&gt;MAMP_MAMP_PRO_(?P&lt;version&gt;((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)))\.pkg)"</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%/%version%/%filename%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
