@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Visual Paradigm CE and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.visualparadigmce.munki</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.visualparadigmce.download</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/VisualParadigmCE</string>
+		<key>NAME</key>
+		<string>VisualParadigmCE</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Productivity</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Visual Paradigm for UML (VP-UML) is a UML Case Tool supporting UML, SysML and Business Process Modeling Notation (BPMN) from the Object Management Group (OMG). In addition to modeling support, it provides report generation and code engineering capabilities including code generation. It can reverse engineer diagrams from code, and provide round-trip engineering for various programming languages.</string>
+			<key>display_name</key>
+			<string>Visual Paradigm CE</string>
+			<key>minimum_os_version</key>
+			<string>10.6.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>developer</key>
+			<string>Hong Kong Institute of Vocational Education</string>
+		</dict>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+</dict>
+</plist>
