@@ -12,8 +12,6 @@
 		<string>MinitabExpress</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/MinitabExpress</string>
-		<key>MT_LICENSE_SERVER</key>
-		<string></string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
@@ -32,16 +30,6 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>developer</key>
 			<string>Minitab Inc.</string>
-			<key>postinstall_script</key>
-			<string>
-#!/bin/bash
-/bin/cat &gt; '/Library/Application Support/Minitab/Minitab Express/mtblic.conf' &lt;&lt; 'mtblic'
-License File=%MT_LICENSE_SERVER%
-LicenseType=MU
-mtblic
-
-chmod 666 '/Library/Application Support/Minitab/Minitab Express/mtblic.conf'
-			</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
