@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of CodonCode Aligner Desktop.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.CodonCodeAligner</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>http://www.codoncode.com/aligner/download.htm</string>
+		<key>NAME</key>
+		<string>CodonCode Aligner</string>
+		<key>RE_PATTERN</key>
+		<string>href=&quot;(.*dmg)&quot;</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>re_pattern</key>
+				<string>%RE_PATTERN%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/%NAME%.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: CodonCode Corporation</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
