@@ -12,7 +12,7 @@ Note: This is for the current 'dev' verions found at http://people.sc.fsu.edu/~d
 		<key>NAME</key>
 		<string>PAUP</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://people.sc.fsu.edu/~dswofford/paup_test/PAUP_dev_icc.zip</string>
+		<string>https://people.sc.fsu.edu/~dswofford/paup_test/PAUP_dev_icc.zip</string>
 	</dict>
 	<key>Process</key>
 	<array>
