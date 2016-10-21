@@ -18,9 +18,9 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		<key>RELEASE</key>
 		<string>release</string>
 		<key>VERSIONS_URL</key>
-		<string>http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt</string>
+		<string>https://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt</string>
 		<key>DOWNLOAD_BASE_URL</key>
-		<string>http://assets.geneious.com/installers/geneious</string>
+		<string>https://assets.geneious.com/installers/geneious</string>
 	</dict>
 	<key>Process</key>
 	<array>
