@@ -81,7 +81,7 @@
 				<string>%RECIPE_CACHE_DIR%/payload/root</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Library/Printers/Xerox/Filters/commandtoxbds.app</string>
+					<string>/Library/Printers/Xerox/PDEs/XeroxFeatures.plugin</string>
 				</array>
 			</dict>
 		</dict>
