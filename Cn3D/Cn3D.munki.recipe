@@ -32,6 +32,10 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>requires</key>
+			<array>
+				<string>XQuartz</string>
+			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
