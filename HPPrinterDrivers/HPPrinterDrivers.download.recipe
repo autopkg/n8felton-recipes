@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of HP's Printer Drivers directly from HP.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.HPPrinterDrivers</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>HPPrinterDrivers</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>product_number</key>
+				<string>E6B70A</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/HPSoftwareInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
