@@ -36,10 +36,10 @@ class RubyGemInfoProvider(Processor):
     }
     output_variables = {
         "gem_description": {
-            "description": "MD5 checksum calculated from pathname."
+            "description": "Short description of the gem."
         },
         "gem_version": {
-            "description": "MD5 checksum calculated from pathname."
+            "description": "The latest version of the gem."
         },
     }
 
