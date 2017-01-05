@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the Adobe Connect 9 Meeting Add-in and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.adobeconnectaddin.munki</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.adobeconnectaddin.download</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+        <string>plugins/adobe</string>
+		<key>NAME</key>
+		<string>AdobeConnectAddin</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Plugins</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Adobe Connect is used to create information and general presentations, online training materials, web conferencing, learning modules, and user desktop sharing.</string>
+			<key>display_name</key>
+			<string>Adobe Connect 9 Meeting Add-in</string>
+			<key>minimum_os_version</key>
+			<string>10.6.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>developer</key>
+			<string>Adobe</string>
+		</dict>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/*.pkg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%found_filename%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+</dict>
+</plist>
