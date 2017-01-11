@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Continuum's Anaconda and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.Anaconda</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Anaconda</string>
+		<key>PYTHON_MAJOR_VERSION</key>
+		<string>2</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>&lt;a href="https://docs.continuum.io/anaconda"&gt;Anaconda&lt;/a&gt; is an easy-to-install free package manager, environment manager, Python distribution, and collection of over 720 open source packages offering free community support. Hundreds more open source packages and their dependencies can be installed with a simple &lt;span style="font-family: Consolas,'Liberation Mono',Courier,monospace;background: #000; color: #fff; padding:.3125rem;"&gt;conda install [packagename]&lt;/span&gt;. It’s platform-agnostic, can be used on Windows, OS X and Linux. Or even easier, with new &lt;a href="https://docs.continuum.io/anaconda/navigator"&gt;Anaconda Navigator&lt;/a&gt; for point and click install of environments and packages!</string>
+			<key>developer</key>
+			<string>Continuum Analytics, Inc.</string>
+			<key>name</key>
+			<string>%NAME%%PYTHON_MAJOR_VERSION%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.hansen-m.download.Anaconda</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>display_name</key>
+					<string>Anaconda (Python %PYTHON_VERSION% version)</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
