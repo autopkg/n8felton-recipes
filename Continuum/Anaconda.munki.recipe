@@ -16,6 +16,8 @@
 		<string>2</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
+		<key>USERS_GROUP</key>
+		<string>MAIN\Domain Users</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -23,7 +25,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>&lt;a href="https://docs.continuum.io/anaconda"&gt;Anaconda&lt;/a&gt; is an easy-to-install free package manager, environment manager, Python distribution, and collection of over 720 open source packages offering free community support. Hundreds more open source packages and their dependencies can be installed with a simple &lt;span style="font-family: Consolas,'Liberation Mono',Courier,monospace;background: #000; color: #fff; padding:.3125rem;"&gt;conda install [packagename]&lt;/span&gt;. It’s platform-agnostic, can be used on Windows, OS X and Linux. Or even easier, with new &lt;a href="https://docs.continuum.io/anaconda/navigator"&gt;Anaconda Navigator&lt;/a&gt; for point and click install of environments and packages!</string>
+			<string>&lt;a href="https://docs.continuum.io/anaconda"&gt;Anaconda&lt;/a&gt; is an easy-to-install free package manager, environment manager, Python distribution, and collection of over 720 open source packages offering free community support. Hundreds more open source packages and their dependencies can be installed with a simple &lt;span style="font-family: Consolas,'Liberation Mono',Courier,monospace;background: #eee; color: #f00; padding:.3125rem;"&gt;conda install [packagename]&lt;/span&gt;. It’s platform-agnostic, can be used on Windows, OS X and Linux. Or even easier, with new &lt;a href="https://docs.continuum.io/anaconda/navigator"&gt;Anaconda Navigator&lt;/a&gt; for point and click install of environments and packages!</string>
 			<key>developer</key>
 			<string>Continuum Analytics, Inc.</string>
 			<key>name</key>
@@ -47,6 +49,19 @@
 				<dict>
 					<key>display_name</key>
 					<string>Anaconda (Python %PYTHON_VERSION% version)</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/bash
+ln -s /anaconda/Navigator.app /Applications/
+
+mkdir -p /anaconda/python.app/Contents/lib
+
+ln -s /anaconda/lib/tcl8.5 /anaconda/python.app/Contents/lib/tcl8.5
+ln -s /anaconda/lib/tk8.5 /anaconda/python.app/Contents/lib/tk8.5
+
+echo "/anaconda/bin" &gt; /etc/paths.d/anaconda
+
+chgrp -R "%USERS_GROUP%" /anaconda
+chmod -R g+w /anaconda</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
