@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download recipe for Sound eXchange (SoX).</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.SoX</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SoX</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
+			<key>Arguments</key>
+			<dict>
+				<key>SOURCEFORGE_PROJECT_NAME</key>
+				<string>sox</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/RemoteFilenameFinder</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/MD5Checksum</string>
+		</dict>
+	</array>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+</dict>
+</plist>
