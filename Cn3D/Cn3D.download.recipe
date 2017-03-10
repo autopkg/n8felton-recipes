@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>BASE_URL</key>
-		<string>http://www.ncbi.nlm.nih.gov/Structure/CN3D/cn3dmac.shtml</string>
+		<string>https://www.ncbi.nlm.nih.gov/Structure/CN3D/cn3dmac.shtml</string>
 		<key>SEARCH_PATTERN</key>
 		<string>(?P&lt;match&gt;ftp://ftp.ncbi.nlm.nih.gov/cn3d/Cn3D-(?P&lt;version&gt;[^-]+)-OSX.zip)</string>
 		<key>NAME</key>
