@@ -46,6 +46,10 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
