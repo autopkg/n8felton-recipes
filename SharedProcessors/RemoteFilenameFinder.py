@@ -51,7 +51,7 @@ class RemoteFilenameFinder(Processor):
                      '--write-out', '%{url_effective}',
                      '--url', url,
                      '--output', '/dev/null']
-                     
+
         if curl_path is None:
             curl_path = [self.env['CURL_PATH']]
         curl_cmd = curl_path + curl_args
@@ -65,6 +65,11 @@ class RemoteFilenameFinder(Processor):
         if e:
             raise ProcessorError(e)
         filename = file_url.rpartition("/")[2]
+        # If the final Location contains a query string, remove it.
+        # e.g SomeAwesomeInstaller.pkg?Signature=uRznpT%2BkSK4WfaSl8kXUR7eeHqM
+        # becomes just 'SomeAwesomeInstaller.pkg'
+        if "?" in filename:
+            filename = filename.rpartition("?")[0]
         return file_url, filename
 
     def remote_filename(self, url):
