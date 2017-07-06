@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest release of KeePassXC and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.KeePassXC</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>KeePassXC</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>&lt;a target='new' href='https://keepassxc.org/'&gt;KeePassXC&lt;/a&gt; is a community fork of KeePassX with the goal to extend and improve it with new features and bugfixes to provide a feature-rich, fully cross-platform and modern open-source password manager.&lt;br&gt;
+&lt;br&gt;
+&lt;h5&gt;Additional Features&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Auto-Type on all three major platforms (Linux, Windows, macOS)&lt;/li&gt;
+&lt;li&gt;Twofish encryption&lt;/li&gt;
+&lt;li&gt;YubiKey challenge-response support&lt;/li&gt;
+&lt;li&gt;TOTP generation&lt;/li&gt;
+&lt;li&gt;CSV import&lt;/li&gt;
+&lt;li&gt;Command line interface&lt;/li&gt;
+&lt;li&gt;DEP and ASLR hardening&lt;/li&gt;
+&lt;li&gt;Stand-alone password and passphrase generator&lt;/li&gt;
+&lt;li&gt;Password strength meter&lt;/li&gt;
+&lt;li&gt;Using website favicons as entry icons&lt;/li&gt;
+&lt;li&gt;Merging of databases&lt;/li&gt;
+&lt;li&gt;Automatic reload when the database was changed externally&lt;/li&gt;
+&lt;li&gt;Many bug fixes&lt;/li&gt;
+&lt;/ul&gt;
+</string>
+			<key>developer</key>
+			<string>KeePassXC</string>
+			<key>display_name</key>
+			<string>KeePassXC</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.KeePassXC</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
