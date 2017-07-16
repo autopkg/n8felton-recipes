@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://aladin.u-strasbg.fr/java/download/Aladin.dmg</string>
+		<string>https://aladin.u-strasbg.fr/java/download/Aladin.dmg</string>
 		<key>NAME</key>
 		<string>Aladin</string>
 	</dict>
