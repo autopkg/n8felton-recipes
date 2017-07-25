@@ -54,7 +54,7 @@
 				<string>%pathname%/%NAME%.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: CodonCode Corporation</string>
+					<string>Developer ID Installer: CodonCode Corporation (SXRQ7NHBVM)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
