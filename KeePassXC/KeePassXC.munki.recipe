@@ -48,10 +48,8 @@
 			<string>%NAME%</string>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
-			<key>unattended_install</key>
-			<true/>
 			<key>uninstall_method</key>
-			<string>uninstall_script</string>
+			<string>remove_copied_items</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
