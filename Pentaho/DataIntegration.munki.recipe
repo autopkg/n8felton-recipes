@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the best release of Pentaho Data Integration from SourceForge and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.DataIntegration</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>DataIntegration</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Data Integration (or Kettle) delivers powerful Extraction, Transformation, and Loading (ETL) capabilities, using a groundbreaking, metadata-driven approach. With an intuitive, graphical, drag and drop design environment and a proven, scalable, standards-based architecture, Data Integration is increasingly the choice for organizations over traditional, proprietary ETL or data integration tools.</string>
+			<key>developer</key>
+			<string>Pentaho</string>
+			<key>display_name</key>
+			<string>Data Integration</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>requires</key>
+			<array>
+				<string>OracleJava8JDK</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.pkg.DataIntegration</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
