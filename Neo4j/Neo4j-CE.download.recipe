@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download recipe for Neo4j Community Edition.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.neo4j-ce.download</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Neo4j-CE</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://neo4j.com/download/community-edition/</string>
+				<key>re_pattern</key>
+				<string>release=(?P&lt;version&gt;[^&amp;]+)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_string</key>
+				<string>%version%</string>
+				<key>find</key>
+				<string>.</string>
+				<key>replace</key>
+				<string>_</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://neo4j.com/artifact.php?name=neo4j-community_macos_%output_string%.dmg</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+</dict>
+</plist>
