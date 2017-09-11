@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Description</key>
+		<string>Imports the latest release of CoreNLP into Munki.</string>
+		<key>Identifier</key>
+		<string>com.github.n8felton.munki.CoreNLP</string>
+		<key>Input</key>
+		<dict>
+			<key>MUNKI_REPO_SUBDIR</key>
+			<string>apps/CoreNLP</string>
+			<key>NAME</key>
+			<string>CoreNLP</string>
+			<key>pkginfo</key>
+			<dict>
+				<key>catalogs</key>
+				<array>
+					<string>testing</string>
+				</array>
+				<key>category</key>
+				<string>Math &amp; Science</string>
+				<key>description</key>
+				<string>Stanford CoreNLP provides a set of human language technology tools. It can give the base forms of words, their parts of speech, whether they are names of companies, people, etc., normalize dates, times, and numeric quantities, mark up the structure of sentences in terms of phrases and syntactic dependencies, indicate which noun phrases refer to the same entities, indicate sentiment, extract particular or open-class relations between entity mentions, get the quotes people said, etc.</string>
+				<key>developer</key>
+				<string>Stanford</string>
+				<key>display_name</key>
+				<string>CoreNLP</string>
+				<key>name</key>
+				<string>%NAME%</string>
+				<key>requires</key>
+				<array>
+					<string>OracleJava8JDK</string>
+				</array>
+				<key>unattended_install</key>
+				<true/>
+			</dict>
+		</dict>
+		<key>MinimumVersion</key>
+		<string>0.3.1</string>
+		<key>ParentRecipe</key>
+		<string>com.github.n8felton.pkg.CoreNLP</string>
+		<key>Process</key>
+		<array>
+			<dict>
+				<key>Arguments</key>
+				<dict>
+					<key>pkg_path</key>
+					<string>%pkg_path%</string>
+					<key>repo_subdirectory</key>
+					<string>%MUNKI_REPO_SUBDIR%</string>
+				</dict>
+				<key>Processor</key>
+				<string>MunkiImporter</string>
+			</dict>
+		</array>
+	</dict>
+</plist>
