@@ -32,10 +32,6 @@
 			<string>Math &amp; Science</string>
 			<key>developer</key>
 			<string>ParaView</string>
-			<key>requires</key>
-			<array>
-				<string>OracleJava8JDK</string>
-			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
