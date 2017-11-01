@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest release of Firestorm Viewer and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.FirestormViewer</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/FirestormViewer</string>
+		<key>NAME</key>
+		<string>FirestormViewer</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>The Phoenix Firestorm Project is currently active in developing the Firestorm Viewer, the successor to the now discontinued Phoenix Viewer. Firestorm Viewer is based on the Linden Lab V3 LGPL code base and has an enormous number of features, options and interface customization choices, including a look similar to its predecessor Phoenix Viewer. Firestorm is developed for Windows, Linux and Mac OS X operating systems.</string>
+			<key>developer</key>
+			<string>The Phoenix Firestorm Project</string>
+			<key>display_name</key>
+			<string>Firestorm Viewer</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.hansen-m.download.FirestormOSRelease</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
