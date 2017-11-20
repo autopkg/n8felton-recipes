@@ -123,14 +123,14 @@ class AppleSupportDownloadInfoProvider(Processor):
             locale = self.env['LOCALE']
 
         download_url =\
-            "{base_url}/downloads/DL{article_number}/{locale}/".format(
+            "{base_url}/downloads/DL{article_number}/{locale}/&".format(
                 base_url=base_url,
                 article_number=article_number,
                 locale=locale)
-        full_url = self.get_url(download_url)
         self.output("Download URL: {download_url}".format(
             download_url=download_url),
                     2)
+        full_url = self.get_url(download_url)
         self.output("Full URL: {full_url}".format(
             full_url=full_url),
                     2)
