@@ -32,7 +32,7 @@
 				<key>url</key>
 				<string>https://www.paraview.org/files/%folder%/?C=N;O=D</string>
 				<key>re_pattern</key>
-				<string>"(?P&lt;file&gt;ParaView[^"]+64bit\.dmg)</string>
+				<string>"(?P&lt;file&gt;ParaView-\d[^"]+64bit\.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
