@@ -50,7 +50,7 @@
 				<string>%pathname%</string>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: Yubico Limited</string>
+					<string>Developer ID Installer: Yubico Limited (LQA3CS5MM7)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
