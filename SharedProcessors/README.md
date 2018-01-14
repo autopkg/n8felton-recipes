@@ -149,3 +149,20 @@ Provides URLs to the "Best Release" of a project on SourceForge. The "Best Relea
     - **description:** The full url for the file you want to download.
 - **md5checksum:**
     - **description:** The MD5 checksum of the file, provided by the API.
+
+# YAML
+
+## Description
+Parse YAML into usable autopkg variables
+
+## Input Variables
+- **url:**
+    - **required:** True
+    - **description:** Full URL to the YAML file
+- **keys:**
+    - **required:** True
+    - **description:** The keys you wish to parse the values from the YAML source
+
+## Output Variables
+
+
