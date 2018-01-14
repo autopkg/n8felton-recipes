@@ -31,15 +31,16 @@ HP_BASE_URL = ('https://h20614.www2.hp.com/ediags/solutions/software/v3?'
 
 
 class HPSoftwareInfoProvider(Processor):
-    """Determines the ESSENTIAL-REQUIRED software necessary for a given
-    product_number
-    Returns the URL, version and description of the software."""
+    ("Determines the ESSENTIAL-REQUIRED software necessary for a given "
+     "product_number. Returns the URL, version and description of the "
+     "software.")
     description = __doc__
     input_variables = {
         "product_number": {
             "required": True,
-            "description": ("HP Product Number of device that requires software"
-                            "Typically 6 alphanumeric characters, e.g. E6B70A"),
+            "description":
+                ("HP Product Number of device that requires software. "
+                 "Typically 6 alphanumeric characters, e.g. E6B70A"),
         },
         "os": {
             "required": False,

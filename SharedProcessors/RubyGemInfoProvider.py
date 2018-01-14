@@ -30,8 +30,8 @@ class RubyGemInfoProvider(Processor):
     input_variables = {
         "gem_name": {
             "required": True,
-            "description": ("The name of the ruby gem you want the information"
-                            "for.")
+            "description":
+                "The name of the ruby gem you want the information for."
         },
     }
     output_variables = {

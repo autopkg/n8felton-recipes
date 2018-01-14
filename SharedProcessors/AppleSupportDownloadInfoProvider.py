@@ -25,23 +25,22 @@ __all__ = ["AppleSupportDownloadInfoProvider"]
 
 
 class AppleSupportDownloadInfoProvider(Processor):
-    """Provides links to downloads posted to the Apple support \
-                   knowledge bases.
-    """
+    ("Provides links to downloads posted to the Apple support knowledge "
+     "bases.")
     description = __doc__
     input_variables = {
         "ARTICLE_NUMBER": {
             "required": True,
-            "description": "The KB article number without the leading 'DL' \
-                            e.g. https://support.apple.com/kb/dl907 \
-                            ARTICLE_NUMBER = 907"
+            "description": ("The KB article number without the leading 'DL' "
+                            "e.g. https://support.apple.com/kb/dl907 "
+                            "ARTICLE_NUMBER = 907"),
         },
         "LOCALE": {
             "required": False,
-            "description": "The ISO-639 language code and the \
-                           ISO-3166 country code \
-                           e.g. en_US = English, American \
-                           es_ES = Español, Spain"
+            "description": ("The ISO-639 language code and the "
+                            "ISO-3166 country code "
+                            "e.g. en_US = English, American "
+                            "es_ES = Español, Spain"),
         }
     }
     output_variables = {
@@ -109,7 +108,8 @@ class AppleSupportDownloadInfoProvider(Processor):
             self.output("Article URL: {article_url}".format(
                 article_url=article_url),
                         2)
-            self.output("Version is {version}".format(version=match.group(0)), 2)
+            self.output("Version is {version}".format(version=match.group(0)),
+                        2)
             return version
         else:
             raise ProcessorError("Unable to determine version.")

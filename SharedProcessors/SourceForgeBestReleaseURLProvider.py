@@ -29,18 +29,17 @@ BEST_RELEASE_API_URL = 'https://sourceforge.net/projects/{0}/best_release.json'
 
 
 class SourceForgeBestReleaseURLProvider(Processor):
-    """Provides URLs to the "Best Release" of a project found on SourceForge.
-       The "Best Release" is set by the project maintainer, and while one would
-       think that should always be the "latest stable" release, that is not
-       always the case. Always verify output.
-    """
+    ("Provides URLs to the \"Best Release\" of a project on SourceForge. "
+     "The \"Best Release\" is set by the project maintainer, and while one "
+     "would think that should always be the \"latest stable\" release, that "
+     "is not always the case. Always verify output.")
     description = __doc__
     input_variables = {
         "SOURCEFORGE_PROJECT_NAME": {
             "required": True,
-            "description": "A SourceForge project's \"URL Name\" \
-                            e.g. https://sourceforge.net/projects/burn-osx/ \
-                            would use \"URL Name\" 'burn-osx'"
+            "description": ("A SourceForge project's \"URL Name\" "
+                            "e.g. `https://sourceforge.net/projects/burn-osx` "
+                            "would use \"URL Name\" `burn-osx`")
         },
     }
     output_variables = {

@@ -21,10 +21,11 @@ from autopkglib import Processor
 
 __all__ = ["PkgInfoVersioner"]
 
+
 class PkgInfoVersioner(Processor):
-    """Finds a package given it's package ID and modifies the PackageInfo
-    version, resulting in the receipt database containing the modified version
-    information."""
+    ("Finds a package given it's package ID and modifies the PackageInfo "
+     "version, resulting in the receipt database containing the modified "
+     "version information.")
     description = __doc__
     input_variables = {
         "unpacked_path": {
