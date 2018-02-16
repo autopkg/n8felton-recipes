@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads Tidal disk image and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.Tidal</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/Tidal</string>
+		<key>NAME</key>
+		<string>Tidal</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>TIDAL is the first music service with High Fidelity sound quality, High Definition music videos and Curated Editorial, expertly crafted by music journalists.</string>
+			<key>display_name</key>
+			<string>TIDAL</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>developer</key>
+			<string>Aspiro AB</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.Tidal</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
