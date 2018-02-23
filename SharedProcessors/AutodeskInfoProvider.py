@@ -115,14 +115,13 @@ class AutodeskInfoProvider(Processor):
                     2)
 
         releases = self.get_product_releases(product_url)
-        # self.output(pprint.pformat(releases), 3)
 
         latest_release = self.get_latest_release_for_os(
             releases,
             self.env.get('OS'),
             self.env.get('LOCALE'))
         self.output(pprint.pformat(latest_release), 3)
-        self.env['url'] = latest_release["browserDownloadUris"]
+        self.env['url'] = latest_release["browserDownloadUris"][0]
 
 if __name__ == "__main__":
     PROCESSOR = AutodeskInfoProvider()
