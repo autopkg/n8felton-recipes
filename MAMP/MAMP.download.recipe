@@ -50,7 +50,7 @@
 				<string>%pathname%</string>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: appsolute GmbH</string>
+					<string>Developer ID Installer: appsolute GmbH (3NP792379T)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
