@@ -6,8 +6,6 @@
 	<string>Downloads the latest version of CellProfiler and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.cellprofiler.munki</string>
-	<key>ParentRecipe</key>
-	<string>com.github.n8felton.cellprofiler.download</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -20,18 +18,18 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>CellProfiler is free, open-source software for quantitative analysis of biological images.</string>
+			<key>developer</key>
+			<string>CellProfiler</string>
 			<key>display_name</key>
 			<string>CellProfiler</string>
 			<key>minimum_os_version</key>
 			<string>10.6.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Math &amp; Science</string>
-			<key>developer</key>
-			<string>CellProfiler</string>
 			<key>requires</key>
 			<array>
 				<string>OracleJava8JDK</string>
@@ -40,21 +38,34 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.cellprofiler.download</string>
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+			</dict>
 			<key>Processor</key>
-			<string>MunkiImporter</string>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%pathname%</string>
+				<string>%dmg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.2.9</string>
 </dict>
 </plist>
