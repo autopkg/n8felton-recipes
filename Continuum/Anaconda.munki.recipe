@@ -14,8 +14,6 @@
 		<string>Anaconda</string>
 		<key>PYTHON_MAJOR_VERSION</key>
 		<string>2</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>USERS_GROUP</key>
 		<string>MAIN\Domain Users</string>
 		<key>pkginfo</key>
@@ -31,7 +29,7 @@
 			<key>name</key>
 			<string>%NAME%%PYTHON_MAJOR_VERSION%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Math &amp; Science</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
