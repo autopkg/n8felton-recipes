@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Intel HAXM.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.IntelHAXM</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>IntelHAXM</string>
+		<key>base_url</key>
+		<string>https://dl.google.com/android/repository/extras/intel</string>
+		<key>repo_xml</key>
+		<string>addon2-1.xml</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.4</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/XPathSelector</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%base_url%/%repo_xml%</string>
+				<key>xpath_query</key>
+				<string>.//*[host-os='macosx']/complete/url</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%base_url%/%url%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/XPathSelector</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%base_url%/%repo_xml%</string>
+				<key>xpath_query</key>
+				<string>.//*[host-os='macosx']/complete/checksum</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SHA1Checksum</string>
+			<key>Arguments</key>
+			<dict>
+				<key>sha1checksum</key>
+				<string>%checksum%</string>
+			</dict>
+		</dict>
+		<dict>
+				<key>Processor</key>
+				<string>Unarchiver</string>
+				<key>Arguments</key>
+				<dict>
+						<key>archive_path</key>
+						<string>%pathname%</string>
+						<key>destination_path</key>
+						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+						<key>purge_destination</key>
+						<true/>
+				</dict>
+		</dict>
+		<dict>
+				<key>Arguments</key>
+				<dict>
+						<key>pattern</key>
+						<string>%RECIPE_CACHE_DIR%/%NAME%/*.dmg</string>
+				</dict>
+				<key>Processor</key>
+				<string>FileFinder</string>
+		</dict>
+		<dict>
+				<key>Processor</key>
+				<string>CodeSignatureVerifier</string>
+				<key>Arguments</key>
+				<dict>
+						<key>input_path</key>
+						<string>%found_filename%/*.mpkg</string>
+						<key>expected_authority_names</key>
+						<array>
+										<string>Developer ID Application: Intel Corporation Apps (Z3L495V9L4)</string>
+										<string>Developer ID Certification Authority</string>
+										<string>Apple Root CA</string>
+						</array>
+				</dict>
+		</dict>
+
+	</array>
+</dict>
+</plist>
