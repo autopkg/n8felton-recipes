@@ -16,7 +16,7 @@
 # limitations under the License.
 """Calculate a message-digest fingerprint (checksum) for a file"""
 
-import subprocess
+import hashlib
 
 from autopkglib import Processor, ProcessorError
 
@@ -42,18 +42,15 @@ class MD5Checksum(Processor):
         },
     }
 
+    def md5(self, file_name):
+        md5 = hashlib.md5()
+        with open(file_name, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                md5.update(chunk)
+        return md5.hexdigest()
+
     def main(self):
-        md5 = ['/sbin/md5',
-               '-q',
-               self.env["pathname"]]
-        proc = subprocess.Popen(md5,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
-        (md5checksum, e) = proc.communicate()
-        # Remove the newline character from the output
-        md5checksum = md5checksum.strip()
-        if e:
-            raise ProcessorError(e)
+        md5checksum = self.md5(self.env["pathname"])
         self.output("{md5checksum}".format(md5checksum=md5checksum), 1)
         if self.env.get('md5checksum'):
             if not self.env['md5checksum'] == md5checksum:
