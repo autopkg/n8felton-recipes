@@ -32,7 +32,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 				<key>url</key>
 				<string>%VERSIONS_URL%</string>
 				<key>re_pattern</key>
-				<string>%MAJOR_VERSION% %RELEASE% %RELEASE%.*(Geneious.*mac.*)</string>
+				<string>%MAJOR_VERSION% %RELEASE% %RELEASE%.*(Geneious.*mac.*dmg)</string>
 			</dict>
 		</dict>
 		<dict>
