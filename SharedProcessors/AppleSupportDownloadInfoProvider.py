@@ -46,6 +46,10 @@ class AppleSupportDownloadInfoProvider(Processor):
         }
     }
     output_variables = {
+        "article_url": {
+            "description": ("The url for the KB article related to the "
+                            "download."),
+        },
         "url": {
             "description": "The full url for the file you want to download."
         },
@@ -122,6 +126,14 @@ class AppleSupportDownloadInfoProvider(Processor):
             locale = "en_US"
         else:
             locale = self.env['LOCALE']
+
+        article_url = "{base_url}/kb/DL{article_number}".format(
+            base_url=APPLE_SUPPORT_URL,
+            article_number=article_number)
+        self.env['article_url'] = article_url
+        self.output("Article URL: {article_url}".format(
+            article_url=article_url),
+                    2)
 
         download_url =\
             "{base_url}/downloads/DL{article_number}/{locale}/&".format(
