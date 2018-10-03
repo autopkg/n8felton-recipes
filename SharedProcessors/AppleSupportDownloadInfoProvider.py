@@ -23,6 +23,8 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["AppleSupportDownloadInfoProvider"]
 
+APPLE_SUPPORT_URL = "https://support.apple.com"
+
 
 class AppleSupportDownloadInfoProvider(Processor):
     ("Provides links to downloads posted to the Apple support knowledge "
@@ -115,7 +117,6 @@ class AppleSupportDownloadInfoProvider(Processor):
             raise ProcessorError("Unable to determine version.")
 
     def main(self):
-        base_url = "https://support.apple.com"
         article_number = self.env['ARTICLE_NUMBER']
         if 'LOCALE' not in self.env:
             locale = "en_US"
@@ -124,7 +125,7 @@ class AppleSupportDownloadInfoProvider(Processor):
 
         download_url =\
             "{base_url}/downloads/DL{article_number}/{locale}/&".format(
-                base_url=base_url,
+                base_url=APPLE_SUPPORT_URL,
                 article_number=article_number,
                 locale=locale)
         self.output("Download URL: {download_url}".format(
