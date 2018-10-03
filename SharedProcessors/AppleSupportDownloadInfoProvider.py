@@ -101,19 +101,12 @@ class AppleSupportDownloadInfoProvider(Processor):
 
     def get_version(self):
         """Retrives the version of the download from the article title."""
-        base_url = "https://support.apple.com"
-        article_number = self.env['ARTICLE_NUMBER']
-        article_url = "{base_url}/kb/DL{article_number}".format(
-            base_url=base_url,
-            article_number=article_number)
+        article_url = self.env['article_url']
         title = self.get_html_title(article_url)
         regex = r'(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)'
         match = re.search(regex, title)
         if match:
             version = match.group(0)
-            self.output("Article URL: {article_url}".format(
-                article_url=article_url),
-                        2)
             self.output("Version is {version}".format(version=match.group(0)),
                         2)
             return version
