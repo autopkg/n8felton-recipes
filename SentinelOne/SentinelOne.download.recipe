@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of SentinelOne.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.SentinelOne</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SentinelOne</string>
+		<key>S1_API_TOKEN</key>
+		<string></string>
+		<key>S1_CONSOLE_HOSTNAME</key>
+		<string></string>
+		<key>S1_PACKAGE_STATUS</key>
+		<string></string>
+		<key>S1_PACKAGE_VERSION</key>
+		<string></string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>S1_API_TOKEN</key>
+				<string>%S1_API_TOKEN%</string>
+				<key>S1_CONSOLE_HOSTNAME</key>
+				<string>%S1_CONSOLE_HOSTNAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SentinelOneInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>request_headers</key>
+				<dict>
+					<key>Authorization</key>
+					<string>ApiToken %S1_API_TOKEN%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SHA1Checksum</string>
+		</dict>
+	</array>
+</dict>
+</plist>
