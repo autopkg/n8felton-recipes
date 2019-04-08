@@ -16,6 +16,8 @@ NOTE: R6,7,8 requires Java 6. See https://support.geneious.com/entries/22070732-
 		<string>apps/Geneious</string>
 		<key>NAME</key>
 		<string>Geneious</string>
+		<key>APPNAME</key>
+		<string>Geneious</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
