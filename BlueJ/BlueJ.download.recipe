@@ -60,7 +60,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/*/%NAME%.app</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/*/BlueJ.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileFinder</string>
