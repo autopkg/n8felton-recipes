@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads Amazon Corretto, a no-cost, multiplatform, production-ready distribution of OpenJDK</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.AmazonCorretto</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>AmazonCorretto</string>
+		<key>MAJOR_VERSION</key>
+		<string>11</string>
+	</dict>
+	<key>MiniumumVersion</key>
+	<string>1.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://docs.aws.amazon.com/corretto/latest/corretto-%MAJOR_VERSION%-ug/downloads-list.html</string>
+				<key>re_pattern</key>
+				<string>href="(?P&lt;url&gt;https?[^"]*(?P&lt;filename&gt;amazon-corretto-(?P&lt;version&gt;.+?)-.+?.pkg))</string>
+			</dict>
+		</dict>
+		<dict>
+				<key>Processor</key>
+				<string>URLDownloader</string>
+				<key>Arguments</key>
+				<dict>
+						<key>url</key>
+						<string>%url%</string>
+						<key>filename</key>
+						<string>amazon-corretto-%version%.pkg</string>
+				</dict>
+		</dict>
+		<dict>
+				<key>Processor</key>
+				<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			 <key>Processor</key>
+			 <string>CodeSignatureVerifier</string>
+			 <key>Arguments</key>
+			 <dict>
+					<key>input_path</key>
+					<string>%pathname%</string>
+					<key>expected_authority_names</key>
+					<array>
+						 <string>Developer ID Installer: AMZN Mobile LLC (94KV3E626L)</string>
+						 <string>Developer ID Certification Authority</string>
+						 <string>Apple Root CA</string>
+					</array>
+			 </dict>
+		</dict>
+	</array>
+</dict>
+</plist>
