@@ -3,33 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Microsoft Edge for the specified branch.
-Microsoft Edge Canary: 2069147
-Microsoft Edge Dev: 2069340
-Microsoft Edge Beta: 2069439
-Microsoft Edge: TBD
-	</string>
+	<string>Downloads the latest version of Microsoft Edge for the specified branch.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.MicrosoftEdge</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>MicrosoftEdge</string>
-		<key>LINKID</key>
-		<string>CHANGE_ME</string>
+		<key>CHANNEL</key>
+		<string></string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%.pkg</string>
-				<key>url</key>
-				<string>https://go.microsoft.com/fwlink/?linkid=%LINKID%</string>
-			</dict>
+			<key>Processor</key>
+			<string>MicrosoftEdgeURLProvider</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/RemoteFilenameFinder</string>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
