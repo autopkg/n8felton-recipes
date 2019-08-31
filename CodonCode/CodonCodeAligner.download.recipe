@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.codoncode.com/aligner/download.htm</string>
+		<string>https://www.codoncode.com/aligner/download.htm</string>
 		<key>NAME</key>
 		<string>CodonCode Aligner</string>
 		<key>RE_PATTERN</key>
