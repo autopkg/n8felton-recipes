@@ -16,6 +16,7 @@
 # limitations under the License.
 """Finds the proper file name for a download."""
 
+from __future__ import absolute_import
 import subprocess
 from urllib2 import unquote
 from autopkglib import Processor, ProcessorError

@@ -15,6 +15,8 @@
 # limitations under the License.
 """See docstring for MicrosoftEdgeURLProvider class"""
 
+from __future__ import absolute_import
+from __future__ import print_function
 from autopkglib import Processor, ProcessorError
 
 __all__ = ["MicrosoftEdgeURLProvider"]
@@ -51,7 +53,7 @@ class MicrosoftEdgeURLProvider(Processor):
 
     def main(self):
         channel = self.env.get("CHANNEL") or self.input_variables["CHANNEL"]["default"]
-        print(self.input_variables["CHANNEL"]["description"])
+        print((self.input_variables["CHANNEL"]["description"]))
         url = MS_LINKID_URL.format(linkid=CHANNEL_LINKID[channel])
         self.env["url"] = url
         self.env["CHANNEL"] = channel

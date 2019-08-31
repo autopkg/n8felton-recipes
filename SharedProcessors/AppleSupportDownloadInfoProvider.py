@@ -16,6 +16,7 @@
 # limitations under the License.
 """Shared processor to allow recipes to download Apple support downloads."""
 
+from __future__ import absolute_import
 import urllib2
 import re
 
@@ -75,9 +76,9 @@ class AppleSupportDownloadInfoProvider(Processor):
 
         try:
             response = urllib2.urlopen(article_url)
-        except urllib2.HTTPError, e:
+        except urllib2.HTTPError as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
-        except urllib2.URLError, e:
+        except urllib2.URLError as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()

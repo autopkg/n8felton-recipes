@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Information provider for SentinelOne Management consoles"""
+from __future__ import absolute_import
 try:
     import logging
     from management.mgmtsdk_v2.mgmt import Management

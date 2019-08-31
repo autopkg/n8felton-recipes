@@ -16,6 +16,7 @@
 # limitations under the License.
 """"Changes the version of a flat package by modifying it's PackageInfo"""
 
+from __future__ import absolute_import
 import xml.etree.ElementTree as ET
 from autopkglib import Processor
 

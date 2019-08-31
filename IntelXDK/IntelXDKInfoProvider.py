@@ -16,6 +16,7 @@
 # limitations under the License.
 """"Update information provider for Intel XDK"""
 
+from __future__ import absolute_import
 import urllib2
 import json
 

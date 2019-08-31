@@ -16,6 +16,7 @@
 # limitations under the License.
 """Generic processor to parse YAML into usable autopkg variables"""
 
+from __future__ import absolute_import
 import urllib2
 import yaml
 
