@@ -42,7 +42,7 @@ class MicrosoftEdgeURLProvider(Processor):
             "default": "Beta",
             "description": (
                 "Which channel to download. "
-                "Options: {}".format(CHANNEL_LINKID.keys())
+                "Options: {}".format(', '.join(CHANNEL_LINKID))
             ),
         }
     }
