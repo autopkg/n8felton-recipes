@@ -17,10 +17,14 @@
 """Generic processor to parse YAML into usable autopkg variables"""
 
 from __future__ import absolute_import
-import urllib2
 import yaml
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["YAML"]
 
@@ -44,8 +48,7 @@ class YAML(Processor):
     def get_yaml(cls, yaml_url):
         """Returns the YAML file at the given URL"""
         try:
-            request = urllib2.Request(yaml_url)
-            response = urllib2.urlopen(request)
+            response = urlopen(yaml_url)
         except BaseException as e:
             raise ProcessorError("Can't open %s: %s" % (yaml_url, e))
 

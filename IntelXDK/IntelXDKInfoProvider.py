@@ -17,10 +17,14 @@
 """"Update information provider for Intel XDK"""
 
 from __future__ import absolute_import
-import urllib2
 import json
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["IntelXDKInfoProvider"]
 
@@ -57,8 +61,7 @@ class IntelXDKInfoProvider(Processor):
     def get_xdk_updates(cls, updates_url):
         """Returns a JSON response using the XDK client update source"""
         try:
-            request = urllib2.Request(updates_url)
-            response = urllib2.urlopen(request)
+            response = urlopen(updates_url)
         except BaseException as e:
             raise ProcessorError("Can't open %s: %s" % (updates_url, e))
 

@@ -17,10 +17,14 @@
 """Shared processor to allow recipes to download Apple support downloads."""
 
 from __future__ import absolute_import
-import urllib2
 import re
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["AppleSupportDownloadInfoProvider"]
 
@@ -63,8 +67,7 @@ class AppleSupportDownloadInfoProvider(Processor):
     def get_url(cls, download_url):
         """Follows HTTP 302 redirects to fetch the final url of a download."""
         try:
-            request = urllib2.Request(download_url)
-            response = urllib2.urlopen(request)
+            response = urlopen(download_url)
         except BaseException as e:
             raise ProcessorError("Can't download %s: %s" % (download_url, e))
 
@@ -75,10 +78,8 @@ class AppleSupportDownloadInfoProvider(Processor):
         """Retrieve the HTML <title> from a webpage"""
 
         try:
-            response = urllib2.urlopen(article_url)
-        except urllib2.HTTPError as e:
-            raise ProcessorError("Unable to access %s: %s" % (article_url, e))
-        except urllib2.URLError as e:
+            response = urlopen(article_url)
+        except Exception as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()

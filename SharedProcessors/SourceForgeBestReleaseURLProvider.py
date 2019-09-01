@@ -19,10 +19,14 @@
 """
 
 from __future__ import absolute_import
-import urllib2
 import json
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["SourceForgeBestReleaseURLProvider"]
 
@@ -56,8 +60,7 @@ class SourceForgeBestReleaseURLProvider(Processor):
     def get_project_best_release(cls, project_url):
         """Returns the JSON response using the SourceForge Release API"""
         try:
-            request = urllib2.Request(project_url)
-            response = urllib2.urlopen(request)
+            response = urlopen(project_url)
         except BaseException as e:
             raise ProcessorError("Can't open %s: %s" % (project_url, e))
 
