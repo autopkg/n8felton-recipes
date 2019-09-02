@@ -86,13 +86,13 @@ class AppleSupportDownloadInfoProvider(Processor):
         info = response.info()
         try:
             content_type = info['Content-Type']
-            if not re.match(".*/html.*", content_type):
+            if not re.match(r".*/html.*", content_type):
                 raise ProcessorError("Unable to access %s" % article_url)
         except:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         head = response.read(8192)
-        head = re.sub("[\r\n\t ]", " ", head)
+        head = re.sub(r"[\r\n\t ]", " ", head)
 
         title = re.search(r'(?i)\<title\>(.*?)\</title\>', head)
         if title:
