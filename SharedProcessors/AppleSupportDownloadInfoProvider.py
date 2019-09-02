@@ -79,7 +79,7 @@ class AppleSupportDownloadInfoProvider(Processor):
 
         try:
             response = urlopen(article_url)
-        except Exception as e:
+        except BaseException as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()
