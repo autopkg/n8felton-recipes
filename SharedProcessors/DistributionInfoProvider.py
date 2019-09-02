@@ -17,7 +17,9 @@
 """"Information provider using the Distribution file of product bundles"""
 
 from __future__ import absolute_import
+
 import xml.etree.ElementTree as ET
+
 from autopkglib import Processor
 
 __all__ = ["DistributionInfoProvider"]

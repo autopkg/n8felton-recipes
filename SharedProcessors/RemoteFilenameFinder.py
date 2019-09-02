@@ -17,8 +17,10 @@
 """Finds the proper file name for a download."""
 
 from __future__ import absolute_import
+
 import subprocess
 from urllib2 import unquote
+
 from autopkglib import Processor, ProcessorError
 
 __all__ = ["RemoteFilenameFinder"]

@@ -17,8 +17,9 @@
 """"Information provider for HP software downloads"""
 
 from __future__ import absolute_import
-import urllib2
+
 import json
+import urllib2
 
 from autopkglib import Processor, ProcessorError
 

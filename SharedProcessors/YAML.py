@@ -17,6 +17,7 @@
 """Generic processor to parse YAML into usable autopkg variables"""
 
 from __future__ import absolute_import
+
 import yaml
 
 from autopkglib import Processor, ProcessorError

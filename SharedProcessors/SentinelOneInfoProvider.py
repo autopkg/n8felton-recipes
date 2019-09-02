@@ -16,6 +16,9 @@
 # limitations under the License.
 """Information provider for SentinelOne Management consoles"""
 from __future__ import absolute_import
+
+from autopkglib import Processor, ProcessorError
+
 try:
     import logging
     from management.mgmtsdk_v2.mgmt import Management
@@ -28,7 +31,6 @@ try:
 except ImportError:
     import json
 
-from autopkglib import Processor, ProcessorError
 
 __all__ = ["SentinelOneInfoProvider"]
 

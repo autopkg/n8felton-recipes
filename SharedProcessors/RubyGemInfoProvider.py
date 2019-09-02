@@ -17,8 +17,9 @@
 """Provides information about the latest version of a given Ruby gem"""
 
 from __future__ import absolute_import
-import subprocess
+
 import re
+import subprocess
 
 from autopkglib import Processor, ProcessorError
 

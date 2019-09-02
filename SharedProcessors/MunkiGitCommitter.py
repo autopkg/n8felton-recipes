@@ -16,11 +16,11 @@
 # limitations under the License.
 
 from __future__ import absolute_import
+
 import os
 import subprocess
 
-from autopkglib import Processor, ProcessorError
-from autopkglib import get_pref
+from autopkglib import Processor, ProcessorError, get_pref
 
 __all__ = ["MunkiGitCommitter"]
 

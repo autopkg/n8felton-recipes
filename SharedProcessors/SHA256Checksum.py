@@ -17,6 +17,7 @@
 """Calculate a message-digest fingerprint (checksum) for a file"""
 
 from __future__ import absolute_import
+
 import hashlib
 
 from autopkglib import Processor, ProcessorError

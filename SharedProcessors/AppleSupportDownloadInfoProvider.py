@@ -17,6 +17,7 @@
 """Shared processor to allow recipes to download Apple support downloads."""
 
 from __future__ import absolute_import
+
 import re
 
 from autopkglib import Processor, ProcessorError

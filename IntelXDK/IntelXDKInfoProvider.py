@@ -17,6 +17,7 @@
 """"Update information provider for Intel XDK"""
 
 from __future__ import absolute_import
+
 import json
 
 from autopkglib import Processor, ProcessorError
