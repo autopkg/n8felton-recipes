@@ -86,8 +86,7 @@ class AppleSupportDownloadInfoProvider(Processor):
         try:
             content_type = info['Content-Type']
             if not re.match(".*/html.*", content_type):
-                raise ProcessorError("Unable to access %s: %s" % (article_url,
-                                                                  e))
+                raise ProcessorError("Unable to access %s" % article_url)
         except:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
