@@ -78,7 +78,7 @@ class HPSoftwareInfoProvider(Processor):
         try:
             request = urllib2.Request(software_url)
             response = urllib2.urlopen(request)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't open %s: %s" % (software_url, e))
 
         releases = json.loads(response.read())

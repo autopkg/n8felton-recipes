@@ -62,7 +62,7 @@ class SourceForgeBestReleaseURLProvider(Processor):
         """Returns the JSON response using the SourceForge Release API"""
         try:
             response = urlopen(project_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't open %s: %s" % (project_url, e))
 
         releases = json.loads(response.read())

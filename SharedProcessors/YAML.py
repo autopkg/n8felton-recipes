@@ -50,7 +50,7 @@ class YAML(Processor):
         """Returns the YAML file at the given URL"""
         try:
             response = urlopen(yaml_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't open %s: %s" % (yaml_url, e))
 
         releases = yaml.load(response.read())

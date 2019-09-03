@@ -63,7 +63,7 @@ class IntelXDKInfoProvider(Processor):
         """Returns a JSON response using the XDK client update source"""
         try:
             response = urlopen(updates_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't open %s: %s" % (updates_url, e))
 
         releases = json.loads(response.read())

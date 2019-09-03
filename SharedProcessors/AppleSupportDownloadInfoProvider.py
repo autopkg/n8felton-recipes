@@ -69,7 +69,7 @@ class AppleSupportDownloadInfoProvider(Processor):
         """Follows HTTP 302 redirects to fetch the final url of a download."""
         try:
             response = urlopen(download_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't download %s: %s" % (download_url, e))
 
         return response.geturl()
@@ -80,7 +80,7 @@ class AppleSupportDownloadInfoProvider(Processor):
 
         try:
             response = urlopen(article_url)
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()
