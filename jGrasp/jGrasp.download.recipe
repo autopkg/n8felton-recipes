@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of jGrasp.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.jGrasp</string>
+	<key>Input</key>
+	<dict>
+		<key>BASE_URL</key>
+		<string>https://www.jgrasp.org</string>
+		<key>NAME</key>
+		<string>jGrasp</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%BASE_URL%/cgiserver.txt</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;url&gt;[^:]+):(?P&lt;path&gt;[^:]+)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://%url%%path%/version5.pl</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;version&gt;(?:(?P&lt;major&gt;\d+)\.)?(?:(?P&lt;minor&gt;\d+)\.)?(?P&lt;patch&gt;\d+)(?P&lt;extra&gt;[^;]*));</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%BASE_URL%/dl4g/jgrasp/jgrasp%major%%minor%%patch%%extra%.pkg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>

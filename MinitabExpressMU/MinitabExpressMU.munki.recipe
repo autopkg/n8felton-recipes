@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Minitab Express pkg, then imports into Munki along with a postinstall script to set the license server.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.MinitabExpressMU</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MinitabExpress</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/MinitabExpress</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Minitab Express is a lightweight and intuitive statistics package that allows its users to use a range of Minitab tools for introductory statistics. Since Minitab Express emphasizes introductory statistics, it has a more focused range of tools than Minitab.</string>
+			<key>display_name</key>
+			<string>Minitab Express</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>developer</key>
+			<string>Minitab Inc.</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.hansen-m.download.MinitabExpressMU</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

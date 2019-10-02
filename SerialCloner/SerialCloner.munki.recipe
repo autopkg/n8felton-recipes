@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of SerialCloner and imports it into Munki.
+Note: You will need a version of AutoPkg newer than 1.0.1 to use this recipe.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.SerialCloner</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SerialCloner</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Serial Cloner is a Molecular Biology software. It provides tools with an intuitive interface that assists you in DNA cloning, sequence analysis and visualization.</string>
+			<key>display_name</key>
+			<string>Serial Cloner</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>category</key>
+			<string>Math &amp; Science</string>
+			<key>developer</key>
+			<string>Serial Basics</string>
+			<key>minimum_os_version</key>
+			<string>10.9.5</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.SerialCloner</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%pathname%/*/*/Contents/*.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/%dmg_found_filename%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--pkgvers</string>
+					<string>%version%</string>
+					<string>--itemname</string>
+					<string>%foldername%</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

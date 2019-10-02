@@ -25,17 +25,17 @@ __all__ = ["MunkiGitCommitter"]
 
 
 class MunkiGitCommitter(Processor):
-    description = "Allows AutoPkg to commit changes to a munki repository \
-                   that is tracked by a git repository."
+    description = ("Allows AutoPkg to commit changes to a munki repository "
+                   "that is tracked by a git repository.")
     input_variables = {
         "MUNKI_REPO": {
             "description": "Path to a mounted Munki repo.",
             "required": True
-        },    
+        },
         "GIT_COMMIT_MESSAGE": {
             "required": False,
-            "description": "Any additional message you want attached to the \
-                            commit."
+            "description": ("Any additional message you want attached to the "
+                            "commit.")
         },
         "munki_importer_summary_result": {
             "required": False,
@@ -46,12 +46,11 @@ class MunkiGitCommitter(Processor):
     }
 
     def git_cmd(self):
-        """Returns a path to a git binary, priority in the order below.
-        Returns None if none found.
-        1. app pref 'GIT_PATH'
-        2. a 'git' binary that can be found in the PATH environment variable
-        3. '/usr/bin/git'
-        """
+        ("Returns a path to a git binary, priority in the order below. "
+         "Returns None if none found."
+         "1. app pref 'GIT_PATH'"
+         "2. a 'git' binary that can be found in the PATH environment variable"
+         "3. '/usr/bin/git'")
 
         def is_executable(exe_path):
             '''Is exe_path executable?'''

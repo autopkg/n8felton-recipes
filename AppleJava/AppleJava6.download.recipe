@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Apple provided version of Java 6 for OS X.</string>
+    <key>Identifier</key>
+    <string>com.github.n8felton.download.AppleJava6</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>AppleJava6</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>com.github.n8felton.shared/AppleSupportDownloadInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>ARTICLE_NUMBER</key>
+                <string>1572</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%url%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>CodeSignatureVerifier</string>
+          <key>Arguments</key>
+          <dict>
+            <key>input_path</key>
+            <string>%pathname%/JavaForOSX.pkg</string>
+            <key>expected_authority_names</key>
+            <array>
+              <string>Software Update</string>
+              <string>Apple Software Update Certification Authority</string>
+              <string>Apple Root CA</string>
+            </array>
+          </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

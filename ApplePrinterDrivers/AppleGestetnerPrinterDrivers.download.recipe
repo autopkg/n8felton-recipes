@@ -5,11 +5,11 @@
     <key>Description</key>
     <string>Downloads the latest version of the Apple provided Gestetner Printer Drivers.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.download.GestetnerPrinterDrivers</string>
+    <string>com.github.n8felton.download.AppleGestetnerPrinterDrivers</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>GestetnerPrinterDrivers</string>
+        <string>AppleGestetnerPrinterDrivers</string>
     </dict>
     <key>Process</key>
     <array>
@@ -19,7 +19,7 @@
             <key>Arguments</key>
             <dict>
                 <key>ARTICLE_NUMBER</key>
-                <string>909</string>
+                <string>1864</string>
             </dict>
         </dict>
         <dict>
@@ -34,6 +34,21 @@
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>CodeSignatureVerifier</string>
+          <key>Arguments</key>
+          <dict>
+            <key>input_path</key>
+            <string>%pathname%/*PrinterDrivers.pkg</string>
+            <key>expected_authority_names</key>
+            <array>
+              <string>Software Update</string>
+              <string>Apple Software Update Certification Authority</string>
+              <string>Apple Root CA</string>
+            </array>
+          </dict>
         </dict>
     </array>
 </dict>

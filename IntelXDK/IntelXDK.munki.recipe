@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Intel XDK and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.IntelXDK</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>IntelXDK</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Developer Tools</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>One solution for IoT applications and mobile app dev.</string>
+			<key>developer</key>
+			<string>Intel</string>
+			<key>display_name</key>
+			<string>IntelXDK</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+TMPDIR=$(getconf DARWIN_USER_TEMP_DIR)
+APP_PATH='/Applications/Intel XDK/Intel XDK.app/Contents/MacOS'
+cp "${APP_PATH}/silent.cfg" "${TMPDIR}/silent.cfg"
+sed -i '' 's/^ACCEPT_EULA.*$/ACCEPT_EULA=accept/' "${TMPDIR}/silent.cfg"
+sed -i '' 's/^#NONRPM_DB_DIR.*$/NONRPM_DB_DIR=\/Users\/Shared/' "${TMPDIR}/silent.cfg"
+sed -i '' 's/^PSET_INSTALL_DIR.*$/PSET_INSTALL_DIR=\/Applications\/Intel XDK/' "${TMPDIR}/silent.cfg"
+"${APP_PATH}/install.sh" --silent "${TMPDIR}/silent.cfg" --tmp-dir "${TMPDIR}" --download-dir "${TMPDIR}"
+</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.IntelXDK</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>munkiimport_appname</key>
+				<string>Intel XDK.app</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--destinationpath</string>
+					<string>/Applications/Intel XDK</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Aladin Desktop and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.Aladin</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Aladin</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>&lt;a href=&quot;http://aladin.u-strasbg.fr/AladinDesktop&quot;&gt;Aladin Desktop&lt;/a&gt; is the main application of the &lt;a href=&quot;http://aladin.u-strasbg.fr/&quot;&gt;Aladin Sky Atlas&lt;/a&gt; suite.</string>
+			<key>developer</key>
+			<string></string>
+			<key>display_name</key>
+			<string>Aladin</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>developer</key>
+			<string>Centre de Données astronomiques de Strasbourg</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>requires</key>
+			<array>
+				<string>OracleJava8</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.Aladin</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
