@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of the Xerox Printer Drivers from Xerox.com</string>
+    <key>Identifier</key>
+    <string>com.github.n8felton.download.xerox.printdriver</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Xerox Print Driver</string>
+    </dict>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>contentId=(?P&lt;content_id&gt;\d+).*macOS Common Print Driver Installer</string>
+                <key>url</key>
+                <string>https://www.support.xerox.com/support/workcentre-6655/downloads/enus.html?operatingSystem=macOS10_14</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>com.github.n8felton.shared/RemoteFilenameFinder</string>
+          <key>Arguments</key>
+          <dict>
+              <key>url</key>
+              <string>https://www.support.xerox.com/support/workcentre-3655/file-redirect/enus.html?operatingSystem=macOS10_14&amp;fileLanguage=en&amp;contentId=%content_id%</string>
+          </dict>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>URLDownloader</string>
+          <key>Arguments</key>
+          <dict>
+              <key>url</key>
+              <string>https://www.support.xerox.com/support/workcentre-3655/file-redirect/enus.html?operatingSystem=macOS10_14&amp;fileLanguage=en&amp;contentId=%content_id%</string>
+              <key>filename</key>
+              <string>%filename%</string>
+          </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Xerox Corporation (G59Y3XFNFR)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+                <key>input_path</key>
+                <string>%pathname%/Xerox Print Driver*.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+        </dict>
+    </array>
+</dict>
+</plist>

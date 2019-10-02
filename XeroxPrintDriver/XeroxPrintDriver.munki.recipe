@@ -3,23 +3,27 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of the Xerox Printer Drivers from Xerox.com and imports them into Munki.</string>
+    <string>Downloads the latest version of the Xerox Print Drivers from Xerox.com and imports them into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.n8felton.munki.xerox.printerdrivers</string>
+    <string>com.github.n8felton.munki.xerox.printdriver</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
-        <string>Printers/Drivers</string>
+        <string>printers/drivers</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
             <array>
                 <string>testing</string>
             </array>
+            <key>category</key>
+            <string>Drivers</string>
             <key>description</key>
-            <string>Provides the latest Xerox Printer Drivers from Xerox.com</string>
+            <string>Installs the latest Xerox Print Drivers from Xerox.com</string>
+            <key>developer</key>
+            <string>Xerox</string>
             <key>display_name</key>
-            <string>Xerox Printer Drivers</string>
+            <string>Xerox Print Driver</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>minimum_os_version</key>
@@ -27,9 +31,9 @@
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.n8felton.download.xerox.printerdrivers</string>
+    <string>com.github.n8felton.download.xerox.printdriver</string>
     <key>Process</key>
     <array>
         <dict>
