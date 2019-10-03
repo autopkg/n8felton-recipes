@@ -13,7 +13,7 @@
 		<key>BUNDLE_ID</key>
 		<string>com.facebook.arstudio.skylight</string>
 		<key>NAME</key>
-		<string>Spark AR Studio</string>
+		<string>SparkARStudio</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
