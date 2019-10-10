@@ -12,8 +12,6 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>NaturalReaderFree</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Productivity</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -40,7 +38,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Productivity</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

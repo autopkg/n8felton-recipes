@@ -14,8 +14,6 @@
 		<string>apps/VisualParadigmCE</string>
 		<key>NAME</key>
 		<string>VisualParadigmCE</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Productivity</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -31,7 +29,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Productivity</string>
 			<key>developer</key>
 			<string>Hong Kong Institute of Vocational Education</string>
 		</dict>

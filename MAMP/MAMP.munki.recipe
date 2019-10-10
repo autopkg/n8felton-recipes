@@ -8,8 +8,6 @@
 	<string>com.github.n8felton.munki.MAMP</string>
 	<key>Input</key>
 	<dict>
-		<key>MUNKI_CATEGORY</key>
-		<string>Development</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
@@ -21,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Development</string>
 			<key>description</key>
 			<string>MAMP installs a local server environment with Apache, PHP and MySQL</string>
 			<key>developer</key>

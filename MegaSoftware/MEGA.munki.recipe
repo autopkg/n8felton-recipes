@@ -12,8 +12,6 @@
 		<string>apps/MEGA</string>
 		<key>NAME</key>
 		<string>MEGA</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -27,7 +25,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Math &amp; Science</string>
 			<key>developer</key>
 			<string>Sudhir Kumar, Glen Stecher, and Koichiro Tamura</string>
 			<key>unattended_install</key>

@@ -10,8 +10,6 @@
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>NAME</key>
 		<string>ClustalX</string>
 		<key>pkginfo</key>
@@ -21,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>Clustal is a general purpose multiple alignment program for DNA or proteins.</string>
 			<key>developer</key>

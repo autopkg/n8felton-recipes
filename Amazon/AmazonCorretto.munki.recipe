@@ -14,8 +14,6 @@
 		<string>11</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Developer</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -31,7 +29,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Developer Tools</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

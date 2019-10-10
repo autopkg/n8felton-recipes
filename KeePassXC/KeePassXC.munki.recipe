@@ -12,8 +12,6 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>KeePassXC</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -47,7 +45,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Utilities</string>
 			<key>uninstall_method</key>
 			<string>remove_copied_items</string>
 		</dict>

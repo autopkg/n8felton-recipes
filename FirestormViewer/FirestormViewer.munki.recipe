@@ -12,8 +12,6 @@
 		<string>apps/FirestormViewer</string>
 		<key>NAME</key>
 		<string>FirestormViewer</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -29,7 +27,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Utilities</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

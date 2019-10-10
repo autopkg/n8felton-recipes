@@ -8,8 +8,6 @@
 	<string>com.github.n8felton.munki.AnyConnect</string>
 	<key>Input</key>
 	<dict>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/Cisco</string>
 		<key>NAME</key>
@@ -21,7 +19,7 @@
 				<string>testing</string>
 			</array>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Utilities</string>
 			<key>description</key>
 			<string>Cisco AnyConnect Secure Mobility Client.</string>
 			<key>developer</key>

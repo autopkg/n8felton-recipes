@@ -10,8 +10,6 @@
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/Java</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Plugins</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -25,7 +23,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Plugins</string>
 			<key>minimum_os_version</key>
 			<string>10.7.0</string>
 		</dict>

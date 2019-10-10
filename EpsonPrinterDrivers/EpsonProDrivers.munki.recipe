@@ -14,8 +14,6 @@
 		<string>https://www.epson.com/Support/override/this</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>printers/drivers</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Drivers</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -29,7 +27,7 @@
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Drivers</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

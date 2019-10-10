@@ -12,8 +12,6 @@ DOWNLOAD_URL can be found at https://console.amp.cisco.com/download_connector</s
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>REPLACE_ME</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/Cisco/AMP</string>
 		<key>NAME</key>
@@ -25,7 +23,7 @@ DOWNLOAD_URL can be found at https://console.amp.cisco.com/download_connector</s
 				<string>testing</string>
 			</array>
 			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<string>Utilities</string>
 			<key>description</key>
 			<string>Cisco AMP for Endpoints provides complete protection against the most advanced attacks. Not only will AMP prevent breaches and block malware at the point of entry, but it will also rapidly detect, contain, and remediate advanced threats if they evade front-line defenses and get inside.</string>
 			<key>developer</key>
