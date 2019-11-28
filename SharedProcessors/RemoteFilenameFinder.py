@@ -17,14 +17,19 @@
 """Finds the proper file name for a download."""
 
 import subprocess
-from urllib2 import unquote
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import unquote  # For Python 3
+except ImportError:
+    from urllib2 import unquote  # For Python 2
 
 __all__ = ["RemoteFilenameFinder"]
 
 
 class RemoteFilenameFinder(Processor):
     """Finds the proper file name for a download."""
+
     description = __doc__
     input_variables = {
         "url": {
@@ -38,28 +43,35 @@ class RemoteFilenameFinder(Processor):
         },
     }
     output_variables = {
-        "filename": {
-            "description": "The retrieved remote filename.",
-        },
+        "filename": {"description": "The retrieved remote filename.",},
     }
 
     def curl_filename(self, url, curl_path=None):
-        """Retrieves the remote file to determine the proper filename"""
-        curl_args = ['--silent',
-                     '--location',
-                     '--head',
-                     '--write-out', '%{url_effective}',
-                     '--url', url,
-                     '--output', '/dev/null']
+        """Retrieves the remote file to determine the proper filename."""
+        curl_args = [
+            "--silent",
+            "--location",
+            "--head",
+            "--write-out",
+            "%{url_effective}",
+            "--url",
+            url,
+            "--output",
+            "/dev/null",
+        ]
 
         if curl_path is None:
-            curl_path = [self.env['CURL_PATH']]
+            curl_path = [self.env["CURL_PATH"]]
         curl_cmd = curl_path + curl_args
-        self.output(' '.join(curl_cmd), verbose_level=3)
-        proc = subprocess.Popen(curl_cmd, shell=False, bufsize=1,
-                                stdin=subprocess.PIPE,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        self.output(" ".join(curl_cmd), verbose_level=3)
+        proc = subprocess.Popen(
+            curl_cmd,
+            shell=False,
+            bufsize=1,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
 
         (file_url, e) = proc.communicate()
         if e:
@@ -73,17 +85,19 @@ class RemoteFilenameFinder(Processor):
         return file_url, filename
 
     def remote_filename(self, url):
-        """Finds the remote filename of the given url"""
+        """Finds the remote filename of the given url."""
         (file_url, filename) = self.curl_filename(url)
 
         # Decode any special characters in the filename, like %20 to a space.
         filename = unquote(filename)
-        self.output("Found filename '{}' at '{}'".format(filename, file_url),
-                    verbose_level=2)
+        self.output(
+            "Found filename '{}' at '{}'".format(filename, file_url), verbose_level=2
+        )
         return filename
 
     def main(self):
-        self.env['filename'] = self.remote_filename(self.env['url'])
+        self.env["filename"] = self.remote_filename(self.env["url"])
+
 
 if __name__ == "__main__":
     PROCESSOR = RemoteFilenameFinder()
