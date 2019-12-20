@@ -8,6 +8,8 @@
 	<string>com.github.n8felton.munki.AmazonCorretto</string>
 	<key>Input</key>
 	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-x64-macos-jdk.pkg</string>
 		<key>NAME</key>
 		<string>AmazonCorretto</string>
 		<key>MAJOR_VERSION</key>
@@ -42,18 +44,6 @@
 	<string>com.github.n8felton.download.AmazonCorretto</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>

@@ -8,6 +8,8 @@
 	<string>com.github.n8felton.download.AmazonCorretto</string>
 	<key>Input</key>
 	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-x64-macos-jdk.pkg</string>
 		<key>NAME</key>
 		<string>AmazonCorretto</string>
 		<key>MAJOR_VERSION</key>
@@ -18,26 +20,13 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://docs.aws.amazon.com/corretto/latest/corretto-%MAJOR_VERSION%-ug/downloads-list.html</string>
-				<key>re_pattern</key>
-				<string>href="(?P&lt;url&gt;https?[^"]*(?P&lt;filename&gt;amazon-corretto-(?P&lt;version&gt;.+?)-.+?.pkg))</string>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
-		</dict>
-		<dict>
-				<key>Processor</key>
-				<string>URLDownloader</string>
-				<key>Arguments</key>
-				<dict>
-						<key>url</key>
-						<string>%url%</string>
-						<key>filename</key>
-						<string>amazon-corretto-%version%.pkg</string>
-				</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 				<key>Processor</key>
