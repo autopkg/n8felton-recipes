@@ -10,10 +10,10 @@
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-x64-macos-jdk.pkg</string>
-		<key>NAME</key>
-		<string>AmazonCorretto%MAJOR_VERSION%</string>
 		<key>MAJOR_VERSION</key>
 		<string>11</string>
+		<key>NAME</key>
+		<string>AmazonCorretto%MAJOR_VERSION%</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
@@ -29,23 +29,23 @@
 			<string>URLDownloader</string>
 		</dict>
 		<dict>
-				<key>Processor</key>
-				<string>EndOfCheckPhase</string>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			 <key>Processor</key>
-			 <string>CodeSignatureVerifier</string>
-			 <key>Arguments</key>
-			 <dict>
-					<key>input_path</key>
-					<string>%pathname%</string>
-					<key>expected_authority_names</key>
-					<array>
-						 <string>Developer ID Installer: AMZN Mobile LLC (94KV3E626L)</string>
-						 <string>Developer ID Certification Authority</string>
-						 <string>Apple Root CA</string>
-					</array>
-			 </dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: AMZN Mobile LLC (94KV3E626L)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>
