@@ -8,6 +8,8 @@
 	<string>com.github.n8felton.munki.SAOImageDS9-app</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
@@ -18,6 +20,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>SAOImage DS9 is an astronomical imaging and data visualization application.</string>
 			<key>developer</key>
