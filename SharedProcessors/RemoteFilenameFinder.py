@@ -19,11 +19,6 @@
 from autopkglib import Processor, ProcessorError, URLGetter
 
 try:
-    from urllib.parse import unquote
-except ImportError:
-    from urllib2 import unquote
-
-try:
     from urllib.parse import unquote  # For Python 3
 except ImportError:
     from urllib2 import unquote  # For Python 2
