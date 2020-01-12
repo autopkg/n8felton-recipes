@@ -16,8 +16,12 @@
 # limitations under the License.
 """Finds the proper file name for a download."""
 
-import subprocess
-from autopkglib import Processor, ProcessorError
+from autopkglib import Processor, ProcessorError, URLGetter
+
+try:
+    from urllib.parse import unquote
+except ImportError:
+    from urllib2 import unquote
 
 try:
     from urllib.parse import unquote  # For Python 3
@@ -27,7 +31,7 @@ except ImportError:
 __all__ = ["RemoteFilenameFinder"]
 
 
-class RemoteFilenameFinder(Processor):
+class RemoteFilenameFinder(URLGetter):
     """Finds the proper file name for a download."""
 
     description = __doc__
@@ -36,63 +40,38 @@ class RemoteFilenameFinder(Processor):
             "required": True,
             "description": "The URL to retrieve the remote filename for.",
         },
-        "CURL_PATH": {
-            "required": False,
-            "default": "/usr/bin/curl",
-            "description": "Path to curl binary. Defaults to /usr/bin/curl.",
-        },
     }
     output_variables = {
         "filename": {"description": "The retrieved remote filename.",},
     }
 
-    def curl_filename(self, url, curl_path=None):
-        """Retrieves the remote file to determine the proper filename."""
-        curl_args = [
-            "--silent",
-            "--location",
-            "--head",
-            "--write-out",
-            "%{url_effective}",
-            "--url",
-            url,
-            "--output",
-            "/dev/null",
-        ]
+    def remote_filename(self, url):
+        """Finds the remote filename of the given url"""
 
-        if curl_path is None:
-            curl_path = [self.env["CURL_PATH"]]
-        curl_cmd = curl_path + curl_args
-        self.output(" ".join(curl_cmd), verbose_level=3)
-        proc = subprocess.Popen(
-            curl_cmd,
-            shell=False,
-            bufsize=1,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
+        # Build the curl command
+        curl_cmd = self.prepare_curl_cmd()
+        curl_cmd.extend(['--silent',
+                         '--location',
+                         '--head',
+                         '--write-out', '%{url_effective}',
+                         '--url', url,
+                         '--output', '/dev/null'])
 
-        (file_url, e) = proc.communicate()
-        if e:
-            raise ProcessorError(e)
+        # Use the output of curl to determine the filename
+        file_url = self.download_with_curl(curl_cmd)
         filename = file_url.rpartition("/")[2]
+
         # If the final Location contains a query string, remove it.
         # e.g SomeAwesomeInstaller.pkg?Signature=uRznpT%2BkSK4WfaSl8kXUR7eeHqM
         # becomes just 'SomeAwesomeInstaller.pkg'
         if "?" in filename:
             filename = filename.rpartition("?")[0]
-        return file_url, filename
-
-    def remote_filename(self, url):
-        """Finds the remote filename of the given url."""
-        (file_url, filename) = self.curl_filename(url)
 
         # Decode any special characters in the filename, like %20 to a space.
         filename = unquote(filename)
-        self.output(
-            "Found filename '{}' at '{}'".format(filename, file_url), verbose_level=2
-        )
+        self.output("Found filename '{}' at '{}'".format(filename, file_url),
+                    verbose_level=2)
+
         return filename
 
     def main(self):
