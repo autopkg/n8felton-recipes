@@ -58,5 +58,5 @@ class MicrosoftEdgeURLProvider(Processor):
 
 
 if __name__ == "__main__":
-    PROCESSOR = MirosoftEdgeURLProvider()
+    PROCESSOR = MicrosoftEdgeURLProvider()
     PROCESSOR.execute_shell()
