@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Intel Unite® Client for macOS.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.IntelUnite</string>
+	<key>Input</key>
+	<dict>
+		<key>BASE_URL</key>
+		<string>https://downloadcenter.intel.com</string>
+		<key>DOWNLOAD_URL</key>
+		<string>%BASE_URL%/product/89294</string>
+		<key>NAME</key>
+		<string>IntelUnite</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>&lt;a href=\"(?P&lt;link&gt;/download/(?P&lt;download_id&gt;\d+)/Intel-Unite-Client-for-Mac[^\"]+)</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>data-direct-path=\"(?P&lt;url&gt;[^\"]+)</string>
+				<key>url</key>
+				<string>%BASE_URL%%link%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/RemoteFilenameFinder</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/URIEncoder</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Intel Unite.app</string>
+				<key>requirement</key>
+				<string>anchor apple generic</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
