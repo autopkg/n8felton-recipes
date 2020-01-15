@@ -10,6 +10,8 @@
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Productivity</string>
 		<key>NAME</key>
 		<string>MicrosoftEdge</string>
 		<key>CHANNEL</key>
@@ -22,6 +24,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Microsoft's Chromium-based browser</string>
 			<key>developer</key>
