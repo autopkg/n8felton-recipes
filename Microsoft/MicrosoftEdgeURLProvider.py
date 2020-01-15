@@ -21,7 +21,7 @@ __all__ = ["MicrosoftEdgeURLProvider"]
 
 MS_LINKID_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
 CHANNEL_LINKID = {
-    # 'Stable': '',
+    "Stable": 2069148,
     "Beta": 2069439,
     "Dev": 2069340,
     "Canary": 2069147,
