@@ -20,6 +20,9 @@ from autopkglib import Processor, ProcessorError
 __all__ = ["MicrosoftEdgeURLProvider"]
 
 MS_FWLINK_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
+# Note to future Nate from past Nate. You chose to use Title case for the channel keys
+# due to Microsoft's decision to do the same for their package/bundle ID.
+# e.g. com.microsoft.edgemac.Beta
 CHANNEL_LINKID = {
     "Stable": 2069148,
     "Beta": 2069439,
