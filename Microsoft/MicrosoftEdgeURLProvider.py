@@ -50,8 +50,9 @@ class MicrosoftEdgeURLProvider(Processor):
     }
 
     def main(self):
+        self.output("Available channels: {}".format(CHANNEL_LINKID.keys(), 2))
         channel = self.env.get("CHANNEL") or self.input_variables["CHANNEL"]["default"]
-        print(self.input_variables["CHANNEL"]["description"])
+        self.output("Using {} channel".format(channel), 1)
         url = MS_FWLINK_URL.format(linkid=CHANNEL_LINKID[channel])
         self.env["url"] = url
         self.env["CHANNEL"] = channel
