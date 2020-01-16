@@ -21,7 +21,7 @@ __all__ = ["MicrosoftEdgeURLProvider"]
 
 MS_LINKID_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
 CHANNEL_LINKID = {
-    'Stable': 2069148,
+    "Stable": 2069148,
     "Beta": 2069439,
     "Dev": 2069340,
     "Canary": 2069147,
@@ -29,10 +29,7 @@ CHANNEL_LINKID = {
 
 
 class MicrosoftEdgeURLProvider(Processor):
-    (
-        "Provides the URL to the latest version of the selected release of "
-        "Microsoft Edge"
-    )
+    ("Provides the URL to the latest version of the selected release of Microsoft Edge")
     description = __doc__
     input_variables = {
         "CHANNEL": {
@@ -46,7 +43,7 @@ class MicrosoftEdgeURLProvider(Processor):
     }
     output_variables = {
         "url": {"description": "URL to the latest release of the given CHANNEL"},
-        "CHANNEL": {"description": "The channel used for the download."}
+        "CHANNEL": {"description": "The channel used for the download."},
     }
 
     def main(self):
