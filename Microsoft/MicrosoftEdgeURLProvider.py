@@ -19,7 +19,7 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["MicrosoftEdgeURLProvider"]
 
-MS_LINKID_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
+MS_FWLINK_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
 CHANNEL_LINKID = {
     "Stable": 2069148,
     "Beta": 2069439,
@@ -49,7 +49,7 @@ class MicrosoftEdgeURLProvider(Processor):
     def main(self):
         channel = self.env.get("CHANNEL") or self.input_variables["CHANNEL"]["default"]
         print(self.input_variables["CHANNEL"]["description"])
-        url = MS_LINKID_URL.format(linkid=CHANNEL_LINKID[channel])
+        url = MS_FWLINK_URL.format(linkid=CHANNEL_LINKID[channel])
         self.env["url"] = url
         self.env["CHANNEL"] = channel
 
