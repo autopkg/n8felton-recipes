@@ -19,9 +19,12 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["MicrosoftEdgeURLProvider"]
 
-MS_LINKID_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
+MS_FWLINK_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
+# Note to future Nate from past Nate. You chose to use Title case for the channel keys
+# due to Microsoft's decision to do the same for their package/bundle ID.
+# e.g. com.microsoft.edgemac.Beta
 CHANNEL_LINKID = {
-    # 'Stable': '',
+    "Stable": 2069148,
     "Beta": 2069439,
     "Dev": 2069340,
     "Canary": 2069147,
@@ -29,15 +32,12 @@ CHANNEL_LINKID = {
 
 
 class MicrosoftEdgeURLProvider(Processor):
-    (
-        "Provides the URL to the latest version of the selected release of "
-        "Microsoft Edge"
-    )
+    ("Provides the URL to the latest version of the selected release of Microsoft Edge")
     description = __doc__
     input_variables = {
         "CHANNEL": {
             "required": False,
-            "default": "Beta",
+            "default": "Stable",
             "description": (
                 "Which channel to download. "
                 "Options: {}".format(CHANNEL_LINKID.keys())
@@ -46,17 +46,18 @@ class MicrosoftEdgeURLProvider(Processor):
     }
     output_variables = {
         "url": {"description": "URL to the latest release of the given CHANNEL"},
-        "CHANNEL": {"description": "The channel used for the download."}
+        "CHANNEL": {"description": "The channel used for the download."},
     }
 
     def main(self):
+        self.output("Available channels: {}".format(CHANNEL_LINKID.keys(), 2))
         channel = self.env.get("CHANNEL") or self.input_variables["CHANNEL"]["default"]
-        print(self.input_variables["CHANNEL"]["description"])
-        url = MS_LINKID_URL.format(linkid=CHANNEL_LINKID[channel])
+        self.output("Using {} channel".format(channel), 1)
+        url = MS_FWLINK_URL.format(linkid=CHANNEL_LINKID[channel])
         self.env["url"] = url
         self.env["CHANNEL"] = channel
 
 
 if __name__ == "__main__":
-    PROCESSOR = MirosoftEdgeURLProvider()
+    PROCESSOR = MicrosoftEdgeURLProvider()
     PROCESSOR.execute_shell()

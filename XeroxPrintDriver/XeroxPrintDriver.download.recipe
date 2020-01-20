@@ -19,7 +19,7 @@
             <key>Arguments</key>
             <dict>
                 <key>re_pattern</key>
-                <string>contentId=(?P&lt;content_id&gt;\d+).*macOS Common Print Driver Installer</string>
+                <string>contentId=(?P&lt;content_id&gt;\d+).*macOS Common Driver Installer</string>
                 <key>url</key>
                 <string>https://www.support.xerox.com/support/workcentre-6655/downloads/enus.html?operatingSystem=macOS10_14</string>
             </dict>

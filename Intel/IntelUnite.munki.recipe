@@ -3,35 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Microsoft Edge for the specified branch.</string>
+	<string>Downloads the latest version of Intel Unite® Client for macOS.</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.munki.MicrosoftEdge</string>
+	<string>com.github.n8felton.munki.IntelUnite</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Productivity</string>
 		<key>NAME</key>
-		<string>MicrosoftEdge</string>
-		<key>CHANNEL</key>
-		<string></string>
-		<key>pkg_ids_set_optional_true</key>
-		<array/>
+		<string>IntelUnite</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>Microsoft's Chromium-based browser</string>
+			<string> </string>
 			<key>developer</key>
-			<string>Microsoft</string>
+			<string>Intel</string>
 			<key>display_name</key>
-			<string>Microsoft Edge</string>
+			<string>Intel Unite</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -39,9 +31,9 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>1.4.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.n8felton.download.MicrosoftEdge</string>
+	<string>com.github.n8felton.download.IntelUnite</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -54,10 +46,6 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>
