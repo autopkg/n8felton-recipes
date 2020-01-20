@@ -24,6 +24,9 @@ MS_FWLINK_URL = "https://go.microsoft.com/fwlink/?linkid={linkid}"
 # due to Microsoft's decision to do the same for their package/bundle ID.
 # e.g. com.microsoft.edgemac.Beta
 CHANNEL_LINKID = {
+    "Enterprise-Stable": 2093438,
+    "Enterprise-Beta": 2093294,
+    "Enterprise-Dev": 2093292,
     "Stable": 2069148,
     "Beta": 2069439,
     "Dev": 2069340,
