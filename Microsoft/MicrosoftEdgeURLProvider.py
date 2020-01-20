@@ -40,7 +40,7 @@ class MicrosoftEdgeURLProvider(Processor):
     input_variables = {
         "CHANNEL": {
             "required": False,
-            "default": "Stable",
+            "default": "Enterprise-Stable",
             "description": (
                 "Which channel to download. "
                 "Options: {}".format(CHANNEL_LINKID.keys())
