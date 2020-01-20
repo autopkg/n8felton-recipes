@@ -58,7 +58,7 @@
                     <string>Apple Root CA</string>
                 </array>
                 <key>input_path</key>
-                <string>%pathname%/Xerox Print Driver*.pkg</string>
+                <string>%pathname%/Xerox Driver*.pkg</string>
             </dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
