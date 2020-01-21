@@ -3,13 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release of OpenRefine from Github.</string>
+	<string>Downloads the current release of OpenRefine from Github.
+	
+By default, "pre-releases" are included. Set INCLUDE_PRERELEASES
+to an empty value to only download releases on GitHub marked as
+"final."</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.OpenRefine</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>OpenRefine</string>
+                <key>INCLUDE_PRERELEASES</key>
+                <string>true</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
@@ -23,7 +29,7 @@
 				<key>github_repo</key>
 				<string>OpenRefine/OpenRefine</string>
 				<key>include_prereleases</key>
-				<true/>
+				<string>%INCLUDE_PRERELEASES%</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
