@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>KeePassXC</string>
+		<key>ASSET_REGEX</key>
+		<string>KeePassXC-.*(?&lt;!Sierra)\.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
@@ -19,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>KeePassXC-.+\.dmg</string>
+				<string>%ASSET_REGEX%</string>
 				<key>github_repo</key>
 				<string>keepassxreboot/keepassxc</string>
 				<key>include_prereleases</key>
