@@ -16,10 +16,15 @@
 # limitations under the License.
 """Shared processor to allow recipes to download Apple support downloads."""
 
-import urllib2
+from __future__ import absolute_import
+import six.moves.urllib.request, six.moves.urllib.error, six.moves.urllib.parse
 import re
-
+import sys
 from autopkglib import Processor, ProcessorError
+
+ # import for Python 3
+if sys.version_info.major > 2:
+    import certifi
 
 __all__ = ["AppleSupportDownloadInfoProvider"]
 
@@ -62,8 +67,12 @@ class AppleSupportDownloadInfoProvider(Processor):
     def get_url(cls, download_url):
         """Follows HTTP 302 redirects to fetch the final url of a download."""
         try:
-            request = urllib2.Request(download_url)
-            response = urllib2.urlopen(request)
+            request = six.moves.urllib.request.Request(download_url)
+            if sys.version_info.major < 3:
+                response = six.moves.urllib.request.urlopen(request)
+            else:
+                response = six.moves.urllib.request.urlopen(request, cafile=certifi.where())
+
         except BaseException as e:
             raise ProcessorError("Can't download %s: %s" % (download_url, e))
 
@@ -74,10 +83,13 @@ class AppleSupportDownloadInfoProvider(Processor):
         """Retrieve the HTML <title> from a webpage"""
 
         try:
-            response = urllib2.urlopen(article_url)
-        except urllib2.HTTPError, e:
+            if sys.version_info.major < 3:
+                response = six.moves.urllib.request.urlopen(article_url)
+            else:
+                response = six.moves.urllib.request.urlopen(article_url, cafile=certifi.where())
+        except six.moves.urllib.error.HTTPError as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
-        except urllib2.URLError, e:
+        except six.moves.urllib.error.URLError as e:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
 
         info = response.info()
@@ -88,8 +100,11 @@ class AppleSupportDownloadInfoProvider(Processor):
                                                                   e))
         except:
             raise ProcessorError("Unable to access %s: %s" % (article_url, e))
-
-        head = response.read(8192)
+        
+        if sys.version_info.major < 3:
+            head = response.read(8192)
+        else: 
+            head = response.read(8192).decode("utf-8")
         head = re.sub("[\r\n\t ]", " ", head)
 
         title = re.search(r'(?i)\<title\>(.*?)\</title\>', head)
