@@ -16,9 +16,11 @@
 # limitations under the License.
 """Shared processor to allow recipes to download Apple support downloads."""
 
+from __future__ import absolute_import
 import re
 
-from autopkglib import Processor, ProcessorError, URLGetter
+# pylint: disable=import-error
+from autopkglib import ProcessorError, URLGetter
 
 __all__ = ["AppleSupportDownloadInfoProvider"]
 
@@ -70,7 +72,7 @@ class AppleSupportDownloadInfoProvider(URLGetter):
         content_type = self.get_headers(article_url).get("content-type")
         if not re.match(".*/html.*", content_type):
             raise ProcessorError("Unable to access %s" % article_url)
-        head = self.download(article_url)[:8192]
+        head = self.download(article_url)[:8192].decode("utf-8")
         head = re.sub("[\r\n\t ]", " ", head)
         title = re.search(r"(?i)\<title\>(.*?)\</title\>", head)
         if title:
@@ -93,6 +95,17 @@ class AppleSupportDownloadInfoProvider(URLGetter):
         else:
             raise ProcessorError("Unable to determine version.")
 
+    def get_full_url(self, download_url):
+        """Retrieve the HTML <metaUrl> from a webpage."""
+        head = self.download(download_url).decode("utf-8")
+        head = re.sub("[\r\n\t ]", " ", head)
+        full_url = re.search(r"\"metaUrl\": \"(https://updates.cdn-apple.com/\S.*dmg)\"", head)
+        if full_url:
+            full_url = full_url.group(1)
+            return full_url
+        else:
+            raise ProcessorError("Unable to determine full url")
+
     def main(self):
         """Main process."""
 
@@ -108,11 +121,11 @@ class AppleSupportDownloadInfoProvider(URLGetter):
         self.output("Article URL: {article_url}".format(article_url=article_url), 2)
 
         # Determine URL of associated download
-        download_url = "{base_url}/downloads/DL{article_number}/{locale}/&".format(
+        download_url = "{base_url}/kb/DL{article_number}?locale={locale}".format(
             base_url=APPLE_SUPPORT_URL, article_number=article_number, locale=locale
         )
         self.output("Download URL: {download_url}".format(download_url=download_url), 2)
-        full_url = self.get_headers(download_url).get("http_redirected")
+        full_url = self.get_full_url(download_url)
         self.output("Full URL: {full_url}".format(full_url=full_url), 2)
 
         # Set output variables
