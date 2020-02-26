@@ -18,7 +18,7 @@
 
 import re
 
-from autopkglib import Processor, ProcessorError, URLGetter
+from autopkglib import URLGetter, ProcessorError
 
 __all__ = ["AppleSupportDownloadInfoProvider"]
 
@@ -26,8 +26,7 @@ APPLE_SUPPORT_URL = "https://support.apple.com"
 
 
 class AppleSupportDownloadInfoProvider(URLGetter):
-    """Provides links to downloads posted to the Apple support knowledge
-    bases."""
+    """Provides links to downloads posted to the Apple support knowledge bases."""
 
     description = __doc__
     input_variables = {
@@ -51,30 +50,39 @@ class AppleSupportDownloadInfoProvider(URLGetter):
     }
     output_variables = {
         "article_url": {
-            "description": "The url for the KB article related to the download.",
+            "description": "The url for the KB article related to the download."
         },
         "url": {"description": "The full url for the file you want to download."},
         "version": {"description": "The version of the support download"},
     }
 
-    def get_headers(self, url):
+    def get_url(self, download_url):
         """Follows HTTP 302 redirects to fetch the final url of a download."""
         curl_cmd = self.prepare_curl_cmd()
-        curl_cmd.extend(["--head", url])
-        curl_output = self.download_with_curl(curl_cmd)
-        headers = self.parse_headers(curl_output)
-        return headers
+        curl_cmd.extend(
+            [
+                "--silent",
+                "--head",
+                "--write-out",
+                "%{url_effective}",
+                "--url",
+                download_url,
+                "--output",
+                "/dev/null",
+            ]
+        )
+        file_url = self.download_with_curl(curl_cmd)
+        return file_url
 
     def get_html_title(self, article_url):
-        """Retrieve the HTML <title> from a webpage."""
-        content_type = self.get_headers(article_url).get("content-type")
-        if not re.match(".*/html.*", content_type):
-            raise ProcessorError("Unable to access %s" % article_url)
-        head = self.download(article_url)[:8192]
+        """Retrieve the HTML <title> from a webpage"""
+
+        head = self.download(article_url)[:8192].decode("utf-8")
         head = re.sub("[\r\n\t ]", " ", head)
         title = re.search(r"(?i)\<title\>(.*?)\</title\>", head)
         if title:
             title = title.group(1)
+            self.output("Article title: {title}".format(title=title), 2)
             return title
         else:
             raise ProcessorError("Unable to determine version")
@@ -83,12 +91,11 @@ class AppleSupportDownloadInfoProvider(URLGetter):
         """Retrives the version of the download from the article title."""
         article_url = self.env["article_url"]
         title = self.get_html_title(article_url)
-        self.output("Title is %s" % title, 2)
         regex = r"(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)"
         match = re.search(regex, title)
         if match:
             version = match.group(0)
-            self.output("Version is {version}".format(version=match.group(0)), 2)
+            self.output("Version: {version}".format(version=match.group(0)), 2)
             return version
         else:
             raise ProcessorError("Unable to determine version.")
@@ -112,7 +119,7 @@ class AppleSupportDownloadInfoProvider(URLGetter):
             base_url=APPLE_SUPPORT_URL, article_number=article_number, locale=locale
         )
         self.output("Download URL: {download_url}".format(download_url=download_url), 2)
-        full_url = self.get_headers(download_url).get("http_redirected")
+        full_url = self.get_url(download_url)
         self.output("Full URL: {full_url}".format(full_url=full_url), 2)
 
         # Set output variables
