@@ -51,7 +51,7 @@
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%pathname%/VMware AirWatch Admin Assistant.pkg</string>
+				<string>%pathname%/VMware Workspace ONE Admin Assistant.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
