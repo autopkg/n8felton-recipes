@@ -28,10 +28,6 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>developer</key>
 			<string>Karen Collins &amp; John Kielkopf</string>
-			<key>requires</key>
-			<array>
-				<string>AppleJava6</string>
-			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
