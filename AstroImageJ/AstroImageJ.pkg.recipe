@@ -50,7 +50,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%pkgroot%/Applications/AstroImageJ/AstroImageJ64.app/Contents/Info.plist</string>
+                <string>%pkgroot%/Applications/AstroImageJ.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
