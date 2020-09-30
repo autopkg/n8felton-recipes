@@ -37,7 +37,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>RegexReplace</string>
+			<string>com.github.n8felton.shared/RegexReplace</string>
 			<key>Arguments</key>
 			<dict>
 				<key>replace_pattern</key>
