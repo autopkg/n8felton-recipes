@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://download.tidal.com/desktop/TIDAL.dmg</string>
+				<string>https://download.tidal.com/desktop/TIDAL.dmg</string>
 			</dict>
 		</dict>
 		<dict>
