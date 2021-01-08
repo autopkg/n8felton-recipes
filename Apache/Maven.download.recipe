@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Maven</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://maven.apache.org/download.cgi</string>
+		<string>https://maven.apache.org/download.cgi</string>
 	</dict>
 	<key>Process</key>
 	<array>
