@@ -13,7 +13,7 @@
 		<key>NAME</key>
 		<string>VMwareAirWatchAdminAssistant</string>
 		<key>SPARKLE_FEED_URL</key>
-		<string>https://awagent.com/AdminAssistant/VMwareAirWatchAdminAssistant.xml</string>
+		<string>https://getwsone.com/AdminAssistant/VMwareWorkspaceONEAdminAssistant.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
