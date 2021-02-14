@@ -10,8 +10,6 @@
 	<string>com.github.n8felton.pkg.ATTODiskBenchmark</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.ATTO.ATTODiskBenchmark</string>
 		<key>NAME</key>
 		<string>ATTO Disk Benchmark</string>
 	</dict>

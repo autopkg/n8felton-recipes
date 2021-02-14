@@ -10,8 +10,6 @@
 	<string>com.github.n8felton.pkg.MicrosoftRemoteDesktopBeta</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.microsoft.rdc.osx.beta</string>
 		<key>NAME</key>
 		<string>Microsoft Remote Desktop Beta</string>
 	</dict>
