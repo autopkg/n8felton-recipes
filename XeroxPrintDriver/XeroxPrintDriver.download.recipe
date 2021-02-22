@@ -19,19 +19,10 @@
             <key>Arguments</key>
             <dict>
                 <key>re_pattern</key>
-                <string>contentId=(?P&lt;content_id&gt;\d+).*macOS Print and Scan Driver Installer</string>
+                <string>content.*[^\d](?P&lt;content_id&gt;\d+)[^\d]*macOS Print and Scan Driver Installer</string>
                 <key>url</key>
-                <string>https://www.support.xerox.com/support/workcentre-6655/downloads/enus.html?operatingSystem=macOS10_14</string>
+                <string>https://www.support.xerox.com/en-us/product/versalink-c7020-c7025-c7030/downloads?platform=macOS10_15&amp;language=en</string>
             </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>com.github.n8felton.shared/RemoteFilenameFinder</string>
-          <key>Arguments</key>
-          <dict>
-              <key>url</key>
-              <string>https://www.support.xerox.com/support/workcentre-3655/file-redirect/enus.html?operatingSystem=macOS10_14&amp;fileLanguage=en&amp;contentId=%content_id%</string>
-          </dict>
         </dict>
         <dict>
           <key>Processor</key>
@@ -39,9 +30,9 @@
           <key>Arguments</key>
           <dict>
               <key>url</key>
-              <string>https://www.support.xerox.com/support/workcentre-3655/file-redirect/enus.html?operatingSystem=macOS10_14&amp;fileLanguage=en&amp;contentId=%content_id%</string>
-              <key>filename</key>
-              <string>%filename%</string>
+              <string>https://www.support.xerox.com/download/%content_id%</string>
+              <key>prefetch_filename</key>
+              <true/>
           </dict>
         </dict>
         <dict>
