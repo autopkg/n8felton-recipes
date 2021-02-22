@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>CellProfiler</string>
 		<key>RE_PATTERN</key>
-		<string>&lt;a href=\"(?P&lt;url&gt;http[s]?.*(?P&lt;filename&gt;CellProfiler-(?P&lt;version&gt;[\d.]+)\.app\.zip))\"&gt;</string>
+		<string>href=&quot;(?P&lt;url&gt;http[s]?.*(?P&lt;filename&gt;CellProfiler-macOS-(?P&lt;version&gt;[\d.]+)\.zip))&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -23,7 +23,7 @@
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
 				<key>url</key>
-				<string>http://cellprofiler.org/releases/</string>
+				<string>https://cellprofiler.org/releases/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
