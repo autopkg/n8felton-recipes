@@ -17,7 +17,7 @@
 """"Changes the version of a flat package by modifying it's PackageInfo"""
 
 import xml.etree.ElementTree as ET
-from autopkglib import Processor
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["PkgInfoVersioner"]
 
@@ -57,7 +57,9 @@ class PkgInfoVersioner(Processor):
         distribution = ET.parse(distribution_path)
         pkg_ref_xpath = './/pkg-ref[@id="{}"][@version]'.format(
             self.env['PKGID'])
-        pkg = getattr(distribution.find(pkg_ref_xpath), 'text')
+        pkg = getattr(distribution.find(pkg_ref_xpath), 'text', None)
+        if pkg is None:
+            raise ProcessorError("PKGID was not found.")
         pkg_path = pkg.lstrip('#')
         self.output("Package file: {pkg_path}".format(
             pkg_path=pkg_path),
