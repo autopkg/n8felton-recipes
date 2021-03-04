@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>HPPrinterDrivers</string>
+		<key>PRODUCT_NUMBER</key>
+		<string>E6B70A</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.4</string>
@@ -19,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>product_number</key>
-				<string>E6B70A</string>
+				<string>%PRODUCT_NUMBER%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.n8felton.shared/HPSoftwareInfoProvider</string>
