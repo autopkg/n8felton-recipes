@@ -65,7 +65,7 @@
 				<key>PKGID</key>
 				<string>%PKGID%</string>
 				<key>VERSION</key>
-				<string>%version%</string>>
+				<string>%version%</string>
 			</dict>
 		</dict>
         <dict>
