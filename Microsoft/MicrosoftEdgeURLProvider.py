@@ -27,10 +27,10 @@ CHANNEL_LINKID = {
     "Enterprise-Stable": 2093438,
     "Enterprise-Beta": 2093294,
     "Enterprise-Dev": 2093292,
-    "Stable": 2069148,
-    "Beta": 2069439,
-    "Dev": 2069340,
-    "Canary": 2069147,
+    "Stable": 2093504,
+    "Beta": 2099618,
+    "Dev": 2099619,
+    "Canary": 2093293,
 }
 
 
