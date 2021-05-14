@@ -98,6 +98,8 @@
                 <array>
                     <string>/Applications/Microsoft Edge.app</string>
                 </array>
+                <key>version_comparison_key</key>
+                <string>CFBundleVersion</string>
             </dict>
         </dict>
         <dict>
