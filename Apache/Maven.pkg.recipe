@@ -21,15 +21,15 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>pkgdirs</key>
 				<dict>
-					<key>usr</key>
-					<string>0755</string>
-					<key>usr/local</key>
-					<string>0755</string>
-					<key>usr/local/bin</key>
-					<string>0755</string>
+					<key>Library</key>
+					<string>0775</string>
+					<key>etc</key>
+					<string>0775</string>
+					<key>etc/paths.d</key>
+					<string>0775</string>
 				</dict>
 			</dict>
 		</dict>
@@ -38,45 +38,37 @@
 			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<string>%RECIPE_CACHE_DIR%/unarchived</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>Copier</string>
+			<string>FileMover</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*/</string>
-				<key>destination_path</key>
-				<string>%pkgroot%/usr/local/maven-%version%</string>
-				<key>overwrite</key>
-				<true/>
+				<key>source</key>
+				<string>%RECIPE_CACHE_DIR%/unarchived/apache-maven-%version%</string>
+				<key>target</key>
+				<string>%pkgroot%/Library/Maven3</string>
 			</dict>
 		</dict>
+		<!-- Add paths.d entry to make commands available in shells -->
 		<dict>
 			<key>Processor</key>
-			<string>Symlinker</string>
+			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>/usr/local/maven-%version%</string>
-				<key>destination_path</key>
-				<string>%pkgroot%/usr/local/maven</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Symlinker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>/usr/local/maven/bin/mvn</string>
-				<key>destination_path</key>
-				<string>%pkgroot%/usr/local/bin/mvn</string>
+				<key>file_path</key>
+				<string>%pkgroot%/etc/paths.d/maven</string>
+				<key>file_content</key>
+				<string>/Library/Maven3/bin</string>
+				<key>file_mode</key>
+				<string>0755</string>
 			</dict>
 		</dict>
 		<dict>
@@ -86,29 +78,43 @@
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%pkgroot%</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>org.apache.maven</string>
 					<key>version</key>
 					<string>%version%</string>
+					<key>id</key>
+					<string>org.apache.maven3</string>
+					<key>options</key>
+					<string>purge_ds_store</string>
 					<key>chown</key>
 					<array>
 						<dict>
 							<key>path</key>
-							<string>usr</string>
+							<string>Library</string>
 							<key>user</key>
 							<string>root</string>
 							<key>group</key>
-							<string>wheel</string>
+							<string>admin</string>
+						</dict>
+						<dict>
+							<key>path</key>
+							<string>Library/Maven3</string>
+							<key>user</key>
+							<string>root</string>
+							<key>group</key>
+							<string>admin</string>
 							<key>mode</key>
-							<string>0755</string>
+							<string>0775</string>
+						</dict>
+						<dict>
+							<key>path</key>
+							<string>etc/paths.d/maven</string>
+							<key>user</key>
+							<string>root</string>
+							<key>group</key>
+							<string>admin</string>
+							<key>mode</key>
+							<string>0644</string>
 						</dict>
 					</array>
 				</dict>
