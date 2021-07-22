@@ -13,7 +13,7 @@
 		<key>NAME</key>
 		<string>CodonCode Aligner</string>
 		<key>RE_PATTERN</key>
-		<string>href=&quot;(.*dmg)\/file&quot;</string>
+		<string>href=&quot;(https:.*Installer.*dmg)&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

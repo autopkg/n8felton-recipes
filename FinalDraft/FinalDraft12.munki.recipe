@@ -3,41 +3,31 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Intel Unite® Client for macOS.</string>
+	<string>Downloads the latest version of Final Draft 12 and imports it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.munki.IntelUnite</string>
+	<string>com.github.n8felton.munki.FinalDraft12</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
-		<string>IntelUnite</string>
+		<string>FinalDraft12</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string> </string>
+			<string>The Industry Standard Screenwriting Software. With Final Draft 12, you can brainstorm, visualize, outline, report, tag, collaborate and customize your writing environment like never before.</string>
 			<key>developer</key>
-			<string>Intel</string>
+			<string>Final Draft</string>
 			<key>display_name</key>
-			<string>Intel Unite</string>
-			<key>preuninstall_script</key>
-			<string>#!/bin/bash
-
-#If the ACE "Audio Components" driver is installed
-if [ -d /Library/Audio/Plug-Ins/HAL/ACE.driver ]
-then
-	#Remove it
-	/Applications/Intel\ Unite.app/Contents/MacOS/Intel\ Unite -removeaudiodriver
-fi</string>
-			<key>postinstall_script</key>
-			<string>#!/bin/bash
-
-#Install the ACE "Audio Components" driver
-/Applications/Intel\ Unite.app/Contents/MacOS/Intel\ Unite -installaudiodriver</string>
+			<string>Final Draft 12</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -45,16 +35,16 @@ fi</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.4.1</string>
+	<string>2.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.n8felton.download.IntelUnite</string>
+	<string>com.github.n8felton.download.FinalDraft12</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%pathname%</string>
+				<string>%found_filename%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>

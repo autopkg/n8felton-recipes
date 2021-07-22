@@ -13,6 +13,8 @@ NOTE: The ARTICLE_NUMBER changes with new releases and will need to be manually 
         <key>NAME</key>
         <string>AppleBootcampSupportSoftware</string>
     </dict>
+    <key>MinimumVersion</key>
+    <string>1.4</string>
     <key>Process</key>
     <array>
         <dict>

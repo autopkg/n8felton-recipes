@@ -11,7 +11,7 @@
 		<key>BASE_URL</key>
 		<string>https://www.naturalreaders.com/download.html</string>
 		<key>RE_PATTERN</key>
-		<string>&lt;a href=&quot;(.*NaturalReader(?P&lt;version&gt;[0-9\.]*)Free\.pkg)&quot;</string>
+		<string>href=&quot;(.*naturalreader(?P&lt;version&gt;[0-9\.]*)\.pkg)&quot;</string>
 		<key>NAME</key>
 		<string>NaturalReaderFree</string>
 	</dict>

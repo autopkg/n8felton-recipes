@@ -10,8 +10,6 @@
 	<string>com.github.moofit-recipes.pkg.Timeular</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.timeular.zei</string>
 		<key>NAME</key>
 		<string>Timeular</string>
 	</dict>

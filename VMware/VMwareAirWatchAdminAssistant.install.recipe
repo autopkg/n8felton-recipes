@@ -3,30 +3,30 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v1.1.2 (https://github.com/homebysix/recipe-robot)</string>
+	<string></string>
 	<key>Description</key>
-	<string>Downloads the latest version of Vision and creates a package.</string>
+	<string>Installs the latest version of VMware AirWatch Admin Assistant.</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.pkg.Vision</string>
+	<string>com.github.n8felton.install.VMwareAirWatchAdminAssistant</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Vision</string>
+		<string>VMwareAirWatchAdminAssistant</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.n8felton.download.Vision</string>
+	<string>com.github.n8felton.download.VMwareAirWatchAdminAssistant</string>
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>Installer</string>
 			<key>Arguments</key>
 			<dict>
-				<key>app_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Vision.app</string>
+				<key>pkg_path</key>
+				<string>%pathname%/VMware Workspace ONE Admin Assistant.pkg</string>
 			</dict>
-			<key>Processor</key>
-			<string>AppPkgCreator</string>
 		</dict>
 	</array>
 </dict>

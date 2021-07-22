@@ -10,8 +10,6 @@
 	<string>com.github.n8felton.pkg.EpicGamesLauncher</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.epicgames.EpicGamesLauncher</string>
 		<key>NAME</key>
 		<string>Epic Games Launcher</string>
 	</dict>
