@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of jamovi and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.jamovi</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>jamovi</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Free and open statistical software to bridge the gap between researcher and statistician.</string>
+			<key>display_name</key>
+			<string>jamovi</string>
+			<key>minimum_os_version</key>
+			<string>10.13.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>Math &amp; Science</string>
+			<key>developer</key>
+			<string>The jamovi project</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+		<key>RE_PATTERN</key>
+		<string>data-href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.jamovi</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
