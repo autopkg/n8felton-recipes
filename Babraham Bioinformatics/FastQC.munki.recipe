@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of FastQC and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.FastQC</string>
+	<key>Input</key>
+	<dict>
+		<key>JAVA_NAME</key>
+		<string>AmazonCorretto11</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>FastQC</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>A quality control application for high throughput sequence data with FastQ files.</string>
+			<key>display_name</key>
+			<string>FastQC</string>
+			<key>minimum_os_version</key>
+			<string>10.13.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>Math &amp; Science</string>
+			<key>developer</key>
+			<string>Babraham Bioinformatics</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>requires</key>
+			<array>
+				<string>%JAVA_NAME%</string>
+			</array>
+		</dict>
+		<key>RE_PATTERN</key>
+		<string>href=&quot;(?P&lt;download&gt;fastqc.*dmg)&quot;</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.fastqc</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
