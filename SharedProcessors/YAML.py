@@ -34,6 +34,7 @@ class YAML(URLGetter):
             "description": "The keys you wish to parse the values from the YAML source",
         },
     }
+    output_variables = {}
 
     def get_yaml(self, yaml_url):
         """Returns the YAML file at the given URL."""
