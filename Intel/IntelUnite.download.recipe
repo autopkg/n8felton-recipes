@@ -8,10 +8,6 @@
 	<string>com.github.n8felton.download.IntelUnite</string>
 	<key>Input</key>
 	<dict>
-		<key>BASE_URL</key>
-		<string>https://downloadcenter.intel.com</string>
-		<key>DOWNLOAD_URL</key>
-		<string>%BASE_URL%/product/89294</string>
 		<key>NAME</key>
 		<string>IntelUnite</string>
 	</dict>
@@ -23,20 +19,11 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;a href=\"(?P&lt;link&gt;/download/(?P&lt;download_id&gt;\d+)/Intel-Unite-Client-for-Mac[^\"]+)</string>
+				<string>https:\/\/downloadmirror\.intel\.com\/[\d]+\/Intel Unite [\d\.]+\.dmg</string>
+				<key>result_output_var_name</key>
+				<string>url</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>data-direct-path=\"(?P&lt;url&gt;[^\"]+)</string>
-				<key>url</key>
-				<string>%BASE_URL%%link%</string>
+				<string>https://www.intel.com/content/www/us/en/download/18457/intel-unite-client-for-mac-osx.html</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
