@@ -22,6 +22,8 @@
 			<string>Provides the latest Lexmark printing and scanning software for OS X.</string>
 			<key>display_name</key>
 			<string>Lexmark Printer Drivers</string>
+			<key>maximum_os_version</key>
+			<string>10.99</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
@@ -34,6 +36,15 @@
 	<string>com.github.n8felton.download.AppleLexmarkPrinterDrivers</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Apple no longer supports these printer drivers for macOS Big Sur 11 and newer. You may wish to remove this recipe from your list.</string>
+			</dict>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>

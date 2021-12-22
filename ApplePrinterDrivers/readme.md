@@ -1,3 +1,19 @@
+# :warning: Deprecation Warning :warning:
+
+Apple has discontinued providing printer and scanner drivers for macOS.
+
+Snippet from Apple:
+
+    If you have an older printer that doesn't support driverless technology, your Mac might automatically install the driver software needed to use that device.
+
+    This article has been archived and is no longer updated by Apple.
+
+    Many printers and scanners use driverless technologies such as AirPrint or IPP Everywhere, which don't require additional drivers on your Mac. But third-party drivers might still be available for older devices that do require a driver. Always check for software updates before connecting the device to your Mac for the first time. If the appropriate driver is available from Apple, your Mac will install it automatically.
+
+Reference: https://support.apple.com/en-us/HT201465
+
+# Recipe Changes (2015-09-02)
+
 Please note that there have been a few revisions to these recipes that may require you to take another look at them.
 
 Discussion about these changes can be found at https://groups.google.com/d/topic/autopkg-discuss/zkA-iSwbODQ/discussion
@@ -50,4 +66,4 @@ They are now
 
 Notice that `Apple` is now prepended.
 #### What does this mean?
-If you have any custom recipes or recipe overrides referencing the old identifer names (via `ParentRecipe`), they will need to be updated to reference the new identifiers.
+If you have any custom recipes or recipe overrides referencing the old identifier names (via `ParentRecipe`), they will need to be updated to reference the new identifiers.

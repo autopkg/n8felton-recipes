@@ -15,6 +15,15 @@
     <string>1.4</string>
     <key>Process</key>
     <array>
+		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Apple no longer supports these printer drivers for macOS Big Sur and newer. You may wish to remove this recipe from your list.</string>
+			</dict>
+		</dict>
         <dict>
             <key>Processor</key>
             <string>com.github.n8felton.shared/AppleSupportDownloadInfoProvider</string>
