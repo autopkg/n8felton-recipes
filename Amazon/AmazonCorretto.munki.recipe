@@ -9,7 +9,9 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-x64-macos-jdk.pkg</string>
+		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-%ARCH%-macos-jdk.pkg</string>
+		<key>ARCH</key>
+		<string>x64</string>
 		<key>MAJOR_VERSION</key>
 		<string>11</string>
 		<key>MUNKI_CATEGORY</key>
