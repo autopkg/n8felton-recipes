@@ -21,18 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>NaturalReader 14 for Mac is a text-to-speech software for Mac and it uses excellent Natural Voices to convert any text into spoken words. It can also convert any written text into audio files for your CD player or iPod.&lt;br&gt;
-&lt;ul&gt;
-	&lt;li&gt;All basic text to speech functions&lt;/li&gt;
-	&lt;li&gt;Free to download and free to use.&lt;/li&gt;
-	&lt;li&gt;Compatible with PDF, Word, webpages&lt;/li&gt;
-	&lt;li&gt;Floating bar&lt;/li&gt;
-	&lt;li&gt;Change speaker and speed&lt;/li&gt;
-	&lt;li&gt;Can read aloud any text.&lt;/li&gt;
-	&lt;li&gt;Can adjust speed and change voice.&lt;/li&gt;
-	&lt;li&gt;Comes with a floating bar to read any text in other applications.&lt;/li&gt;
-&lt;/ul&gt;
-</string>
+			<string>NaturalReader is a downloadable text-to-speech desktop software for personal use. This easy-to-use software with natural-sounding voices can read to you any text such as Microsoft Word files, webpages, PDF files, and E-mails.</string>
 			<key>developer</key>
 			<string>NaturalSoft</string>
 			<key>display_name</key>
@@ -46,23 +35,11 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.0.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.download.NaturalReaderFree</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
-			</dict>
-		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>

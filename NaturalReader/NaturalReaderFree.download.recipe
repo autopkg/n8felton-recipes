@@ -8,37 +8,22 @@
 	<string>com.github.n8felton.download.NaturalReaderFree</string>
 	<key>Input</key>
 	<dict>
-		<key>BASE_URL</key>
-		<string>https://www.naturalreaders.com/download.html</string>
-		<key>RE_PATTERN</key>
-		<string>href=&quot;(.*naturalreader(?P&lt;version&gt;[0-9\.]*)\.pkg)&quot;</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://wwwnaturalreaderscom.s3.amazonaws.com/software/naturalreader16.pkg</string>
 		<key>NAME</key>
 		<string>NaturalReaderFree</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.0.0</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%BASE_URL%</string>
-				<key>re_pattern</key>
-				<string>%RE_PATTERN%</string>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%match%</string>
-				<key>filename</key>
-				<string>%NAME%.pkg</string>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
 		</dict>
 		<dict>
