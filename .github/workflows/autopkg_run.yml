@@ -16,4 +16,5 @@ jobs:
                 ;;
               *)
                 ;;
+            esac
           done
