@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: autopkg run on changed files
       - id: files
-        uses: jitterbit/get-changed-files@v1
+      - uses: jitterbit/get-changed-files@v1
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             echo "autopkg run -vvvv ${changed_file}"
