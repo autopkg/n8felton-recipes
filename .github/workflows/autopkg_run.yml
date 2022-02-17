@@ -10,5 +10,10 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "autopkg run -vvvv ${changed_file}"
+            case "${changed_file}" in
+              *.recipe)
+                echo "autopkg run -vvvv ${changed_file}"
+                ;;
+              *)
+                ;;
           done
