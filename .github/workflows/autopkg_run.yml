@@ -42,9 +42,9 @@ jobs:
         run: |
           # Build a temp munki enviornment
           MUNKI_REPO="/Users/Shared/munki"
-          mkdir -p "${MUNKI_REPO}"
-          chown root:admin "${MUNKI_REPO}"
-          chmod 775 "${MUNKI_REPO}"
+          sudo mkdir -p "${MUNKI_REPO}"
+          sudo chown root:admin "${MUNKI_REPO}"
+          sudo chmod 775 "${MUNKI_REPO}"
           cd "${MUNKI_REPO}"
           mkdir catalogs manifests pkgs pkgsinfo icons
           defaults write com.googlecode.munki.munkiimport repo_path "${MUNKI_REPO}"
