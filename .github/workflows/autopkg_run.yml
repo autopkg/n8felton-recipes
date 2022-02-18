@@ -38,6 +38,7 @@ jobs:
 
           autopkg repo-add https://github.com/autopkg/recipes.git
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
+      - uses: actions/checkout@v2
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
