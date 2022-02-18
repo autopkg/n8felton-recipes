@@ -47,7 +47,9 @@ jobs:
           for changed_file in ${{ steps.files.outputs.all }}; do
             case "${changed_file}" in
               *.recipe)
-                autopkg run -vvvv ${changed_file}
+                if [ -f "${changed_file}" ]; do
+                  autopkg run -vvvv ${changed_file}
+                fi
                 ;;
               *)
                 ;;
