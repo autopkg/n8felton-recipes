@@ -7,12 +7,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - id: install
-      - run: |
+        run: |
           AUTOPKG_LATEST=$(curl https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
           curl -LOJs "${AUTOPKG_LATEST}"
           sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
       - id: configure
-      - run: |
+        run: |
           AUTOPKG_DIR="/usr/local/autopkg"
           sudo mkdir -p "${AUTOPKG_DIR}"
           sudo chown root:admin "${AUTOPKG_DIR}"
