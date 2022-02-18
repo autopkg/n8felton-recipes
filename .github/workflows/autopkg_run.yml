@@ -2,7 +2,7 @@
 name: Run `autopkg run`
 on: [push, pull_request]
 jobs:
-  autopkg_install:
+  autopkg_run:
     name: Install and configure AutoPkg
     runs-on: macos-latest
     steps:
@@ -38,13 +38,6 @@ jobs:
 
           autopkg repo-add https://github.com/autopkg/recipes.git
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
-
-
-  autopkg_run:
-    needs: autopkg_install
-    name: Run `autopkg run`
-    runs-on: macos-latest
-    steps:
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
