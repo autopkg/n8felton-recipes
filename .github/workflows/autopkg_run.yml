@@ -6,12 +6,12 @@ jobs:
     name: Install and configure AutoPkg
     runs-on: macos-latest
     steps:
-      - id: install
+      - name: Install AutoPkg (latest)
         run: |
           AUTOPKG_LATEST=$(curl https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
           curl -LOJs "${AUTOPKG_LATEST}"
           sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
-      - id: configure
+      - name: Configure AutoPkg
         run: |
           AUTOPKG_DIR="/usr/local/autopkg"
           sudo mkdir -p "${AUTOPKG_DIR}"
@@ -39,9 +39,10 @@ jobs:
           autopkg repo-add https://github.com/autopkg/recipes.git
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
       - uses: actions/checkout@v2
-      - id: files
+      - name: Get changed files
         uses: jitterbit/get-changed-files@v1
-      - run: |
+      - name: Run AutoPkg for changed recipes
+        run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             case "${changed_file}" in
               *.recipe)
