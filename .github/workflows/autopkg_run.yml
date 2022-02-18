@@ -44,7 +44,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - name: Run AutoPkg for changed recipes
         run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
+          for changed_file in ${{ steps.files.outputs.added_modified }}; do
             case "${changed_file}" in
               *.recipe)
                 if [ -f "${changed_file}" ]; do
