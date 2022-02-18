@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Install AutoPkg (latest)
         run: |
-          AUTOPKG_LATEST=$(curl https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
+          AUTOPKG_LATEST=$(curl -Ls https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
           curl -LOJs "${AUTOPKG_LATEST}"
           sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
       - name: Configure AutoPkg
