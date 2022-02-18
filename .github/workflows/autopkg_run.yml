@@ -2,7 +2,46 @@
 name: Run `autopkg run`
 on: [push, pull_request]
 jobs:
+  autopkg_install:
+    name: Install and configure AutoPkg
+    runs-on: macos-latest
+    steps:
+      - id: install
+      - run: |
+          AUTOPKG_LATEST=$(curl https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
+          curl -LOJs "${AUTOPKG_LATEST}"
+          sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
+      - id: configure
+      - run: |
+          AUTOPKG_DIR="/usr/local/autopkg"
+          sudo mkdir -p "${AUTOPKG_DIR}"
+          sudo chown root:admin "${AUTOPKG_DIR}"
+          sudo chmod 775 "${AUTOPKG_DIR}"
+
+          # Configure AutoPkg override directory to be server wide (multi-user)
+          RECIPE_OVERRIDE_DIRS="${AUTOPKG_DIR}/recipe_overrides"
+          mkdir -p "${RECIPE_OVERRIDE_DIRS}"
+          defaults write com.github.autopkg RECIPE_OVERRIDE_DIRS "${RECIPE_OVERRIDE_DIRS}"
+          defaults read com.github.autopkg RECIPE_OVERRIDE_DIRS
+
+          # Configure AutoPkg cache dir to be on the data volume
+          CACHE_DIR="${AUTOPKG_DIR}/cache"
+          mkdir -p "${CACHE_DIR}"
+          defaults write com.github.autopkg CACHE_DIR "${CACHE_DIR}"
+          defaults read com.github.autopkg CACHE_DIR
+
+          # Configure AutoPkg recipe repo dir to be on the data volume
+          RECIPE_REPO_DIR="${AUTOPKG_DIR}/recipe_repos"
+          mkdir -p "${RECIPE_REPO_DIR}"
+          defaults write com.github.autopkg RECIPE_REPO_DIR "${RECIPE_REPO_DIR}"
+          defaults read com.github.autopkg RECIPE_REPO_DIR
+
+          autopkg repo-add https://github.com/autopkg/recipes.git
+          autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
+
+
   autopkg_run:
+    needs: autopkg_install
     name: Run `autopkg run`
     runs-on: macos-latest
     steps:
