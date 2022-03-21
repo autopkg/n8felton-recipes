@@ -6,14 +6,17 @@ jobs:
     name: Install and configure AutoPkg
     runs-on: macos-12
     steps:
-      - name: Install AutoPkg (latest)
+      - name: Dump environment information
         run: |
+          sw_vers
           $(which curl) --version
           $(which jq) --version
+        shell: bash -x {0}
+      - name: Install AutoPkg (latest)
+        run: |
           AUTOPKG_LATEST=$(curl -Ls https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
           curl -LOJs "${AUTOPKG_LATEST}"
           sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
-        shell: bash -x {0}
       - name: Configure AutoPkg
         run: |
           AUTOPKG_DIR="/usr/local/autopkg"
