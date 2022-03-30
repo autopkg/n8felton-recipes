@@ -14,7 +14,7 @@ jobs:
         shell: bash -x {0}
       - name: Install AutoPkg (latest)
         run: |
-          AUTOPKG_LATEST=$(curl -Ls https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
+          AUTOPKG_LATEST=$(curl -Ls --retry 10 --retry-delay 5 https://api.github.com/repos/autopkg/autopkg/releases/latest | jq -r '.["assets"][0]["browser_download_url"]')
           curl -LOJs "${AUTOPKG_LATEST}"
           sudo installer -pkg $(basename "${AUTOPKG_LATEST}") -target /
         shell: bash -exuo pipefail {0}
