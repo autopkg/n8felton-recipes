@@ -1,4 +1,3 @@
-
 name: Run `autopkg run`
 on: [push, pull_request]
 jobs:
@@ -14,7 +13,7 @@ jobs:
         shell: bash -x {0}
       - name: Install AutoPkg (latest)
         run: |
-          AUTOPKG_LATEST=$(curl -Ls --retry 10 --retry-delay 5 https://api.github.com/repos/autopkg/autopkg/releases/latest)
+          AUTOPKG_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/autopkg/autopkg/releases/latest)
           AUTOPKG_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${AUTOPKG_LATEST})
           curl -LOJs "${AUTOPKG_LATEST_URL}"
           sudo installer -pkg "${AUTOPKG_LATEST_URL##*/}" -target /
