@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   autopkg_run:
     name: Install and configure AutoPkg
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - name: Dump environment information
         run: |
