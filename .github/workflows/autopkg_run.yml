@@ -55,7 +55,8 @@ jobs:
           sudo chmod 775 "${MUNKI_REPO}"
           cd "${MUNKI_REPO}"
           mkdir catalogs manifests pkgs pkgsinfo icons
-          defaults write com.googlecode.munki.munkiimport repo_path "${MUNKI_REPO}"
+          # defaults write com.googlecode.munki.munkiimport repo_path "${MUNKI_REPO}"
+          defaults write com.googlecode.munki.munkiimport repo_url "file://${MUNKI_REPO}"
           defaults write com.googlecode.munki.munkiimport pkginfo_extension ".plist"
           defaults write com.googlecode.munki.munkiimport default_catalog "testing"
           defaults read com.googlecode.munki.munkiimport
