@@ -63,7 +63,12 @@ jobs:
           defaults write com.github.autopkg MUNKI_REPO "${MUNKI_REPO}"
 
           # Install Admin only version of Munki
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/n8felton/macOS-Scripts/master/munki/munki-latest-admin.sh)"
+          MUNKI_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/munki/munki/releases/latest)
+          MUNKI_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${MUNKI_LATEST})
+          MUNKI_ADMIN_URL="https://raw.githubusercontent.com/n8felton/macOS-Scripts/master/munki/admin.xml"
+          curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_LATEST_URL}"
+          curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_ADMIN_URL}"
+          sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
       - uses: actions/checkout@v2
       - name: Get changed files
         id: files
