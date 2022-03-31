@@ -45,6 +45,7 @@ jobs:
 
           autopkg repo-add https://github.com/autopkg/recipes.git
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
+        shell: bash -exuo pipefail {0}
       - name: Install Munki (latest)
         run: |
           # Build a temp munki enviornment
@@ -69,6 +70,7 @@ jobs:
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_LATEST_URL}"
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_ADMIN_URL}"
           sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
+        shell: bash -exuo pipefail {0}
       - uses: actions/checkout@v2
       - name: Get changed files
         id: files
