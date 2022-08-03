@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/autopkg/python
 #
 # Copyright 2019 Nate Felton <n8felton@gmail.com>
 #
