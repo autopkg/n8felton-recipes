@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/autopkg/python
 # -*- coding: utf-8 -*-
 #
 # Copyright 2015 Nathan Felton (n8felton)
