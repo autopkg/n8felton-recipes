@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>Description</key>
-        <string>Downloads the latest version of Weka.
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Weka.
 
 DOWNLOAD_VERSION can be set to "stable" for the stable version or "developer"
 for the development version.
 
 ARCHITECTURE can be set to "intel" to download the Intel version or "arm" for
 the ARM64 version.</string>
-        <key>Identifier</key>
-        <string>com.github.n8felton.download.Weka</string>
-        <key>Input</key>
-        <dict>
-            <key>NAME</key>
-            <string>Weka</string>
-            <key>SEARCH_URL</key>
-            <string>https://waikato.github.io/weka-wiki/downloading_weka/</string>
-            <key>DOWNLOAD_VERSION</key>
-            <string>stable</string>
-            <key>ARCHITECTURE</key>
-            <string>intel</string>
-        </dict>
-        <key>MinimumVersion</key>
-        <string>1.4</string>
-        <key>Process</key>
-        <array>
-            <dict>
-                <key>Processor</key>
-                <string>URLTextSearcher</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>url</key>
-                    <string>%SEARCH_URL%</string>
-                    <key>re_flags</key>
-                    <array>
-                        <string>DOTALL</string>
-                    </array>
-                    <key>re_pattern</key>
-                    <string>id=\"%DOWNLOAD_VERSION%-version\".+?mac-os-%ARCHITECTURE%-processors.+?(https://prdownloads\.sourceforge\.net/weka/weka.+?osx\.dmg)</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>URLDownloader</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>url</key>
-                    <string>%match%</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>EndOfCheckPhase</string>
-            </dict>
-        </array>
-    </dict>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.Weka</string>
+	<key>Input</key>
+	<dict>
+		<key>ARCHITECTURE</key>
+		<string>intel</string>
+		<key>DOWNLOAD_VERSION</key>
+		<string>stable</string>
+		<key>NAME</key>
+		<string>Weka</string>
+		<key>SEARCH_URL</key>
+		<string>https://waikato.github.io/weka-wiki/downloading_weka/</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.4</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_flags</key>
+				<array>
+					<string>DOTALL</string>
+				</array>
+				<key>re_pattern</key>
+				<string>id=\"%DOWNLOAD_VERSION%-version\".+?mac-os-%ARCHITECTURE%-processors.+?(https://prdownloads\.sourceforge\.net/weka/weka.+?osx\.dmg)</string>
+				<key>url</key>
+				<string>%SEARCH_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
 </plist>
