@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.1.2 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Spark AR Studio.</string>
+	<string>Downloads the latest version of Meta Spark Studio. Formally know as Spark AR Studio</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.SparkARStudio</string>
 	<key>Input</key>
@@ -13,7 +13,7 @@
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.facebook.com/sparkarmacos/download/</string>
 		<key>NAME</key>
-		<string>SparkARStudio</string>
+		<string>MetaSparkStudio</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
@@ -38,7 +38,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Spark AR Studio.app</string>
+				<string>%pathname%/Meta Spark Studio.app</string>
 				<key>requirement</key>
 				<string>identifier "com.facebook.arstudio.skylight" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = V9WTTPBFK9</string>
 			</dict>
@@ -49,7 +49,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%pathname%/Spark AR Studio.app/Contents/Info.plist</string>
+				<string>%pathname%/Meta Spark Studio.app/Contents/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
@@ -59,3 +59,4 @@
 	</array>
 </dict>
 </plist>
+

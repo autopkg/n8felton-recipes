@@ -5,13 +5,13 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.1.2 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Spark AR Studio and creates a package.</string>
+	<string>Downloads the latest version of Meta Spark Studio. Formally know as Spark AR Studio</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.pkg.SparkARStudio</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>SparkARStudio</string>
+		<string>MetaSparkStudio</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
