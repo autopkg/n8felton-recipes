@@ -42,9 +42,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>warning_message</key>
-				<string>This recipe has been deprecated. The vendor has changed the name of the Application to Meta Spark Studio. Please migrate to the new Meta Spark Studio recipes.
+				<string>This recipe has been deprecated. The vendor has changed the name of the application to Meta Spark Studio. Please transition to the new Meta Spark Studio recipes.
 
-https://github.com/autopkg/n8felton-recipes/tree/master/Facebook</string>
+https://github.com/autopkg/n8felton-recipes/tree/master/Meta</string>
 			</dict>
 			<key>Processor</key>
 			<string>DeprecationWarning</string>
