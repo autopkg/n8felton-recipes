@@ -75,8 +75,11 @@ jobs:
         with:
           fetch-depth: 2
       - name: Get changed files
-        id: files
-        uses: jitterbit/get-changed-files@v1
+        id: changed-recipe-files
+        uses: tj-actions/changed-files@v32.1.2
+        with:
+          files: |
+            **/**.recipe
       - name: Run AutoPkg for changed recipes
         run: |
           for changed_file in ${{ steps.files.outputs.added_modified }}; do
