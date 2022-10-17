@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 2
       - name: Get changed files
         id: changed-recipe-files
-        uses: tj-actions/changed-files@v32
+        uses: tj-actions/changed-files@v32.1.2
         with:
           files: "**/**.recipe"
           separator: ","
