@@ -71,7 +71,9 @@ jobs:
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_ADMIN_URL}"
           sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: Get changed files
         id: files
         uses: jitterbit/get-changed-files@v1
