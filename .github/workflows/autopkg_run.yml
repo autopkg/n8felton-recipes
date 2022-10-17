@@ -11,7 +11,17 @@ jobs:
           $(which curl) --version
           $(which jq) --version
         shell: bash -x {0}
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Get changed files
+        id: changed-recipe-files
+        uses: tj-actions/changed-files@v32
+        with:
+          files: |
+            **/**.recipe
       - name: Install AutoPkg (latest)
+        if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
           AUTOPKG_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/autopkg/autopkg/releases/latest)
           AUTOPKG_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${AUTOPKG_LATEST})
@@ -19,6 +29,7 @@ jobs:
           sudo installer -pkg "${AUTOPKG_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Configure AutoPkg
+        if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
           AUTOPKG_DIR="/usr/local/autopkg"
           sudo mkdir -p "${AUTOPKG_DIR}"
@@ -47,6 +58,7 @@ jobs:
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
         shell: bash -exuo pipefail {0}
       - name: Install Munki (latest)
+        if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
           # Build a temp munki enviornment
           MUNKI_REPO="/Users/Shared/munki"
@@ -71,18 +83,10 @@ jobs:
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_ADMIN_URL}"
           sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-      - name: Get changed files
-        id: changed-recipe-files
-        uses: tj-actions/changed-files@v32.1.2
-        with:
-          files: |
-            **/**.recipe
       - name: Run AutoPkg for changed recipes
+        if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
-          for changed_file in ${{ steps.files.outputs.added_modified }}; do
+          for changed_file in ${{ steps.changed-recipe-files.outputs.all_changed_files }}; do
             case "${changed_file}" in
               *.recipe)
                 if [ -f "${changed_file}" ]; then
