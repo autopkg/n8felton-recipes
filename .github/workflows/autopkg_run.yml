@@ -21,7 +21,7 @@ jobs:
           files: "**/**.recipe"
           separator: ","
       - name: Install AutoPkg (latest)
-        if: steps.changed-recipe-files.outputs.only_changed == 'true'
+        if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
           AUTOPKG_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/autopkg/autopkg/releases/latest)
           AUTOPKG_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${AUTOPKG_LATEST})
@@ -29,7 +29,7 @@ jobs:
           sudo installer -pkg "${AUTOPKG_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Configure AutoPkg
-        if: steps.changed-recipe-files.outputs.only_changed == 'true'
+        if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
           AUTOPKG_DIR="/usr/local/autopkg"
           sudo mkdir -p "${AUTOPKG_DIR}"
@@ -58,7 +58,7 @@ jobs:
           autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
         shell: bash -exuo pipefail {0}
       - name: Install Munki (latest)
-        if: steps.changed-recipe-files.outputs.only_changed == 'true'
+        if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
           # Build a temp munki enviornment
           MUNKI_REPO="/Users/Shared/munki"
@@ -84,7 +84,7 @@ jobs:
           sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Run AutoPkg for changed recipes
-        if: steps.changed-recipe-files.outputs.only_changed == 'true'
+        if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
           export PYTHONUNBUFFERED=1
           IFS=$',' read -a ALL_CHANGED_FILES <<< "${{ steps.changed-recipe-files.outputs.all_changed_files }}"
