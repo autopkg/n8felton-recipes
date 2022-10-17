@@ -18,8 +18,8 @@ jobs:
         id: changed-recipe-files
         uses: tj-actions/changed-files@v32
         with:
-          files: |
-            **/**.recipe
+          files: "**/**.recipe"
+          separator: ","
       - name: Install AutoPkg (latest)
         if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
@@ -86,11 +86,14 @@ jobs:
       - name: Run AutoPkg for changed recipes
         if: steps.changed-recipe-files.outputs.only_changed == 'true'
         run: |
-          for changed_file in ${{ steps.changed-recipe-files.outputs.all_changed_files }}; do
+          export PYTHONUNBUFFERED=1
+          IFS=$',' read -a ALL_CHANGED_FILES <<< "${{ steps.changed-recipe-files.outputs.all_changed_files }}"
+          for changed_file in "${ALL_CHANGED_FILES[@]}"; do
+            echo "${changed_file}"
             case "${changed_file}" in
               *.recipe)
                 if [ -f "${changed_file}" ]; then
-                  autopkg run -vvvv ${changed_file}
+                  autopkg run -vvvv "${changed_file}"
                 fi
                 ;;
               *)
