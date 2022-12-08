@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(https:.*Mac.zip)"</string>
+				<string>href=\"(/downloads/finaldraft[0-9]+Mac\.zip)\"</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
@@ -32,7 +32,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%match%</string>
+				<string>https://www.finaldraft.com%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
