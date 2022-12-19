@@ -101,14 +101,15 @@ class HPSoftwareInfoProvider(URLGetter):
         """Main process."""
 
         # Capture input variables
-        hp_query_type = self.env.get("HP_QUERY_TYPE", "ModelName")
         # Fallback to PRODUCT_NUMBER for legacy support.
-        hp_query = (
-            self.env.get("HP_QUERY") or self.env.get("PRODUCT_NUMBER")
-        ).replace(" ", "+")
-        operating_system = quote(
-            self.env.get("OPERATING_SYSTEM", "macOS 12.0")
-        )
+        # OPERATING_SYSTEM will probably need to be set to 'Mac OS X 10.11'
+        if self.env.get("PRODUCT_NUMBER"):
+            hp_query_type = "ProductNumber"
+            hp_query = (self.env.get("PRODUCT_NUMBER")).replace(" ", "+")
+        else:
+            hp_query_type = self.env.get("HP_QUERY_TYPE", "ModelName")
+            hp_query = (self.env.get("HP_QUERY")).replace(" ", "+")
+        operating_system = quote(self.env.get("OPERATING_SYSTEM"))
         lang_code = self.env.get("LANG_CODE", "en")
         country_code = self.env.get("COUNTRY_CODE", "us")
 
