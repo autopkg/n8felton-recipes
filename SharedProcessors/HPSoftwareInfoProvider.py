@@ -18,7 +18,7 @@
 
 import json
 
-from autopkglib import URLGetter
+from autopkglib import ProcessorError, URLGetter
 from pkg_resources import packaging
 from urllib.parse import urlparse, quote
 
@@ -132,6 +132,7 @@ class HPSoftwareInfoProvider(URLGetter):
         self.output(software_list, 3)
         # Create a packaging.version.Version object with all zeroes.
         greatest_version = packaging.version.parse("0.0.0.0")
+        recent_software = None
         for software in software_list:
             # Skip any key that isn't "ESSENTIAL-REQUIRED"
             if software["Type"] != "ESSENTIAL-REQUIRED":
@@ -142,6 +143,8 @@ class HPSoftwareInfoProvider(URLGetter):
                 greatest_version = software_version
                 recent_software = software
 
+        if recent_software is None:
+            raise ProcessorError("Unable to find valid version of HP software")
         parsed_url = urlparse(recent_software["FtpURL"])
 
         # The HP ftp server rejects FTP requests now.
