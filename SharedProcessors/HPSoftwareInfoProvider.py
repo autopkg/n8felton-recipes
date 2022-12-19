@@ -33,9 +33,7 @@ HP_BASE_URL = (
     "cc={country_code}"
 )
 
-HP_OPTIONAL_QUERY = (
-    "&client=hp-quick-start"
-)
+HP_OPTIONAL_QUERY = "&client=hp-quick-start"
 
 
 class HPSoftwareInfoProvider(URLGetter):
