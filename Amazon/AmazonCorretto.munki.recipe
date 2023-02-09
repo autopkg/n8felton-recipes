@@ -14,6 +14,8 @@
 		<string>x64</string>
 		<key>MAJOR_VERSION</key>
 		<string>11</string>
+		<key>MUNKI_ARCH</key>
+		<string>x86_64</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Developer</string>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -36,6 +38,10 @@
 			<string>Amazon Corretto %MAJOR_VERSION%</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%MUNKI_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
