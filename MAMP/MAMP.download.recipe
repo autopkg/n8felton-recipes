@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of MAMP.</string>
+	<string>Downloads the latest version of MAMP.
+
+ARCH_TYPE is "Intel-x86" or "M1-arm"</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.MAMP</string>
 	<key>Input</key>
@@ -14,6 +16,8 @@
 		<string>MAMP</string>
 		<key>SEARCH_URL</key>
 		<string>https://www.mamp.info/en/downloads</string>
+		<key>ARCH_TYPE</key>
+		<string>Intel-x86</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -27,7 +31,7 @@
 				<key>url</key>
 				<string>%SEARCH_URL%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;filename&gt;MAMP_MAMP_PRO_(?P&lt;version&gt;((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)))\-Intel-x86).pkg"</string>
+				<string>(?P&lt;filename&gt;MAMP_MAMP_PRO_(?P&lt;version&gt;((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)))\-%ARCH_TYPE%).pkg"</string>
 			</dict>
 		</dict>
 		<dict>
