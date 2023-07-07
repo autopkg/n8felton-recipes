@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of MAMP and imports it into Munki.</string>
+	<string>Downloads the latest version of MAMP and imports it into Munki.
+
+Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_version via MunkiInstallsItemsCreator.
+
+SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.munki.MAMP</string>
 	<key>Input</key>
@@ -14,6 +18,10 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>MAMP</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>x86_64</string>
+		<key>DERIVE_MIN_OS</key>
+		<string>YES</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -28,8 +36,10 @@
 			<string>Appsolute GmbH</string>
 			<key>display_name</key>
 			<string>MAMP</string>
-			<key>minimum_os_version</key>
-			<string>10.6.8</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -37,11 +47,70 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.7</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.download.MAMP</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/MAMP_PRO.pkg/Payload</string>
+				<key>purge_destination</key>
+				<false/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/MAMP.pkg/Payload</string>
+				<key>purge_destination</key>
+				<false/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/MAMP/MAMP.app</string>
+					<string>/Applications/MAMP PRO.app</string>
+				</array>
+				<key>derive_minimum_os_version</key>
+				<string>%DERIVE_MIN_OS%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
@@ -52,6 +121,18 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpacked/</string>
+					<string>%RECIPE_CACHE_DIR%/Applications/</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>
