@@ -14,6 +14,8 @@
 		<string>KeePassXC</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>x64</string> <!-- or arm64-->
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -50,6 +52,8 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>uninstall_method</key>
 			<string>remove_copied_items</string>
+			<key>supported_architectures</key>
+			<string>%SUPPORTED_ARCH%</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
