@@ -13,7 +13,7 @@
 		<key>ARCH</key>
 		<string>x86_64</string> <!-- or arm64-->
 		<key>ASSET_REGEX</key>
-		<string>KeePassXC-.*-%ARCH%\.dmg</string>
+		<string>KeePassXC-.*-%ARCH%\.dmg$</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
