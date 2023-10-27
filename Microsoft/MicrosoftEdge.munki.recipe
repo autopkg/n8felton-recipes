@@ -99,7 +99,7 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
                  <key>input_plist_path</key>
                  <string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Microsoft Edge.app/Contents/Info.plist</string>
                  <key>plist_version_key</key>
-                 <string>CFBundleVersion</string>
+                 <string>CFBundleShortVersionString</string>
             </dict>
         </dict>
         <dict>
