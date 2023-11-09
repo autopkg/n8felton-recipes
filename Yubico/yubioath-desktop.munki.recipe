@@ -51,6 +51,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<dict>
+				<key>Processor</key>
+				<string>DeprecationWarning</string>
+				<key>Arguments</key>
+				<dict>
+					<key>warning_message</key>
+					<string>yubioath-desktop has been renamed. Checkout the yubico-authenticator (yubioath-flutter) recipes instead.</string>
+				</dict>
+			</dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
