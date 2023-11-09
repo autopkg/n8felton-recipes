@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Yubico Authenticator for Desktop and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.yubico-authenticator.munki</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/Yubico</string>
+		<key>NAME</key>
+		<string>yubico-authenticator</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Application for generating Open Authentication (OATH) time-based TOTP and event-based HOTP one-time password codes, with the help of a YubiKey that protects the shared secrets.&lt;br/&gt;
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep your OATH secrets safe by storing them on a YubiKey and generate the codes with this application.&lt;/li&gt;
+&lt;li&gt;Add a credential by scanning a QR code on the screen.&lt;/li&gt;
+&lt;li&gt;Supports 6 or 8 digit codes.&lt;/li&gt;
+&lt;li&gt;Require touch on YubiKey to generate code.&lt;/li&gt;
+&lt;li&gt;Protect your credentials with a device password.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Supported devices&lt;/h3&gt;
+&lt;p&gt;Usage of this software requires a compatible YubiKey device. Yubico Authenticator is capable of provisioning and using both slot-based credentials (compatible with any YubiKey that supports OTP) as well as the more powerful standalone OATH functionality found on the NEO and YubiKey 4 series. To use the standalone OATH functionality your YubiKey must have the CCID mode enabled, which can be done by using the YubiKey Manager.&lt;/p&gt;</string>
+			<key>developer</key>
+			<string>Yubico</string>
+			<key>display_name</key>
+			<string>Yubico Authenticator for Desktop</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.yubico-authenticator.download</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
