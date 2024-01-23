@@ -40,13 +40,6 @@ class GitLabReleasesInfoProvider(Processor):
             "required": False,
             "description": ("Return asset links that match this regex"),
         },
-        "gitlab_project": {
-            "required": True,
-            "description": (
-                "The ID or URL-encoded path of the project."
-                "e.g. `123` or `autopkg%2Frecipes`"
-            ),
-        },
         "latest": {
             "required": False,
             "description": ("Filters results to include only the most recent release."),
@@ -57,6 +50,13 @@ class GitLabReleasesInfoProvider(Processor):
             "description": (
                 "If your organization has an internal GitLab instance "
                 "set this value to your internal GitLab URL."
+            ),
+        },
+        "GITLAB_PROJECT_ID": {
+            "required": True,
+            "description": (
+                "The ID or URL-encoded path of the project."
+                "e.g. `123` or `autopkg%2Frecipes`"
             ),
         },
         "PRIVATE_TOKEN": {
@@ -104,7 +104,7 @@ class GitLabReleasesInfoProvider(Processor):
 
     def get_releases(self, latest=False):
         """Return a list of releases for a given GitLab project."""
-        project_id = self.env.get("gitlab_project")
+        project_id = self.env.get("GITLAB_PROJECT_ID")
         releases_endpoint = f"/projects/{project_id}/releases"
         if latest:
             releases_endpoint += "/permalink/latest"
