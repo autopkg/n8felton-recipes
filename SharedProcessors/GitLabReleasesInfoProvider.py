@@ -89,7 +89,7 @@ class GitLabReleasesInfoProvider(Processor):
         """Helps to communicate with the GitLab API by setting necessary headers."""
         GITLAB_HOSTNAME = self.env.get("GITLAB_HOSTNAME")
         GITLAB_API_BASE_URL = f"https://{GITLAB_HOSTNAME}/api/v4"
-        PRIVATE_TOKEN = os.getenv("PRIVATE_TOKEN") or self.env.get("PRIVATE_TOKEN")
+        PRIVATE_TOKEN = self.env.get("PRIVATE_TOKEN")
         if not PRIVATE_TOKEN:
             raise ProcessorError(
                 f"PRIVATE_TOKEN is not set as environment or input variable."
@@ -131,6 +131,8 @@ class GitLabReleasesInfoProvider(Processor):
                     raise ProcessorError(f"Invalid regex: {regex} ({e})")
 
     def main(self):
+        PRIVATE_TOKEN = os.getenv("PRIVATE_TOKEN") or self.env.get("PRIVATE_TOKEN")
+        self.env["PRIVATE_TOKEN"] = PRIVATE_TOKEN
         releases = self.get_releases(latest=self.env.get("latest"))
         release, link = self.get_release_link(
             releases, regex=self.env.get("link_regex")
