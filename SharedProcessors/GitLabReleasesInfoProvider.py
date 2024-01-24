@@ -70,10 +70,13 @@ class GitLabReleasesInfoProvider(Processor):
         },
     }
     output_variables = {
-        "url": {
+        "direct_asset_url": {
             "description": (
                 "direct_asset_url matching the `link_regex` and/or `latest` inputs."
             )
+        },
+        "url": {
+            "description": ("url matching the `link_regex` and/or `latest` inputs.")
         },
         "version": {
             "description": (
@@ -132,7 +135,8 @@ class GitLabReleasesInfoProvider(Processor):
         release, link = self.get_release_link(
             releases, regex=self.env.get("link_regex")
         )
-        self.env["url"] = link.get("direct_asset_url")
+        self.env["url"] = link.get("url")
+        self.env["direct_asset_url"] = link.get("direct_asset_url")
 
         # Get the version from the tag name
         tag_name = release["tag_name"]
