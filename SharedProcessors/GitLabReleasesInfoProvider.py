@@ -16,9 +16,11 @@
 # limitations under the License.
 """Shared processor to allow recipes to download releases from GitLab instances."""
 
+import certifi
 import json
 import os
 import re
+import ssl
 from urllib.request import Request, urlopen
 
 from autopkglib import Processor, ProcessorError, get_autopkg_version
@@ -85,6 +87,10 @@ class GitLabReleasesInfoProvider(Processor):
         },
     }
 
+    def ssl_context_certifi(self):
+        """Provide ssl context using certifi certificate store."""
+        return ssl.create_default_context(cafile=certifi.where())
+
     def gitlab_api_get(self, endpoint):
         """Helps to communicate with the GitLab API by setting necessary headers."""
         GITLAB_HOSTNAME = self.env.get("GITLAB_HOSTNAME")
@@ -101,7 +107,7 @@ class GitLabReleasesInfoProvider(Processor):
         }
         url = f"{GITLAB_API_BASE_URL}{endpoint}"
         req = Request(url, headers=headers)
-        with urlopen(req) as response:
+        with urlopen(req, context=self.ssl_context_certifi()) as response:
             data = response.read()
         return data
 
