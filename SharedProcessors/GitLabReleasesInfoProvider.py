@@ -21,6 +21,7 @@ import json
 import os
 import re
 import ssl
+from pprint import pformat
 from urllib.request import Request, urlopen
 
 from autopkglib import Processor, ProcessorError, get_autopkg_version
@@ -119,6 +120,7 @@ class GitLabReleasesInfoProvider(Processor):
             releases_endpoint += "/permalink/latest"
         releases = self.gitlab_api_get(releases_endpoint)
         releases = json.loads(releases)
+        self.output(pformat(releases), 3)
         return releases
 
     def get_release_link(self, releases, regex=None):
