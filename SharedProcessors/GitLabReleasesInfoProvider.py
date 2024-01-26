@@ -123,7 +123,7 @@ class GitLabReleasesInfoProvider(Processor):
 
     def get_release_link(self, releases, regex=None):
         """Returns the release details and the direct_asset_url as tuple"""
-        if regex is None:
+        if not regex:
             return releases[0], releases[0]["assets"]["links"][0]
         self.output(f"Using regex: {regex}")
         for release in releases:
