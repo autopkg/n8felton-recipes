@@ -125,6 +125,7 @@ class GitLabReleasesInfoProvider(Processor):
         """Returns the release details and the direct_asset_url as tuple"""
         if regex is None:
             return releases[0], releases[0]["assets"]["links"][0]
+        self.output(f"Using regex: {regex}")
         for release in releases:
             links = release["assets"]["links"]
             for link in links:
@@ -155,5 +156,6 @@ class GitLabReleasesInfoProvider(Processor):
 
 
 if __name__ == "__main__":
-    PROCESSOR = GitLabReleasesInfoProvider()
-    PROCESSOR.execute_shell()
+    with open("/tmp/autopkg.plist", "r") as input:
+        PROCESSOR = GitLabReleasesInfoProvider(infile=input)
+        PROCESSOR.execute_shell()
