@@ -8,6 +8,8 @@
 	<string>com.github.n8felton.munki.Tidal</string>
 	<key>Input</key>
 	<dict>
+		<key>ARCH</key>
+		<string>arm64</string> <!--arm64 or x64-->
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/Tidal</string>
 		<key>NAME</key>
@@ -30,6 +32,8 @@
 			<string>Aspiro AB</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>supported_architectures</key>
+			<string>%ARCH%</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
