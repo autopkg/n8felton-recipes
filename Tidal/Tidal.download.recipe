@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Tidal.</string>
+	<string>Downloads the latest version of Tidal.
+
+To download Intel use: "x64" in the ARCH_TYPE variable
+To Download Apple Silicon use: "arm64" in the ARCH_TYPE variable</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.Tidal</string>
 	<key>MinimumVersion</key>
@@ -12,6 +15,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>Tidal</string>
+		<key>ARCH_TYPE</key>
+		<string>x64</string>
 	</dict>
 	<key>Process</key>
 	<array>
@@ -21,7 +26,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://download.tidal.com/desktop/TIDAL.dmg</string>
+				<string>https://download.tidal.com/desktop/TIDAL.%ARCH_TYPE%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
