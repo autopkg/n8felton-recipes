@@ -23,7 +23,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>app_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Microsoft Remote Desktop Beta.app</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Windows App Beta.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
