@@ -15,24 +15,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Information provider for SentinelOne Management consoles"""
-try:
-    import logging
-    from management.mgmtsdk_v2.mgmt import Management
-except ImportError:
-    # pip install sentinelone-management-sdk-0.9.8.tar.gz
-    raise ImportError('Requires SentinelOne Management SDK')
 
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
+import logging
+from urllib.parse import urlencode
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import ProcessorError, URLGetter
 
 __all__ = ["SentinelOneInfoProvider"]
 
 
-class SentinelOneInfoProvider(Processor):
+class SentinelOneInfoProvider(URLGetter):
     ("Provides information available from the S1 Management APIs")
     description = __doc__
     input_variables = {
@@ -73,7 +66,7 @@ class SentinelOneInfoProvider(Processor):
         },
     }
 
-    def get_s1_updates(self, s1_mgmt, s1_pkg_status=None, s1_pkg_version=None):
+    def get_s1_updates(self, s1_pkg_status=None, s1_pkg_version=None):
         ("""Returns a JSON response of available agents from the SentinelOne
         API""")
         update_args = {
@@ -91,7 +84,16 @@ class SentinelOneInfoProvider(Processor):
                                indent=4,
                                separators=(',', ': ')),
                     2)
-        updates_json = s1_mgmt.updates.get(**update_args).json
+
+        api_headers = {"Authorization": f"ApiToken {self.env.get('S1_API_TOKEN')}"}
+
+        hostname = self.env.get("S1_CONSOLE_HOSTNAME")
+        query = urlencode(update_args)
+        url = f"https://{hostname}/web/api/v2.1/update/agent/packages?{query}"
+
+        response = self.download(url, headers=api_headers)
+        updates_json = json.loads(response)
+
         self.output(json.dumps(updates_json,
                                sort_keys=True,
                                indent=4,
@@ -104,14 +106,8 @@ class SentinelOneInfoProvider(Processor):
         if not self.env.get('verbose') == '3':
             logger = logging.getLogger()
             logger.setLevel(logging.WARNING)
-            s1_logger = logging.getLogger('MgmtSdk')
-            s1_logger.setLevel(logging.WARNING)
-        s1_management = Management(
-            hostname=self.env.get('S1_CONSOLE_HOSTNAME'),
-            api_token=self.env.get('S1_API_TOKEN'))
-        updates_json = self.get_s1_updates(s1_management,
-                                           self.env.get('S1_PACKAGE_STATUS'),
-                                           self.env.get('S1_PACKAGE_VERSION'))
+        updates_json = self.get_s1_updates(self.env.get("S1_PACKAGE_STATUS"),
+                                           self.env.get("S1_PACKAGE_VERSION"))
         try:
             s1_package = updates_json["data"][0]
         except IndexError:
