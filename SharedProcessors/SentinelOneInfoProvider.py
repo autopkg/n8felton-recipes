@@ -72,7 +72,8 @@ class SentinelOneInfoProvider(URLGetter):
         update_args = {
             "osTypes":   "macos",
             "sortBy":    "version",
-            "sortOrder": "desc"
+            "sortOrder": "desc",
+            "limit":     1,
         }
 
         if s1_pkg_status:
@@ -117,6 +118,7 @@ class SentinelOneInfoProvider(URLGetter):
         self.env['filename'] = s1_package['fileName']
         self.env['version'] = s1_package['version']
         self.env['sha1'] = s1_package['sha1']
+
 
 if __name__ == "__main__":
     PROCESSOR = SentinelOneInfoProvider()
