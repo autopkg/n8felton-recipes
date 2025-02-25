@@ -3,13 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of BlueJ.</string>
+	<string>Downloads the latest version of BlueJ. Set ARCH to x64 for Intel (default), aarch64 for Apple Silicon/Universal.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.BlueJ</string>
 	<key>Input</key>
 	<dict>
 		<key>BASE_URL</key>
 		<string>https://www.bluej.org</string>
+		<key>ARCH</key>
+		<string>x64</string>
 		<key>DOWNLOAD_URL</key>
 		<string>%BASE_URL%/versions.html</string>
 		<key>NAME</key>
@@ -27,7 +29,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>&lt;a href=&quot;download/files/(BlueJ-mac-\d+[a-z]?\.dmg)&quot;&gt;</string>
+				<string>&lt;a href=&quot;download/files/(BlueJ-mac-%ARCH%-\d+\.dmg)&quot;&gt;</string>
 			</dict>
 		</dict>
 		<dict>
