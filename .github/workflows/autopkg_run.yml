@@ -11,12 +11,12 @@ jobs:
           $(which curl) --version
           $(which jq) --version
         shell: bash -x {0}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 2
       - name: Get changed files
         id: changed-recipe-files
-        uses: tj-actions/changed-files@v32.1.2
+        uses: tj-actions/changed-files@2f7c5bfce28377bc069a65ba478de0a74aa0ca32
         with:
           files: "**/**.recipe"
           separator: ","

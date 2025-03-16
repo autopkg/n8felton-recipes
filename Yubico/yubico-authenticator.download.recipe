@@ -3,34 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release of Yubico Authenticator for Desktop from Github.</string>
+	<string>Downloads the current release of Yubico Authenticator for Desktop available on Github.</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.download.yubioath-desktop</string>
+	<string>com.github.n8felton.yubico-authenticator.download</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>yubioath-desktop</string>
+		<string>yubico-authenticator</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>DeprecationWarning</string>
-			<key>Arguments</key>
-			<dict>
-				<key>warning_message</key>
-				<string>yubioath-desktop has been renamed. Checkout the yubico-authenticator (yubioath-flutter) recipes instead.</string>
-			</dict>
-		</dict>
-		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>.*pkg$</string>
+				<string>^yubico-authenticator-.*-mac.dmg$</string>
 				<key>github_repo</key>
-				<string>Yubico/yubioath-desktop</string>
+				<string>Yubico/yubioath-flutter</string>
 				<key>include_prereleases</key>
 				<false/>
 			</dict>
@@ -43,7 +34,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.pkg</string>
+				<string>%NAME%-%version%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
@@ -51,19 +42,15 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: Yubico Limited (LQA3CS5MM7)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+				<string>%pathname%/Yubico Authenticator.app</string>
+				<key>requirement</key>
+				<string>identifier "com.yubico.yubioath" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = LQA3CS5MM7</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>
