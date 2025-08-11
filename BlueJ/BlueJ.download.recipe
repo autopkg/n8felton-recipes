@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>ARCH</key>
-		<string>x64</string>
+		<string>aarch64</string>
 		<key>NAME</key>
 		<string>BlueJ</string>
 	</dict>

@@ -8,18 +8,24 @@
 	<string>com.github.n8felton.munki.BlueJ</string>
 	<key>Input</key>
 	<dict>
+		<key>ARCH</key>
+		<string>aarch64</string>
+		<key>MUNKI_ARCH</key>
+		<string>arm64</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>BlueJ</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>A free Java Development Environment designed for beginners, used by millions worldwide.</string>
 			<key>developer</key>
@@ -28,8 +34,10 @@
 			<string>BlueJ</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%MUNKI_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
