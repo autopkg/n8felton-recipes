@@ -8,38 +8,34 @@
 	<string>com.github.n8felton.download.BlueJ</string>
 	<key>Input</key>
 	<dict>
-		<key>BASE_URL</key>
-		<string>https://www.bluej.org</string>
 		<key>ARCH</key>
 		<string>x64</string>
-		<key>DOWNLOAD_URL</key>
-		<string>%BASE_URL%/versions.html</string>
 		<key>NAME</key>
 		<string>BlueJ</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.3</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
-				<key>re_pattern</key>
-				<string>&lt;a href=&quot;download/files/(BlueJ-mac-%ARCH%-\d+\.dmg)&quot;&gt;</string>
+				<key>asset_regex</key>
+				<string>BlueJ-mac-%ARCH%-.*\.dmg$</string>
+				<key>github_repo</key>
+				<string>k-pet-group/BlueJ-Greenfoot</string>
 			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/download/files/%match%</string>
+				<key>filename</key>
+				<string>%NAME%-%version%.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
