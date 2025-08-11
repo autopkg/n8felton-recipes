@@ -28,6 +28,8 @@ ARCH_TYPE=("arm64", "x64")</string>
 				<string>.*%ARCH_TYPE%_mac\.dmg$</string>
 				<key>github_repo</key>
 				<string>usebruno/bruno</string>
+				<key>latest_only</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
