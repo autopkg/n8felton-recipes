@@ -14,7 +14,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		<key>NAME</key>
 		<string>Geneious</string>
 		<key>MAJOR_VERSION</key>
-		<string>10</string>
+		<string>2020</string>
 		<key>RELEASE</key>
 		<string>release</string>
 		<key>VERSIONS_URL</key>
@@ -37,6 +37,19 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>com.github.n8felton.shared/RegexReplace</string>
+			<key>Arguments</key>
+			<dict>
+				<key>replace_pattern</key>
+				<string>-</string>
+				<key>source_string</key>
+				<string>%match%</string>
+				<key>replace_string</key>
+				<string>_</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
@@ -54,7 +67,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Geneious.app</string>
+				<string>%pathname%/Geneious*.app</string>
 				<key>requirement</key>
 				<string>identifier "com.biomatters.Geneious" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3BTDDQD3L6"</string>
 			</dict>
