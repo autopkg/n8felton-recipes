@@ -47,7 +47,7 @@ class GitLabReleasesInfoProvider(Processor):
             "description": ("Filters results to include only the most recent release."),
         },
         "GITLAB_HOSTNAME": {
-            "required": True,
+            "required": False,
             "default": "gitlab.com",
             "description": (
                 "If your organization has an internal GitLab instance "
