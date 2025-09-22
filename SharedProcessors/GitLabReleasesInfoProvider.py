@@ -159,6 +159,5 @@ class GitLabReleasesInfoProvider(Processor):
 
 
 if __name__ == "__main__":
-    with open("/tmp/autopkg.plist", "r") as input:
-        PROCESSOR = GitLabReleasesInfoProvider(infile=input)
-        PROCESSOR.execute_shell()
+    PROCESSOR = GitLabReleasesInfoProvider()
+    PROCESSOR.execute_shell()
