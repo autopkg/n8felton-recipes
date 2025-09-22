@@ -138,6 +138,8 @@ class GitLabReleasesInfoProvider(Processor):
                 except re.error as e:
                     raise ProcessorError(f"Invalid regex: {regex} ({e})")
 
+        raise ProcessorError(f"No release asset found matching regex: {regex}")
+
     def main(self):
         PRIVATE_TOKEN = os.getenv("PRIVATE_TOKEN") or self.env.get("PRIVATE_TOKEN")
         self.env["PRIVATE_TOKEN"] = PRIVATE_TOKEN
