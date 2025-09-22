@@ -64,10 +64,10 @@ class GitLabReleasesInfoProvider(Processor):
         "PRIVATE_TOKEN": {
             "required": False,
             "description": (
-                "GitLab personal, group, or project access token."
-                "MUST have the `api` scope granted."
-                "Optionally set a environment variable, but is required in one or the "
-                "other."
+                "GitLab personal, group, or project access token. "
+                "MUST have the `api` scope granted. "
+                "Optional for public repositories, required for private repositories. "
+                "Can be set as an environment variable or input variable."
             ),
         },
     }
@@ -96,15 +96,15 @@ class GitLabReleasesInfoProvider(Processor):
         GITLAB_HOSTNAME = self.env.get("GITLAB_HOSTNAME")
         GITLAB_API_BASE_URL = f"https://{GITLAB_HOSTNAME}/api/v4"
         PRIVATE_TOKEN = self.env.get("PRIVATE_TOKEN")
-        if not PRIVATE_TOKEN:
-            raise ProcessorError(
-                f"PRIVATE_TOKEN is not set as environment or input variable."
-            )
 
         headers = {
-            "PRIVATE-TOKEN": PRIVATE_TOKEN,
             "User-Agent": f"AutoPkg/{get_autopkg_version()}",
         }
+
+        # Only add PRIVATE-TOKEN header if token is provided
+        if PRIVATE_TOKEN:
+            headers["PRIVATE-TOKEN"] = PRIVATE_TOKEN
+
         url = f"{GITLAB_API_BASE_URL}{endpoint}"
         req = Request(url, headers=headers)
         with urlopen(req, context=self.ssl_context_certifi()) as response:
@@ -142,7 +142,8 @@ class GitLabReleasesInfoProvider(Processor):
 
     def main(self):
         PRIVATE_TOKEN = os.getenv("PRIVATE_TOKEN") or self.env.get("PRIVATE_TOKEN")
-        self.env["PRIVATE_TOKEN"] = PRIVATE_TOKEN
+        if PRIVATE_TOKEN:
+            self.env["PRIVATE_TOKEN"] = PRIVATE_TOKEN
         releases = self.get_releases(latest=self.env.get("latest"))
         release, link = self.get_release_link(
             releases, regex=self.env.get("link_regex")
