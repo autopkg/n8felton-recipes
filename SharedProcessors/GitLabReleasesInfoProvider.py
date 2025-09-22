@@ -118,8 +118,8 @@ class GitLabReleasesInfoProvider(Processor):
         releases_endpoint = f"/projects/{project_id}/releases"
         if latest:
             releases_endpoint += "/permalink/latest"
-        releases = self.gitlab_api_get(releases_endpoint)
-        releases = [json.loads(releases)]
+        _releases = self.gitlab_api_get(releases_endpoint)
+        releases = json.loads(_releases)
         self.output(pformat(releases), 3)
         return releases
 
