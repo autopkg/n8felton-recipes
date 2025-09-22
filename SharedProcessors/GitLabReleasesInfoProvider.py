@@ -44,6 +44,7 @@ class GitLabReleasesInfoProvider(Processor):
         },
         "latest": {
             "required": False,
+            "default": True,
             "description": ("Filters results to include only the most recent release."),
         },
         "GITLAB_HOSTNAME": {
@@ -118,7 +119,10 @@ class GitLabReleasesInfoProvider(Processor):
         if latest:
             releases_endpoint += "/permalink/latest"
         _releases = self.gitlab_api_get(releases_endpoint)
-        releases = json.loads(_releases)
+        if latest:
+            releases = [json.loads(_releases)]
+        else:
+            releases = json.loads(_releases)
         self.output(pformat(releases), 3)
         return releases
 
