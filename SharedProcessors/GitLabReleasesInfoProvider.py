@@ -119,10 +119,7 @@ class GitLabReleasesInfoProvider(Processor):
         if latest:
             releases_endpoint += "/permalink/latest"
         _releases = self.gitlab_api_get(releases_endpoint)
-        if latest:
-            releases = [json.loads(_releases)]
-        else:
-            releases = json.loads(_releases)
+        releases = [json.loads(_releases)] if latest else json.loads(_releases)
         self.output(pformat(releases), 3)
         return releases
 
