@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>BASE_URL</key>
-		<string>http://www.graphviz.org</string>
+		<string>https://www.graphviz.org</string>
 		<key>RE_PATTERN</key>
 		<string>&lt;a href=&quot;/(.*mountainlion[^&quot;]+)&quot;</string>
 		<key>NAME</key>
