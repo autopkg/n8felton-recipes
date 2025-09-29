@@ -3,13 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of jamovi and imports it into Munki.</string>
+	<string>Downloads the latest version of jamovi and imports it into Munki.
+
+For Intel use: "x86_64" in the SUPPORTED_ARCH variable
+For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.munki.jamovi</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>x86_64</string>
 		<key>NAME</key>
 		<string>jamovi</string>
 		<key>pkginfo</key>
@@ -22,19 +27,19 @@
 			<string>Free and open statistical software to bridge the gap between researcher and statistician.</string>
 			<key>display_name</key>
 			<string>jamovi</string>
-			<key>minimum_os_version</key>
-			<string>10.13.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>category</key>
 			<string>Math &amp; Science</string>
 			<key>developer</key>
 			<string>The jamovi project</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
-		<key>RE_PATTERN</key>
-		<string>data-href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
