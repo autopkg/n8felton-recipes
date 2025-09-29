@@ -2,16 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v2.3.1 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of BlueJ. Set ARCH to x64 for Intel (default), aarch64 for Apple Silicon/Universal.</string>
+	<string>Downloads the latest version of Bruno.
+
+ARCH_TYPE=("arm64", "x64")</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.download.BlueJ</string>
+	<string>com.github.n8felton.download.Bruno</string>
 	<key>Input</key>
 	<dict>
-		<key>ARCH</key>
-		<string>aarch64</string>
+		<key>ARCH_TYPE</key>
+		<string>arm64</string>
 		<key>NAME</key>
-		<string>BlueJ</string>
+		<string>Bruno</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3</string>
@@ -21,14 +25,21 @@
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>BlueJ-mac-%ARCH%-.*\.dmg$</string>
+				<string>.*%ARCH_TYPE%_mac\.dmg$</string>
 				<key>github_repo</key>
-				<string>k-pet-group/BlueJ-Greenfoot</string>
+				<string>usebruno/bruno</string>
+				<key>latest_only</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%ARCH_TYPE%-%version%.dmg</string>
+			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
@@ -40,9 +51,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/BlueJ.app</string>
+				<string>%pathname%/Bruno.app</string>
 				<key>requirement</key>
-				<string>identifier "org.bluej.BlueJ" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5DNSMBAM8L"</string>
+				<string>identifier "com.usebruno.app" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = W7LPPWA48L</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -51,7 +62,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%pathname%/BlueJ.app/Contents/Info.plist</string>
+				<string>%pathname%/Bruno.app/Contents/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
