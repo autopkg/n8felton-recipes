@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads a release of SentinelOne and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.munki.SentinelOne</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>SentinelOne</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>A cybersecurity platform that uses AI to protect networks, devices, and identities from threats. It can detect, remove, and prevent malware and other security risks.</string>
+			<key>developer</key>
+			<string>SentinelOne, Inc.</string>
+			<key>display_name</key>
+			<string>SentinelOne</string>
+			<key>name</key>
+			<string>%NAME%</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.SentinelOne</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/dmgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%pkgroot%/%NAME%.pkg</string>
+				<key>source_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
+				<key>dmg_root</key>
+				<string>%pkgroot%</string>
+			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/dmgroot</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>installcheck_script</key>
+					<string>#!/bin/zsh
+# Exit codes
+PROCEED_WITH_INSTALL=0
+INSTALL_NOT_NEEDED=1
+
+if [[ ! -e /usr/local/bin/sentinelctl ]]; then
+    exit ${PROCEED_WITH_INSTALL}
+fi
+
+SENTINEL_VERSION=$(/usr/local/bin/sentinelctl version | awk '{print $2}')
+
+if [[ ${SENTINEL_VERSION} &lt; %version% ]]; then
+    exit ${PROCEED_WITH_INSTALL}
+fi
+
+exit ${INSTALL_NOT_NEEDED}
+					</string>
+					<key>postinstall_script</key>
+					<string>#!/bin/sh
+INSTALL_PKG="/tmp/%NAME%.pkg"
+
+if [[ -e /usr/local/bin/sentinelctl ]]; then
+	echo "sentinelctl found. Upgrading..."
+	/usr/local/bin/sentinelctl upgrade-pkg "${INSTALL_PKG}"
+	RETURN_CODE=$?
+else
+	echo "sentinelctl not found. Installing..."
+	installer -pkg "${INSTALL_PKG}" -target /
+	RETURN_CODE=$?
+fi
+
+rm -f "${INSTALL_PKG}"
+exit ${RETURN_CODE}
+					</string>
+					<key>uninstallable</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--item=%NAME%.pkg</string>
+					<string>--destinationpath=/tmp</string>
+					<string>--unattended_install</string>
+					<string>--pkgvers=%version%</string>
+				</array>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
