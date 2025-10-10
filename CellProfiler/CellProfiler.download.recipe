@@ -14,7 +14,7 @@
 		<string>href=&quot;(?P&lt;url&gt;http[s]?.*(?P&lt;filename&gt;CellProfiler-macOS-(?P&lt;version&gt;[\d.]+)\.zip))&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
