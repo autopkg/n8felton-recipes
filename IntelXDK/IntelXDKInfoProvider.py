@@ -1,5 +1,4 @@
 #!/usr/local/autopkg/python
-# -*- coding: utf-8 -*-
 #
 # Copyright 2016 Nathan Felton (n8felton)
 #
@@ -40,7 +39,7 @@ class IntelXDKInfoProvider(URLGetter):
         },
         "base_url": {
             "required": False,
-            "description": "Default is {0}.".format(XDK_BASE_URL),
+            "description": "Default is {}.".format(XDK_BASE_URL),
         },
     }
     output_variables = {
@@ -62,7 +61,7 @@ class IntelXDKInfoProvider(URLGetter):
         # Capture input variables
         release = self.env.get("release", "latest")
         base_url = self.env.get("base_url", XDK_BASE_URL)
-        updates_url = "{0}{1}".format(base_url, "updates.json")
+        updates_url = "{}{}".format(base_url, "updates.json")
         self.output("Updates URL: {updates_url}".format(updates_url=updates_url), 2)
 
         # Get information on updates
@@ -70,7 +69,7 @@ class IntelXDKInfoProvider(URLGetter):
         self.output(updates, 3)
 
         # Set output variables
-        download_url = "{0}{1}".format(base_url, updates[release]["macosx"]["file"])
+        download_url = "{}{}".format(base_url, updates[release]["macosx"]["file"])
         self.env["url"] = download_url
         md5checksum = updates[release]["macosx"]["fileMD5"]
         self.env["md5checksum"] = md5checksum

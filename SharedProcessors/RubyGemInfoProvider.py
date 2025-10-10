@@ -1,5 +1,4 @@
 #!/usr/local/autopkg/python
-# -*- coding: utf-8 -*-
 #
 # Copyright 2016 Nathan Felton (n8felton)
 #
@@ -44,7 +43,7 @@ class RubyGemInfoProvider(Processor):
     }
 
     def __init__(self):
-        super(RubyGemInfoProvider, self).__init__()
+        super().__init__()
         self.gem = None
 
     def gem_details(self, gem_name):

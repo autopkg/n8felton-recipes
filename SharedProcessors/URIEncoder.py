@@ -1,5 +1,4 @@
 #!/usr/local/autopkg/python
-# -*- coding: utf-8 -*-
 #
 # Copyright 2020 Nathan Felton (n8felton)
 #
