@@ -4,10 +4,10 @@
 <dict>
 	<key>Description</key>
 	<string>Download recipe for ParaView.
-	
+
 Valid values for ARCH include:
-- "x86_64" (default, Intel)	
-- "arm64" (Apple Silicon)	
+- "x86_64" (default, Intel)
+- "arm64" (Apple Silicon)
 </string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.paraview.download</string>
