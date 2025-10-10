@@ -5,4 +5,5 @@ repos:
       - id: check-added-large-files
         args: ["--maxkb=100"]
       - id: check-ast
+      - id: check-case-conflict
 
