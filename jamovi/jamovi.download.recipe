@@ -3,15 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of jamovi.</string>
+	<string>Downloads the latest version of jamovi.
+
+To download Apple Silicon use: "arm64" in the DOWNLOAD_ARCH variable
+To download Intel use: "x64" in the DOWNLOAD_ARCH variable
+
+To download the Current Track use: "current" in the RELEASE_TRACK variable
+To download the Solid Track use: "solid" in the RELEASE_TRACK variable</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.jamovi</string>
 	<key>Input</key>
 	<dict>
+		<key>DOWNLOAD_ARCH</key>
+		<string>x64</string>
+		<key>RELEASE_TRACK</key>
+		<string>current</string>
 		<key>NAME</key>
 		<string>jamovi</string>
-		<key>RE_PATTERN</key>
-		<string>data-href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
@@ -21,7 +29,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>%RE_PATTERN%</string>
+				<string>&lt;td&gt;%RELEASE_TRACK%&lt;/td&gt;&lt;td&gt;(\d+\.\d+(?:\.\d+)?)&lt;/td&gt;&lt;td&gt;x64&lt;/td&gt;&lt;td&gt;\.dmg&lt;/td&gt;</string>
+				<key>result_output_var_name</key>
+				<string>VERSION</string>
 				<key>url</key>
 				<string>https://www.jamovi.org/download.html</string>
 			</dict>
@@ -31,13 +41,28 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>re_pattern</key>
+				<string>(/downloads/jamovi-%VERSION%(?:\.\d+)?-macos-%DOWNLOAD_ARCH%\.dmg)</string>
+				<key>result_output_var_name</key>
+				<string>DOWNLOAD_URL</string>
 				<key>url</key>
-				<string>https://www.jamovi.org/%download%</string>
+				<string>https://www.jamovi.org/download.html</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.n8felton.shared/RemoteFilenameFinder</string>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%RELEASE_TRACK%-%DOWNLOAD_ARCH%.dmg</string>
+				<key>url</key>
+				<string>https://www.jamovi.org%DOWNLOAD_URL%</string>
+			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
