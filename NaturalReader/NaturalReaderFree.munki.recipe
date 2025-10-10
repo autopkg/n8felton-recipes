@@ -8,18 +8,20 @@
 	<string>com.github.n8felton.munki.NaturalReaderFree</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Productivity</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>NaturalReaderFree</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Productivity</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>NaturalReader is a downloadable text-to-speech desktop software for personal use. This easy-to-use software with natural-sounding voices can read to you any text such as Microsoft Word files, webpages, PDF files, and E-mails.</string>
 			<key>developer</key>
@@ -28,8 +30,6 @@
 			<string>NaturalReader Free</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

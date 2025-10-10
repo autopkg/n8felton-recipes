@@ -10,36 +10,36 @@
 	<dict>
 		<key>BASE_URL</key>
 		<string>http://serialbasics.free.fr</string>
-		<key>RE_PATTERN</key>
-		<string>href=&quot;(.*(?P&lt;foldername&gt;SerialCloner.*)\.dmg)&quot;</string>
 		<key>NAME</key>
 		<string>SerialCloner</string>
+		<key>RE_PATTERN</key>
+		<string>href="(.*(?P&lt;foldername&gt;SerialCloner.*)\.dmg)"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/Serial_Cloner-Download.html</string>
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
+				<key>url</key>
+				<string>%BASE_URL%/Serial_Cloner-Download.html</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/%match%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%BASE_URL%/%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

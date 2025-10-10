@@ -8,38 +8,38 @@
 	<string>com.github.n8felton.munki.CodonCodeAligner</string>
 	<key>Input</key>
 	<dict>
+		<key>JAVA6_PKG</key>
+		<string>AppleJava6</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>CodonCode Aligner</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
-		<key>JAVA6_PKG</key>
-		<string>AppleJava6</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
-			<key>description</key>
-			<string>CodonCode Aligner is a program for sequence assembly, contig editing, and mutation detection, available for Windows and Mac OS X. Aligner is compatible with Phred-Phrap and fully supports sequence quality scores, while offering a familiar, easy-to-learn user interface.</string>
-			<key>display_name</key>
-			<string>CodonCode Aligner</string>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>CodonCode Aligner is a program for sequence assembly, contig editing, and mutation detection, available for Windows and Mac OS X. Aligner is compatible with Phred-Phrap and fully supports sequence quality scores, while offering a familiar, easy-to-learn user interface.</string>
 			<key>developer</key>
 			<string>CodonCode</string>
-			<key>unattended_install</key>
-			<true/>
+			<key>display_name</key>
+			<string>CodonCode Aligner</string>
 			<key>minimum_os_version</key>
 			<string>10.6.8</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>requires</key>
 			<array>
 				<string>%JAVA6_PKG%</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Pentaho Data Integration zip and wraps it into a pkg.</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.pkg.DataIntegration</string>
+	<key>Input</key>
 	<dict>
-		<key>Description</key>
-		<string>Downloads the latest Pentaho Data Integration zip and wraps it into a pkg.</string>
-		<key>Identifier</key>
-		<string>com.github.n8felton.pkg.DataIntegration</string>
-		<key>Input</key>
+		<key>NAME</key>
+		<string>DataIntegration</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.download.DataIntegration</string>
+	<key>Process</key>
+	<array>
 		<dict>
-			<key>NAME</key>
-			<string>DataIntegration</string>
-		</dict>
-		<key>MinimumVersion</key>
-		<string>0.2.9</string>
-		<key>ParentRecipe</key>
-		<string>com.github.n8felton.download.DataIntegration</string>
-		<key>Process</key>
-		<array>
+			<key>Arguments</key>
 			<dict>
-				<key>comment</key>
-				<string>Their version number is messed up so we need to use this for now.
+				<key>index</key>
+				<integer>2</integer>
+				<key>split_on</key>
+				<string>-</string>
+				<key>version</key>
+				<string>%filename%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
+			<key>comment</key>
+			<string>Their version number is messed up so we need to use this for now.
 				Also, trimming the build number off the end of the version because otherwise you get:
 						Error: Invalid version component "0-12"</string>
-				<key>Processor</key>
-				<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
-				<key>Arguments</key>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
 				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%pkgroot%/Applications</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%pkgroot%/Applications/data-integration</string>
+				<key>target</key>
+				<string>%pkgroot%/Applications/Data Integration</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.pentaho.di</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
 					<key>version</key>
-					<string>%filename%</string>
-					<key>index</key>
-					<integer>2</integer>
-					<key>split_on</key>
-					<string>-</string>
+					<string>%version%</string>
 				</dict>
 			</dict>
-			<dict>
-				<key>Processor</key>
-				<string>PkgRootCreator</string>
-				<key>Arguments</key>
-				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-					<key>pkgdirs</key>
-					<dict>
-						<key>Applications</key>
-						<string>0775</string>
-					</dict>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
-				<string>Unarchiver</string>
-				<key>Arguments</key>
-				<dict>
-					<key>destination_path</key>
-					<string>%pkgroot%/Applications</string>
-					<key>purge_destination</key>
-					<true/>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
-				<string>FileMover</string>
-				<key>Arguments</key>
-				<dict>
-					<key>source</key>
-					<string>%pkgroot%/Applications/data-integration</string>
-					<key>target</key>
-					<string>%pkgroot%/Applications/Data Integration</string>
-				</dict>
-			</dict>
-			<dict>
-				<key>Processor</key>
-				<string>PkgCreator</string>
-				<key>Arguments</key>
-				<dict>
-					<key>pkg_request</key>
-					<dict>
-						<key>pkgname</key>
-						<string>%NAME%-%version%</string>
-						<key>version</key>
-						<string>%version%</string>
-						<key>id</key>
-						<string>com.pentaho.di</string>
-						<key>chown</key>
-						<array>
-							<dict>
-								<key>path</key>
-								<string>Applications</string>
-								<key>user</key>
-								<string>root</string>
-								<key>group</key>
-								<string>admin</string>
-							</dict>
-						</array>
-					</dict>
-				</dict>
-			</dict>
-		</array>
-	</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
 </plist>

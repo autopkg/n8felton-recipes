@@ -10,40 +10,40 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 	<string>com.github.n8felton.download.MAMP</string>
 	<key>Input</key>
 	<dict>
+		<key>ARCH_TYPE</key>
+		<string>Intel-x86</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://downloads.mamp.info/MAMP-PRO/macOS/MAMP-PRO</string>
 		<key>NAME</key>
 		<string>MAMP</string>
 		<key>SEARCH_URL</key>
 		<string>https://www.mamp.info/en/downloads</string>
-		<key>ARCH_TYPE</key>
-		<string>Intel-x86</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%SEARCH_URL%</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;filename&gt;MAMP-MAMP-PRO-(?P&lt;version&gt;((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)))\-%ARCH_TYPE%).pkg"</string>
+				<key>url</key>
+				<string>%SEARCH_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%/%filename%.pkg</string>
 				<key>filename</key>
 				<string>%filename%-%version%.pkg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%/%filename%.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -52,14 +52,14 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: MAMP GmbH (5KCB5KHK77)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

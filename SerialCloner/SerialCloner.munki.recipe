@@ -9,30 +9,30 @@ Note: You will need a version of AutoPkg newer than 1.0.1 to use this recipe.</s
 	<string>com.github.n8felton.munki.SerialCloner</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>SerialCloner</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>SerialCloner</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>Serial Cloner is a Molecular Biology software. It provides tools with an intuitive interface that assists you in DNA cloning, sequence analysis and visualization.</string>
+			<key>developer</key>
+			<string>Serial Basics</string>
 			<key>display_name</key>
 			<string>Serial Cloner</string>
+			<key>minimum_os_version</key>
+			<string>10.9.5</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-			<key>category</key>
-			<string>Math &amp; Science</string>
-			<key>developer</key>
-			<string>Serial Basics</string>
-			<key>minimum_os_version</key>
-			<string>10.9.5</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -42,32 +42,26 @@ Note: You will need a version of AutoPkg newer than 1.0.1 to use this recipe.</s
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
 				<string>%pathname%/*/*/Contents/*.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%pathname%/%dmg_found_filename%</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
 					<string>--pkgvers</string>
@@ -75,7 +69,13 @@ Note: You will need a version of AutoPkg newer than 1.0.1 to use this recipe.</s
 					<string>--itemname</string>
 					<string>%foldername%</string>
 				</array>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

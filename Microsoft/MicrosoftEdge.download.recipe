@@ -8,10 +8,10 @@
 	<string>com.github.n8felton.download.MicrosoftEdge</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>MicrosoftEdge</string>
 		<key>CHANNEL</key>
 		<string></string>
+		<key>NAME</key>
+		<string>MicrosoftEdge</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>

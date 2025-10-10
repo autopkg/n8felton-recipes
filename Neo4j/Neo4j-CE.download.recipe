@@ -11,49 +11,49 @@
 		<key>NAME</key>
 		<string>Neo4j-CE</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://neo4j.com/download/community-edition/</string>
 				<key>re_pattern</key>
 				<string>release=(?P&lt;version&gt;[^&amp;]+)</string>
+				<key>url</key>
+				<string>https://neo4j.com/download/community-edition/</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_string</key>
-				<string>%version%</string>
 				<key>find</key>
 				<string>.</string>
+				<key>input_string</key>
+				<string>%version%</string>
 				<key>replace</key>
 				<string>_</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://neo4j.com/artifact.php?name=neo4j-community_macos_%output_string%.dmg</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>https://neo4j.com/artifact.php?name=neo4j-community_macos_%output_string%.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.2.9</string>
 </dict>
 </plist>

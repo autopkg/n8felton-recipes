@@ -8,42 +8,42 @@
 	<string>com.github.n8felton.visualparadigmce.download</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>VisualParadigmCE</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.visual-paradigm.com/download/community.jsp?platform=macosx&amp;arch=jre</string>
+		<key>NAME</key>
+		<string>VisualParadigmCE</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
+				<key>re_pattern</key>
+				<string>href="(?P&lt;download&gt;.*dmg)"</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
-				<key>re_pattern</key>
-				<string>href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://www.visual-paradigm.com%match%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>https://www.visual-paradigm.com%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -51,9 +51,9 @@
 				<key>requirement</key>
 				<string>always</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.3.1</string>
 </dict>
 </plist>

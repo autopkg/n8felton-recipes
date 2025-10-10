@@ -24,3 +24,4 @@ repos:
       - id: check-autopkg-recipes
         args: ["--recipe-prefix=com.github.n8felton.", "--strict", "--"]
         exclude: ClustalW.pkg.recipe|Timeular.*
+      - id: format-xml-plist

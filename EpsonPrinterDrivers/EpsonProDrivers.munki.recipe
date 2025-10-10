@@ -8,28 +8,28 @@
 	<string>com.github.n8felton.munki.EpsonProDrivers</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Drivers</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>printers/drivers</string>
 		<key>NAME</key>
 		<string>EpsonProDrivers</string>
 		<key>SEARCH_URL</key>
 		<string>https://www.epson.com/Support/override/this</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>printers/drivers</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Drivers</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Provides the latest Epson Pro printer drivers for macOS.</string>
 			<key>display_name</key>
 			<string>Epson Pro Printer Drivers</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -39,8 +39,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -48,6 +46,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

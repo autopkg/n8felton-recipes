@@ -2,58 +2,58 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of the Xerox Printer Drivers from Xerox.com</string>
-    <key>Identifier</key>
-    <string>com.github.n8felton.download.xerox.printdriver</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Xerox Print Driver</string>
-    </dict>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>re_pattern</key>
-                <string>content.*[^\d](?P&lt;content_id&gt;\d+)[^\d]*macOS Print and Scan Driver Installer</string>
-                <key>url</key>
-                <string>https://www.support.xerox.com/en-us/product/versalink-c7020-c7025-c7030/downloads?platform=macOS10_15&amp;language=en</string>
-            </dict>
-        </dict>
-        <dict>
-          <key>Processor</key>
-          <string>URLDownloader</string>
-          <key>Arguments</key>
-          <dict>
-              <key>url</key>
-              <string>https://www.support.xerox.com/download/%content_id%</string>
-              <key>prefetch_filename</key>
-              <true/>
-          </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: Xerox Corporation (G59Y3XFNFR)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
-                <key>input_path</key>
-                <string>%pathname%/Xerox Driver*.pkg</string>
-            </dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-        </dict>
-    </array>
+	<key>Description</key>
+	<string>Downloads the latest version of the Xerox Printer Drivers from Xerox.com</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.xerox.printdriver</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Xerox Print Driver</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>content.*[^\d](?P&lt;content_id&gt;\d+)[^\d]*macOS Print and Scan Driver Installer</string>
+				<key>url</key>
+				<string>https://www.support.xerox.com/en-us/product/versalink-c7020-c7025-c7030/downloads?platform=macOS10_15&amp;language=en</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>prefetch_filename</key>
+				<true/>
+				<key>url</key>
+				<string>https://www.support.xerox.com/download/%content_id%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Xerox Corporation (G59Y3XFNFR)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%/Xerox Driver*.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
 </dict>
 </plist>

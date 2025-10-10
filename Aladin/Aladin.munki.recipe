@@ -8,36 +8,34 @@
 	<string>com.github.n8felton.munki.Aladin</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>Aladin</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>&lt;a href=&quot;http://aladin.u-strasbg.fr/AladinDesktop&quot;&gt;Aladin Desktop&lt;/a&gt; is the main application of the &lt;a href=&quot;http://aladin.u-strasbg.fr/&quot;&gt;Aladin Sky Atlas&lt;/a&gt; suite.</string>
+			<string>&lt;a href="http://aladin.u-strasbg.fr/AladinDesktop"&gt;Aladin Desktop&lt;/a&gt; is the main application of the &lt;a href="http://aladin.u-strasbg.fr/"&gt;Aladin Sky Atlas&lt;/a&gt; suite.</string>
 			<key>developer</key>
-			<string></string>
+			<string>Centre de Données astronomiques de Strasbourg</string>
 			<key>display_name</key>
 			<string>Aladin</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>developer</key>
-			<string>Centre de Données astronomiques de Strasbourg</string>
-			<key>unattended_install</key>
-			<true/>
 			<key>requires</key>
 			<array>
 				<string>OracleJava8</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

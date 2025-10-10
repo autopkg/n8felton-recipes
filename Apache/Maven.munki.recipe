@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple/DTD PLIST 1.0//EN" "http://apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
@@ -10,12 +10,12 @@
 	<dict>
 		<key>DISPLAY_NAME</key>
 		<string>Apache Maven</string>
-		<key>NAME</key>
-		<string>Maven</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Software Development</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Maven</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -34,15 +34,13 @@
 			<string>%NAME%</string>
 		</dict>
 	</dict>
-	<key>ParentRecipe</key>
-	<string>com.github.n8felton.pkg.Maven</string>
 	<key>MinimumVersion</key>
 	<string>0.3.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.pkg.Maven</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -50,6 +48,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

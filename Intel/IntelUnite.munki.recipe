@@ -24,6 +24,13 @@
 			<string>Intel</string>
 			<key>display_name</key>
 			<string>Intel Unite</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+
+#Install the ACE "Audio Components" driver
+/Applications/Intel\ Unite.app/Contents/MacOS/Intel\ Unite -installaudiodriver</string>
 			<key>preuninstall_script</key>
 			<string>#!/bin/bash
 
@@ -33,13 +40,6 @@ then
 	#Remove it
 	/Applications/Intel\ Unite.app/Contents/MacOS/Intel\ Unite -removeaudiodriver
 fi</string>
-			<key>postinstall_script</key>
-			<string>#!/bin/bash
-
-#Install the ACE "Audio Components" driver
-/Applications/Intel\ Unite.app/Contents/MacOS/Intel\ Unite -installaudiodriver</string>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

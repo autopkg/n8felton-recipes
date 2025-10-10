@@ -6,8 +6,6 @@
 	<string>Downloads the latest version of Neo4j Community Edition and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.neo4j-ce.munki</string>
-	<key>ParentRecipe</key>
-	<string>com.github.n8felton.neo4j-ce.download</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -20,26 +18,28 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>As a native graph database, Neo4j is specifically optimized to store and traverse these graphs of connected data. By intuitively mapping data points and the connections between them, Neo4j powers intelligent, real-time applications that tackle today's toughest enterprise challenges.&lt;br&gt;&lt;br&gt;
 Default login is username &lt;strong&gt;'neo4j'&lt;/strong&gt; and password &lt;strong&gt;'neo4j'&lt;/strong&gt; (&lt;a href="https://neo4j.com/docs/operations-manual/current/introduction/" target="_blank"&gt;Neo4j Operations Manual&lt;/a&gt;)</string>
+			<key>developer</key>
+			<string>Neo4j</string>
 			<key>display_name</key>
 			<string>Neo4j Community Edition</string>
 			<key>minimum_os_version</key>
 			<string>10.6.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Math &amp; Science</string>
-			<key>developer</key>
-			<string>Neo4j</string>
 		</dict>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.neo4j-ce.download</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -47,9 +47,9 @@ Default login is username &lt;strong&gt;'neo4j'&lt;/strong&gt; and password &lt;
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.2.9</string>
 </dict>
 </plist>

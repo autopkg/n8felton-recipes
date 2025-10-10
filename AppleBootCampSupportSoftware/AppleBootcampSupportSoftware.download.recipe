@@ -2,43 +2,43 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest version of the Apple provided Boot Camp Support Software.
+	<key>Description</key>
+	<string>Downloads the latest version of the Apple provided Boot Camp Support Software.
 
 NOTE: The ARTICLE_NUMBER changes with new releases and will need to be manually updated.</string>
-    <key>Identifier</key>
-    <string>com.github.n8felton.download.AppleBootcampSupportSoftware</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>AppleBootcampSupportSoftware</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>1.4</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>com.github.n8felton.shared/AppleSupportDownloadInfoProvider</string>
-            <key>Arguments</key>
-            <dict>
-                <key>ARTICLE_NUMBER</key>
-                <string>1837</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%url%</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-    </array>
+	<key>Identifier</key>
+	<string>com.github.n8felton.download.AppleBootcampSupportSoftware</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>AppleBootcampSupportSoftware</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.4</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>ARTICLE_NUMBER</key>
+				<string>1837</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/AppleSupportDownloadInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%url%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
 </dict>
 </plist>

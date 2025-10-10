@@ -13,53 +13,53 @@ Valid values for ARCH include:
 	<string>com.github.n8felton.paraview.download</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>ParaView</string>
 		<key>ARCH</key>
 		<string>x86_64</string>
+		<key>NAME</key>
+		<string>ParaView</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://www.paraview.org/files/?C=N;O=D</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;folder&gt;v\d\.\d+)\/</string>
+				<key>url</key>
+				<string>https://www.paraview.org/files/?C=N;O=D</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://www.paraview.org/files/%folder%/?C=N;O=D</string>
-				<key>re_pattern</key>
-				<string>"(?P&lt;file&gt;ParaView-[\d\.]+-MPI-OSX[\d\.]+-Python[\d\.]+-%ARCH%.dmg)</string>
-			</dict>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
+				<key>re_pattern</key>
+				<string>"(?P&lt;file&gt;ParaView-[\d\.]+-MPI-OSX[\d\.]+-Python[\d\.]+-%ARCH%.dmg)</string>
 				<key>url</key>
-				<string>https://www.paraview.org/files/%folder%/%file%</string>
+				<string>https://www.paraview.org/files/%folder%/?C=N;O=D</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>https://www.paraview.org/files/%folder%/%file%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -67,9 +67,9 @@ Valid values for ARCH include:
 				<key>requirement</key>
 				<string>identifier "org.paraview.ParaView" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = W38PE5Y733</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.3.1</string>
 </dict>
 </plist>

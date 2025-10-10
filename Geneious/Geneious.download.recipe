@@ -11,46 +11,46 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 	<string>com.github.n8felton.geneious.download</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Geneious</string>
+		<key>DOWNLOAD_BASE_URL</key>
+		<string>https://assets.geneious.com/installers/geneious</string>
 		<key>MAJOR_VERSION</key>
 		<string>10</string>
+		<key>NAME</key>
+		<string>Geneious</string>
 		<key>RELEASE</key>
 		<string>release</string>
 		<key>VERSIONS_URL</key>
 		<string>https://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt</string>
-		<key>DOWNLOAD_BASE_URL</key>
-		<string>https://assets.geneious.com/installers/geneious</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%VERSIONS_URL%</string>
 				<key>re_pattern</key>
 				<string>%MAJOR_VERSION% %RELEASE% %RELEASE%.*(Geneious.*mac.*dmg)</string>
+				<key>url</key>
+				<string>%VERSIONS_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_BASE_URL%/%RELEASE%/%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -58,9 +58,9 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 				<key>requirement</key>
 				<string>identifier "com.biomatters.Geneious" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3BTDDQD3L6"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.3.1</string>
 </dict>
 </plist>

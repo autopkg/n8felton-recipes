@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple/DTD PLIST 1.0//EN" "http://apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
@@ -16,12 +16,8 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>etc/paths.d</key>
@@ -31,11 +27,13 @@
 					<key>usr/local</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
@@ -43,78 +41,80 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*/</string>
 				<key>destination_path</key>
 				<string>%pkgroot%/usr/local/spades-%version%</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/*/</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Symlinker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>/usr/local/spades-%version%</string>
 				<key>destination_path</key>
 				<string>%pkgroot%/usr/local/spades</string>
+				<key>source_path</key>
+				<string>/usr/local/spades-%version%</string>
 			</dict>
+			<key>Processor</key>
+			<string>Symlinker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%pkgroot%/etc/paths.d/spades</string>
 				<key>file_content</key>
 				<string>/usr/local/spades/bin</string>
 				<key>file_mode</key>
 				<string>644</string>
+				<key>file_path</key>
+				<string>%pkgroot%/etc/paths.d/spades</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%pkgroot%</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>ru.spbu.cab.spades</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
-							<key>path</key>
-							<string>usr</string>
-							<key>user</key>
-							<string>root</string>
 							<key>group</key>
 							<string>wheel</string>
 							<key>mode</key>
 							<string>0755</string>
+							<key>path</key>
+							<string>usr</string>
+							<key>user</key>
+							<string>root</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>ru.spbu.cab.spades</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%pkgroot%</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

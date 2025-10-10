@@ -12,17 +12,17 @@
 		<string>SoX</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.4</string>
+	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>SOURCEFORGE_PROJECT_NAME</key>
 				<string>sox</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -41,7 +41,5 @@
 			<string>com.github.n8felton.shared/MD5Checksum</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.2.9</string>
 </dict>
 </plist>

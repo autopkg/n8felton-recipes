@@ -6,52 +6,52 @@
 	<string>Downloads the latest version of PAUP as configured in com.github.n8felton.paup.download.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.paup.munki</string>
-	<key>ParentRecipe</key>
-	<string>com.github.n8felton.paup.download</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/PAUP</string>
 		<key>NAME</key>
 		<string>PAUP</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>PAUP (Phylogenetic Analysis Using Parsimony) is a computational phylogenetics program for inferring evolutionary trees, written by David L. Swofford.</string>
+			<key>developer</key>
+			<string>David Swofford</string>
 			<key>display_name</key>
 			<string>PAUP</string>
 			<key>minimum_os_version</key>
 			<string>10.5.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>developer</key>
-			<string>David Swofford</string>
 		</dict>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.paup.download</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>DmgCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -59,9 +59,9 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
-	<key>MinimumVersion</key>
-	<string>0.5.0</string>
 </dict>
 </plist>

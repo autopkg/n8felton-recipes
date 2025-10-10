@@ -14,33 +14,33 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>FastQC</string>
+		<key>RE_PATTERN</key>
+		<string>href="(?P&lt;download&gt;fastqc.*dmg)"</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>A quality control application for high throughput sequence data with FastQ files.</string>
+			<key>developer</key>
+			<string>Babraham Bioinformatics</string>
 			<key>display_name</key>
 			<string>FastQC</string>
 			<key>minimum_os_version</key>
 			<string>10.13.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Math &amp; Science</string>
-			<key>developer</key>
-			<string>Babraham Bioinformatics</string>
-			<key>unattended_install</key>
-			<true/>
 			<key>requires</key>
 			<array>
 				<string>%JAVA_NAME%</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
 		</dict>
-		<key>RE_PATTERN</key>
-		<string>href=&quot;(?P&lt;download&gt;fastqc.*dmg)&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
@@ -49,8 +49,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -58,6 +56,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>
