@@ -70,6 +70,6 @@ Valid values for ARCH include:
 		</dict>
 	</array>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>0.3.1</string>
 </dict>
 </plist>
