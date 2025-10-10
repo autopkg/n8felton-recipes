@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>CellProfiler</string>
 		<key>RE_PATTERN</key>
-		<string>href=&quot;(?P&lt;url&gt;http[s]?.*(?P&lt;filename&gt;CellProfiler-macOS-(?P&lt;version&gt;[\d.]+)\.zip))&quot;</string>
+		<string>href="(?P&lt;url&gt;http[s]?.*(?P&lt;filename&gt;CellProfiler-macOS-(?P&lt;version&gt;[\d.]+)\.zip))"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>

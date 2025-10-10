@@ -18,16 +18,16 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Productivity</string>
 			<key>description</key>
 			<string>TIDAL is the first music service with High Fidelity sound quality, High Definition music videos and Curated Editorial, expertly crafted by music journalists.</string>
+			<key>developer</key>
+			<string>Aspiro AB</string>
 			<key>display_name</key>
 			<string>TIDAL</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Productivity</string>
-			<key>developer</key>
-			<string>Aspiro AB</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

@@ -8,18 +8,20 @@
 	<string>com.github.n8felton.munki.GraphViz</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>GraphViz</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>GraphViz (short for Graph Visualization Software) is a package of open-source tools initiated by AT&amp;T Labs Research for drawing graphs specified in DOT language scripts. It also provides libraries for software applications to use the tools. GraphViz is free software licensed under the Eclipse Public License.</string>
 			<key>developer</key>
@@ -28,8 +30,6 @@
 			<string>GraphViz</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

@@ -29,13 +29,13 @@
 			<string>GitHubReleasesInfoProvider</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
 				<string>%NAME%-%version%.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

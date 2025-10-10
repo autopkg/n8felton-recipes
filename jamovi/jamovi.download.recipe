@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>jamovi</string>
 		<key>RE_PATTERN</key>
-		<string>data-href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
+		<string>data-href="(?P&lt;download&gt;.*dmg)"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
@@ -46,8 +46,6 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -55,6 +53,8 @@
 				<key>requirement</key>
 				<string>identifier "org.jamovi.jamovi" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "9NCBP559AB"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

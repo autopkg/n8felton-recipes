@@ -18,45 +18,41 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
 			<key>Arguments</key>
 			<dict>
-				<key>version</key>
-				<string>%filename%</string>
 				<key>index</key>
 				<integer>1</integer>
 				<key>split_on</key>
 				<string>-</string>
+				<key>version</key>
+				<string>%filename%</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>usr</key>
@@ -66,11 +62,13 @@
 					<key>usr/local/sox</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileMover</string>
 			<key>Arguments</key>
 			<dict>
 				<key>source</key>
@@ -78,10 +76,10 @@
 				<key>target</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/sox</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileMover</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>file_content</key>
@@ -96,10 +94,10 @@ ln -sf ../sox/sox soxi</string>
 				<key>file_path</key>
 				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
@@ -107,14 +105,14 @@ ln -sf ../sox/sox soxi</string>
 					<key>chown</key>
 					<array>
 						<dict>
-							<key>path</key>
-							<string>usr/local/sox</string>
-							<key>user</key>
-							<string>root</string>
 							<key>group</key>
 							<string>wheel</string>
 							<key>mode</key>
 							<string>0755</string>
+							<key>path</key>
+							<string>usr/local/sox</string>
+							<key>user</key>
+							<string>root</string>
 						</dict>
 					</array>
 					<key>id</key>
@@ -131,6 +129,8 @@ ln -sf ../sox/sox soxi</string>
 					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

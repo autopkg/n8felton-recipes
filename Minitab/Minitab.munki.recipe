@@ -8,28 +8,28 @@
 	<string>com.github.n8felton.munki.Minitab</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Minitab</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/Minitab</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/Minitab</string>
+		<key>NAME</key>
+		<string>Minitab</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Minitab provides the tools you need to analyze data and find meaningful solutions to your toughest business problems.</string>
+			<key>developer</key>
+			<string>Minitab</string>
 			<key>display_name</key>
 			<string>Minitab</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>developer</key>
-			<string>Minitab</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -39,8 +39,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -48,6 +46,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

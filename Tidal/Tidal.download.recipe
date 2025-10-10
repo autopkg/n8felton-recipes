@@ -9,25 +9,25 @@ To download Intel use: "x64" in the ARCH_TYPE variable
 To Download Apple Silicon use: "arm64" in the ARCH_TYPE variable</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.Tidal</string>
-	<key>MinimumVersion</key>
-	<string>0.6.1</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Tidal</string>
 		<key>ARCH_TYPE</key>
 		<string>x64</string>
+		<key>NAME</key>
+		<string>Tidal</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>https://download.tidal.com/desktop/TIDAL.%ARCH_TYPE%.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

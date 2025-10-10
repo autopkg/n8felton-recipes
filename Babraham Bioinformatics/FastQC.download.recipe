@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>FastQC</string>
 		<key>RE_PATTERN</key>
-		<string>href=&quot;(?P&lt;download&gt;fastqc.*dmg)&quot;</string>
+		<string>href="(?P&lt;download&gt;fastqc.*dmg)"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>

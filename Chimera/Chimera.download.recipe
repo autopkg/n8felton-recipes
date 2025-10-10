@@ -22,37 +22,37 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/download.html</string>
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
+				<key>url</key>
+				<string>%BASE_URL%/download.html</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%/%file%&amp;choice=Accept</string>
-				<key>re_pattern</key>
-				<string>url=\/chimera\/(?P&lt;match&gt;[^"]+)"</string>
-			</dict>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
+				<key>re_pattern</key>
+				<string>url=\/chimera\/(?P&lt;match&gt;[^"]+)"</string>
 				<key>url</key>
-				<string>%BASE_URL%/%match%</string>
+				<string>%DOWNLOAD_URL%/%file%&amp;choice=Accept</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%BASE_URL%/%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

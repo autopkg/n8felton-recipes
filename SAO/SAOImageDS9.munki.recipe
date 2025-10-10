@@ -16,6 +16,10 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>SAOImageDS9-app</string>
+		<key>SAO_OS_KEY</key>
+		<string>macosmojave</string>
+		<key>SAO_REQUESTED_VERSION</key>
+		<string></string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -35,10 +39,6 @@
 			<key>unattended_install</key>
 			<true/>
 		</dict>
-		<key>SAO_OS_KEY</key>
-		<string>macosmojave</string>
-		<key>SAO_REQUESTED_VERSION</key>
-		<string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>

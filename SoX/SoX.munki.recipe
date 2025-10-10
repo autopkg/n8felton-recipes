@@ -18,6 +18,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Utilities</string>
 			<key>description</key>
 			<string>SoX is a cross-platform (Windows, Linux, MacOS X, etc.) command line utility that can convert various formats of computer audio files in to other formats. It can also apply various effects to these sound files, and, as an added bonus, SoX can play and record audio files on most platforms.</string>
 			<key>developer</key>
@@ -26,8 +28,6 @@
 			<string>SoX - Sound eXchange</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Utilities</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

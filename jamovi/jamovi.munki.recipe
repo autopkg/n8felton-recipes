@@ -12,29 +12,29 @@
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>jamovi</string>
+		<key>RE_PATTERN</key>
+		<string>data-href="(?P&lt;download&gt;.*dmg)"</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>Math &amp; Science</string>
 			<key>description</key>
 			<string>Free and open statistical software to bridge the gap between researcher and statistician.</string>
+			<key>developer</key>
+			<string>The jamovi project</string>
 			<key>display_name</key>
 			<string>jamovi</string>
 			<key>minimum_os_version</key>
 			<string>10.13.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>Math &amp; Science</string>
-			<key>developer</key>
-			<string>The jamovi project</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
-		<key>RE_PATTERN</key>
-		<string>data-href=&quot;(?P&lt;download&gt;.*dmg)&quot;</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0</string>
@@ -43,8 +43,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -52,6 +50,8 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

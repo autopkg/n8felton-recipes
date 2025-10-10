@@ -8,26 +8,26 @@
 	<string>com.github.n8felton.munki.AstroImageJ</string>
 	<key>Input</key>
 	<dict>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/AstroImageJ</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/AstroImageJ</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>AstroImageJ is ImageJ with astronomy plugins and macros installed. It includes tools based on the Gottingen ImageJ astronomical resources with additions found to be useful.</string>
+			<key>developer</key>
+			<string>Karen Collins &amp; John Kielkopf</string>
 			<key>display_name</key>
 			<string>AstroImageJ</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>developer</key>
-			<string>Karen Collins &amp; John Kielkopf</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -37,15 +37,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Comment</key>
-			<string>Import the pkg into Munki</string>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Comment</key>
+			<string>Import the pkg into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>

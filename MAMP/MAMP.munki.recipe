@@ -12,6 +12,8 @@ SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 	<string>com.github.n8felton.munki.MAMP</string>
 	<key>Input</key>
 	<dict>
+		<key>DERIVE_MIN_OS</key>
+		<string>YES</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Development</string>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -20,8 +22,6 @@ SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 		<string>MAMP</string>
 		<key>SUPPORTED_ARCH</key>
 		<string>x86_64</string>
-		<key>DERIVE_MIN_OS</key>
-		<string>YES</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -36,12 +36,12 @@ SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 			<string>Appsolute GmbH</string>
 			<key>display_name</key>
 			<string>MAMP</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>supported_architectures</key>
 			<array>
 				<string>%SUPPORTED_ARCH%</string>
 			</array>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
@@ -94,6 +94,8 @@ SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>derive_minimum_os_version</key>
+				<string>%DERIVE_MIN_OS%</string>
 				<key>faux_root</key>
 				<string>%RECIPE_CACHE_DIR%</string>
 				<key>installs_item_paths</key>
@@ -101,8 +103,6 @@ SUPPORTED_ARCH can be left empty, "x86_64" or "arm64".</string>
 					<string>/Applications/MAMP/MAMP.app</string>
 					<string>/Applications/MAMP PRO.app</string>
 				</array>
-				<key>derive_minimum_os_version</key>
-				<string>%DERIVE_MIN_OS%</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiInstallsItemsCreator</string>

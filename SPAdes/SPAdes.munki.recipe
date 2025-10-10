@@ -8,18 +8,20 @@
 	<string>com.github.n8felton.munki.spades</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>SPAdes</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>SPAdes вЂ“ St. Petersburg genome assembler вЂ“ is an assembly toolkit containing various assembly pipelines.</string>
 			<key>developer</key>
@@ -28,8 +30,6 @@
 			<string>SPAdes</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>

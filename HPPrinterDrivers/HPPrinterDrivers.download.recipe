@@ -8,12 +8,12 @@
 	<string>com.github.n8felton.download.HPPrinterDrivers</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>HPPrinterDrivers</string>
-		<key>HP_QUERY_TYPE</key>
-		<string>ModelName</string>
 		<key>HP_QUERY</key>
 		<string>HP Color LaserJet Pro M453-4</string>
+		<key>HP_QUERY_TYPE</key>
+		<string>ModelName</string>
+		<key>NAME</key>
+		<string>HPPrinterDrivers</string>
 		<key>OPERATING_SYSTEM</key>
 		<string>macOS 12.0</string>
 	</dict>
@@ -39,19 +39,19 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: HP Inc. (6HB5Y2QTA3)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

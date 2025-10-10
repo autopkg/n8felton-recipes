@@ -10,36 +10,36 @@
 	<dict>
 		<key>BASE_URL</key>
 		<string>http://www.graphviz.org</string>
-		<key>RE_PATTERN</key>
-		<string>&lt;a href=&quot;/(.*mountainlion[^&quot;]+)&quot;</string>
 		<key>NAME</key>
 		<string>GraphViz</string>
+		<key>RE_PATTERN</key>
+		<string>&lt;a href="/(.*mountainlion[^"]+)"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/Download_macos.php</string>
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
+				<key>url</key>
+				<string>%BASE_URL%/Download_macos.php</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/%match%</string>
 				<key>filename</key>
 				<string>%NAME%.pkg</string>
+				<key>url</key>
+				<string>%BASE_URL%/%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

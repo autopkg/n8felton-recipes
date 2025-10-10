@@ -16,13 +16,13 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>SOURCEFORGE_PROJECT_NAME</key>
 				<string>pentaho</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

@@ -13,26 +13,24 @@
 		<key>NAME</key>
 		<string>CodonCode Aligner</string>
 		<key>RE_PATTERN</key>
-		<string>href=&quot;(https:.*Installer.*dmg)&quot;</string>
+		<string>href="(https:.*Installer.*dmg)"</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
@@ -40,25 +38,27 @@
 				<key>url</key>
 				<string>%match%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%/%NAME%.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: CodonCode Corporation (SXRQ7NHBVM)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%/%NAME%.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

@@ -16,8 +16,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
@@ -27,6 +25,8 @@
 				<key>include_prereleases</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -37,8 +37,6 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -48,19 +46,19 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/*.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>expected_authority_names</key>
@@ -72,6 +70,8 @@
 				<key>input_path</key>
 				<string>%found_filename%/*.mpkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

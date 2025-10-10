@@ -8,18 +8,20 @@
 	<string>com.github.n8felton.munki.Cn3D</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>Cn3D</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Math &amp; Science</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Cn3D ("see in 3D") is a macromolecular structure viewer that allows you to view 3-dimensional structures from NCBI's Entrez Structure database. Cn3D simultaneously displays structure, sequence, and alignment, and now has powerful annotation and alignment editing features.</string>
 			<key>developer</key>
@@ -28,14 +30,12 @@
 			<string>Cn3D</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>unattended_install</key>
-			<true/>
 			<key>requires</key>
 			<array>
 				<string>XQuartz</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

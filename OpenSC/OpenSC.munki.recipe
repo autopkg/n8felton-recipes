@@ -8,18 +8,20 @@
 	<string>com.github.n8felton.munki.OpenSC</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>OpenSC</string>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>OpenSC provides a set of libraries and utilities to work with smart cards. Its main focus is on cards that support cryptographic operations, and facilitate their use in security applications such as authentication, mail encryption and digital signatures. OpenSC implements the PKCS#11 API so applications supporting this API (such as Mozilla Firefox and Thunderbird) can use it.</string>
 			<key>developer</key>
@@ -28,8 +30,6 @@
 			<string>OpenSC</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>uninstall_method</key>
@@ -48,10 +48,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_pkg</key>
-				<string>%pathname%/OpenSC*.pkg</string>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/OpenSC.pkg</string>
+				<key>source_pkg</key>
+				<string>%pathname%/OpenSC*.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgCopier</string>

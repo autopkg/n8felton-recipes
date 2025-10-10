@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple/DTD PLIST 1.0//EN" "http://apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
@@ -8,32 +8,32 @@
 	<string>com.github.n8felton.download.Maven</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Maven</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://maven.apache.org/download.cgi</string>
+		<key>NAME</key>
+		<string>Maven</string>
 	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
 				<string>href="(?P&lt;url&gt;https?[^"]*(?P&lt;filename&gt;apache-maven-(?P&lt;version&gt;.+?)-bin.tar.gz))</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
 				<string>%filename%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

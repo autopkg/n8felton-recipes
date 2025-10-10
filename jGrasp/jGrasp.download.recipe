@@ -18,54 +18,54 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%BASE_URL%/cgiserver.txt</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;url&gt;[^:]+):(?P&lt;path&gt;[^:]+)</string>
+				<key>url</key>
+				<string>%BASE_URL%/cgiserver.txt</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>http://%url%%path%/version5.pl</string>
-				<key>re_pattern</key>
-				<string>(?P&lt;version&gt;(?:(?P&lt;major&gt;\d+)\.)?(?:(?P&lt;minor&gt;\d+)\.)?(?P&lt;patch&gt;\d+)(?P&lt;extra&gt;[^;]*));</string>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>(?P&lt;version&gt;(?:(?P&lt;major&gt;\d+)\.)?(?:(?P&lt;minor&gt;\d+)\.)?(?P&lt;patch&gt;\d+)(?P&lt;extra&gt;[^;]*));</string>
+				<key>url</key>
+				<string>http://%url%%path%/version5.pl</string>
+			</dict>
 			<key>Processor</key>
-			<string>URLDownloader</string>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>%BASE_URL%/dl4g/jgrasp/jgrasp%major%%minor%%patch%%extra%.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: Auburn University (73GM27XVPE)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

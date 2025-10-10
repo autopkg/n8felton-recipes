@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple/DTD PLIST 1.0//EN" "http://apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Description</key>
@@ -16,12 +16,8 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>usr</key>
@@ -31,11 +27,13 @@
 					<key>usr/local/bin</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
@@ -43,76 +41,78 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*/</string>
 				<key>destination_path</key>
 				<string>%pkgroot%/usr/local/maven-%version%</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/*/</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Symlinker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>/usr/local/maven-%version%</string>
 				<key>destination_path</key>
 				<string>%pkgroot%/usr/local/maven</string>
+				<key>source_path</key>
+				<string>/usr/local/maven-%version%</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Symlinker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>/usr/local/maven/bin/mvn</string>
-				<key>destination_path</key>
-				<string>%pkgroot%/usr/local/bin/mvn</string>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%pkgroot%/usr/local/bin/mvn</string>
+				<key>source_path</key>
+				<string>/usr/local/maven/bin/mvn</string>
+			</dict>
 			<key>Processor</key>
-			<string>PkgCreator</string>
+			<string>Symlinker</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%pkgroot%</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>org.apache.maven</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
-							<key>path</key>
-							<string>usr</string>
-							<key>user</key>
-							<string>root</string>
 							<key>group</key>
 							<string>wheel</string>
 							<key>mode</key>
 							<string>0755</string>
+							<key>path</key>
+							<string>usr</string>
+							<key>user</key>
+							<string>root</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>org.apache.maven</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%pkgroot%</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

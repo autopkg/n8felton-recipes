@@ -11,10 +11,10 @@ to a non-empty value to include releases on GitHub marked as "pre-releases."</st
 	<string>com.github.n8felton.download.OpenRefine</string>
 	<key>Input</key>
 	<dict>
+		<key>INCLUDE_PRERELEASES</key>
+		<string></string>
 		<key>NAME</key>
 		<string>OpenRefine</string>
-                <key>INCLUDE_PRERELEASES</key>
-                <string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
