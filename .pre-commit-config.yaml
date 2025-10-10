@@ -26,3 +26,4 @@ repos:
         exclude: ClustalW.pkg.recipe|Timeular.*
       - id: format-xml-plist
       - id: forbid-autopkg-overrides
+      - id: forbid-autopkg-trust-info
