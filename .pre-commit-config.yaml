@@ -9,4 +9,5 @@ repos:
       - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
+      - id: check-yaml
 
