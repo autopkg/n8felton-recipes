@@ -17,3 +17,7 @@ repos:
       - id: no-commit-to-branch
       - id: trailing-whitespace
         args: ["--markdown-linebreak-ext=md"]
+  - repo: https://github.com/homebysix/pre-commit-macadmin
+    rev: bd76f4a085fb629b1b9651630e1abf6dea631c25 # v1.21.0
+    hooks:
+      - id: check-plists
