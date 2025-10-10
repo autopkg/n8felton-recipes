@@ -1,5 +1,4 @@
 #!/usr/local/autopkg/python
-# -*- coding: utf-8 -*-
 #
 # Copyright 2015 Nathan Felton (n8felton)
 #
@@ -107,7 +106,7 @@ class MunkiGitCommitter(Processor):
         if not self.env.get('munki_importer_summary_result'):
             return
 
-        pkginfo_path = '{0}/{1}'.format('pkgsinfo',
+        pkginfo_path = '{}/{}'.format('pkgsinfo',
                                         self.env
                                         ['munki_importer_summary_result']
                                         ['data']
