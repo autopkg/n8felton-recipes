@@ -18,6 +18,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>description</key>
+			<string>HP printer drivers directly from HP.</string>
 			<key>developer</key>
 			<string>HP</string>
 			<key>display_name</key>
