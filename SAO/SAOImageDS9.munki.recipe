@@ -8,6 +8,8 @@
 	<string>com.github.n8felton.munki.SAOImageDS9-app</string>
 	<key>Input</key>
 	<dict>
+		<key>Comment</key>
+		<string>leave SAO_REQUESTED_VERSION blank to pull the latest version</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Math &amp; Science</string>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -35,7 +37,6 @@
 		</dict>
 		<key>SAO_OS_KEY</key>
 		<string>macosmojave</string>
-		<!-- leave SAO_REQUESTED_VERSION blank to pull the latest version -->
 		<key>SAO_REQUESTED_VERSION</key>
 		<string></string>
 	</dict>
