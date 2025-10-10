@@ -164,5 +164,3 @@ Parse YAML into usable autopkg variables
     - **description:** The keys you wish to parse the values from the YAML source
 
 ## Output Variables
-
-
