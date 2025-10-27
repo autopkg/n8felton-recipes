@@ -14,6 +14,8 @@
 		<string>KeePassXC-.*-%ARCH%\.dmg$</string>
 		<key>NAME</key>
 		<string>KeePassXC</string>
+		<key>INCLUDE_PRERELEASES</key>
+		<string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
@@ -27,7 +29,7 @@
 				<key>github_repo</key>
 				<string>keepassxreboot/keepassxc</string>
 				<key>include_prereleases</key>
-				<false/>
+				<string>%INCLUDE_PRERELEASES%</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
