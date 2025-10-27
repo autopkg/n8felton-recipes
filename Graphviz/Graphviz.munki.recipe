@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of GraphViz and imports it into Munki.</string>
+	<string>Downloads the latest version of Graphviz and imports it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.n8felton.munki.GraphViz</string>
+	<string>com.github.n8felton.munki.Graphviz</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_CATEGORY</key>
@@ -13,7 +13,7 @@
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
-		<string>GraphViz</string>
+		<string>Graphviz</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -23,11 +23,11 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>GraphViz (short for Graph Visualization Software) is a package of open-source tools initiated by AT&amp;T Labs Research for drawing graphs specified in DOT language scripts. It also provides libraries for software applications to use the tools. GraphViz is free software licensed under the Eclipse Public License.</string>
+			<string>Graphviz (short for Graph Visualization Software) is a package of open-source tools initiated by AT&amp;T Labs Research for drawing graphs specified in DOT language scripts. It also provides libraries for software applications to use the tools. Graphviz is free software licensed under the Eclipse Public License.</string>
 			<key>developer</key>
 			<string>AT&amp;T Labs Research</string>
 			<key>display_name</key>
-			<string>GraphViz</string>
+			<string>Graphviz</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -35,9 +35,9 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.7.2</string>
 	<key>ParentRecipe</key>
-	<string>com.github.n8felton.download.GraphViz</string>
+	<string>com.github.n8felton.download.Graphviz</string>
 	<key>Process</key>
 	<array>
 		<dict>
