@@ -16,6 +16,8 @@
 		<string>HPPrinterDrivers</string>
 		<key>OPERATING_SYSTEM</key>
 		<string>macOS 12.0</string>
+		<key>PRODUCT_NUMBER</key>
+		<string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.4</string>
