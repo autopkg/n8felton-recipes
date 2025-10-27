@@ -28,11 +28,16 @@ class SHA256Checksum(Processor):
     input_variables = {
         "pathname": {
             "required": True,
-            "description": "Path of the file to calculate SHA256 checksum on."
+            "description": "Path of the file to calculate SHA256 checksum on.",
         },
         "sha256checksum": {
             "required": False,
-            "description": "A SHA256 checksum to verify pathname."
+            "description": "A SHA256 checksum to verify pathname.",
+        },
+        "sha256checksumpath": {
+            "required": False,
+            "description": "The path to a file containing the SHA256 checksum "
+            "to verify pathname.",
         },
     }
     output_variables = {
@@ -48,6 +53,13 @@ class SHA256Checksum(Processor):
                 sha256.update(chunk)
         return sha256.hexdigest()
 
+    def sha256_from_file(self, file_name):
+        with open(file_name) as f:
+            line = f.read().strip()
+            # Extract just the hex checksum, assuming it's the first part before any spaces
+            checksum = line.split()[0]
+        return checksum
+
     def main(self):
         sha256checksum = self.sha256(self.env["pathname"])
         self.output("{sha256checksum}".format(sha256checksum=sha256checksum), 1)
@@ -55,7 +67,15 @@ class SHA256Checksum(Processor):
             if not self.env['sha256checksum'] == sha256checksum:
                 raise ProcessorError("SHA256 Checksum verification failed.")
             else:
-                self.output("SHA256 Checksum Matches", 1)
+                self.output("SHA256 checksum matches", 1)
+        if self.env.get("sha256checksumpath"):
+            sha256_checksum_path = self.env.get("sha256checksumpath")
+            _sha256checksum = self.sha256_from_file(sha256_checksum_path)
+            self.output(f"{sha256_checksum_path} contains {_sha256checksum}", 2)
+            if not _sha256checksum == sha256checksum:
+                raise ProcessorError("SHA256 checksum verification from file failed.")
+            else:
+                self.output("SHA256 checksum from file matches", 1)
         self.env["sha256checksum"] = sha256checksum
 
 if __name__ == "__main__":
