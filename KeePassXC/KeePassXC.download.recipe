@@ -3,7 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest release of KeePassXC from Github.</string>
+	<string>Downloads the latest release of KeePassXC from Github.
+	
+Valid ARCH values include:
+- arm64 (Apple Silicon, default)
+- x86_64 (Intel)
+
+Set INCLUDE_PRERELEASES to a non-empty value to download pre-release versions.
+</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.KeePassXC</string>
 	<key>Input</key>
