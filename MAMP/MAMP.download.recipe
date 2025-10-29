@@ -27,7 +27,7 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;filename&gt;MAMP-MAMP-PRO-(?P&lt;version&gt;((?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)))\-%ARCH_TYPE%).pkg"</string>
+                <string>(?P&lt;mamp_url&gt;https:\/\/downloads\.mamp\.info\/MAMP-PRO\/macOS\/MAMP-PRO\/(?P&lt;filename&gt;MAMP-MAMP-PRO-(?P&lt;version&gt;\d+\.\d+(?:\.\d+)?)-%ARCH_TYPE%\.pkg)</string>
 				<key>url</key>
 				<string>%SEARCH_URL%</string>
 			</dict>
@@ -40,7 +40,7 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 				<key>filename</key>
 				<string>%filename%-%version%.pkg</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%/%filename%.pkg</string>
+				<string>%mamp_url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
