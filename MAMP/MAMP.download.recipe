@@ -38,7 +38,7 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%filename%-%version%.pkg</string>
+				<string>%filename%</string>
 				<key>url</key>
 				<string>%mamp_url%</string>
 			</dict>
