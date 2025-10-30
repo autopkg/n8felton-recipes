@@ -17,7 +17,7 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 		<key>NAME</key>
 		<string>MAMP</string>
 		<key>SEARCH_URL</key>
-		<string>https://www.mamp.info/en/downloads</string>
+		<string>https://www.mamp.info/en/downloads/</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
