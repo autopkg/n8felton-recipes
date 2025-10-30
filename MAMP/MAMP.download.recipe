@@ -11,7 +11,7 @@ ARCH_TYPE is "Intel-x86" or "Apple-chip"</string>
 	<key>Input</key>
 	<dict>
 		<key>ARCH_TYPE</key>
-		<string>Intel-x86</string>
+		<string>Apple-chip</string>
 		<key>NAME</key>
 		<string>MAMP</string>
 		<key>SEARCH_URL</key>
