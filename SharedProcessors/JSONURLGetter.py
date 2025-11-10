@@ -19,10 +19,10 @@ import json
 
 from autopkglib import URLGetter
 
-__all__ = ["JSON"]
+__all__ = ["JSONURLGetter"]
 
 
-class JSON(URLGetter):
+class JSONURLGetter(URLGetter):
     """Parse JSON into usable autopkg variables."""
 
     description = __doc__
@@ -49,5 +49,5 @@ class JSON(URLGetter):
 
 
 if __name__ == "__main__":
-    PROCESSOR = JSON()
+    PROCESSOR = JSONURLGetter()
     PROCESSOR.execute_shell()
