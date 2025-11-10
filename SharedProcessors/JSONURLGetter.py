@@ -38,6 +38,7 @@ class JSONURLGetter(URLGetter):
     def get_json(self, json_url):
         """Returns the JSON file at the given URL."""
         response = self.download(json_url)
+        self.output(response, 4)
         releases = json.loads(response)
         return releases
 
