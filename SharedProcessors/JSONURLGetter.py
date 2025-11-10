@@ -17,7 +17,7 @@
 
 import json
 
-from autopkglib import URLGetter
+from autopkglib import URLGetter, get_autopkg_version
 
 __all__ = ["JSONURLGetter"]
 
@@ -37,7 +37,11 @@ class JSONURLGetter(URLGetter):
 
     def get_json(self, json_url):
         """Returns the JSON file at the given URL."""
-        response = self.download(json_url)
+        headers = {
+            "Accept": "application/json",
+            "User-Agent": f"AutoPkg/{get_autopkg_version()}",
+        }
+        response = self.download(json_url, headers=headers)
         self.output(response, 4)
         releases = json.loads(response)
         return releases
