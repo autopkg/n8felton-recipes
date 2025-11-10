@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>Created with Recipe Robot v1.0.1 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
 	<string>Downloads the latest version of Cinemagraph Pro.</string>
 	<key>Identifier</key>
@@ -20,21 +18,24 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>"download":"(https://cdn.flixel.com/downloads/CinemagraphPro-(?P&lt;version&gt;[\d\.]+)\.zip)"</string>
-				<key>result_output_var_name</key>
-				<string>url</string>
+				<key>keys</key>
+				<array>
+					<string>download</string>
+					<string>short_version_string</string>
+				</array>
 				<key>url</key>
 				<string>https://flixel.com/api/releases/mac-pro/latest/</string>
 			</dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>com.github.n8felton.shared/JSONURLGetter</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%version%.zip</string>
+				<string>%NAME%-%short_version_string%.zip</string>
+				<key>url</key>
+				<string>%download%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
