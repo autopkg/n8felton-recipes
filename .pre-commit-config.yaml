@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
+    rev: v6.0.0 # v6.0.0
     hooks:
       - id: check-added-large-files
         args: ["--maxkb=100"]
@@ -18,7 +18,7 @@ repos:
       - id: trailing-whitespace
         args: ["--markdown-linebreak-ext=md"]
   - repo: https://github.com/homebysix/pre-commit-macadmin
-    rev: bd76f4a085fb629b1b9651630e1abf6dea631c25 # v1.21.0
+    rev: v1.22.0 # v1.21.0
     hooks:
       - id: check-plists
       - id: check-autopkg-recipes
@@ -28,6 +28,6 @@ repos:
       - id: forbid-autopkg-overrides
       - id: forbid-autopkg-trust-info
   - repo: https://github.com/asottile/pyupgrade
-    rev: f90119b1b8bd9e46949d9592972b2c4c27d62a97 # v3.21.0
+    rev: v3.21.2 # v3.21.0
     hooks:
       - id: pyupgrade
