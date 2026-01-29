@@ -38,20 +38,6 @@
 			<key>Processor</key>
 			<string>com.github.n8felton.shared/GitLabReleasesInfoProvider</string>
 		</dict>
-		<!-- Commented out because version 14.1.2 does not have SHA256 files available.
-			 Uncomment if future releases include .pkg.sha256 files again.
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-%version%.pkg.sha256</string>
-				<key>url</key>
-				<string>%direct_asset_url%.sha256</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		-->
 		<dict>
 			<key>Arguments</key>
 			<dict>
@@ -67,38 +53,6 @@
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
-		<!-- Commented out because version 14.1.2 does not have SHA256 files available.
-			 Uncomment if future releases include .pkg.sha256 files again.
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pathname</key>
-				<string>%pathname%</string>
-				<key>sha256checksumpath</key>
-				<string>%pathname%.sha256</string>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.n8felton.shared/SHA256Checksum</string>
-		</dict>
-		-->
-		<!-- Commented out because Graphviz packages are not code signed.
-			 Uncomment if future releases are properly signed.
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%pathname%</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: Graphviz Project (96CU6RDK3D)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-		</dict>
-		-->
 	</array>
 </dict>
 </plist>
