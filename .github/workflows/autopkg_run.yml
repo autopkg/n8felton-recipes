@@ -54,8 +54,11 @@ jobs:
           defaults write com.github.autopkg RECIPE_REPO_DIR "${RECIPE_REPO_DIR}"
           defaults read com.github.autopkg RECIPE_REPO_DIR
 
-          autopkg repo-add https://github.com/autopkg/recipes.git
-          autopkg repo-add https://github.com/autopkg/n8felton-recipes.git
+          xargs autopkg repo-add <<EOF
+            recipes
+            n8felton-recipes
+            hansen-m-recipes
+          EOF
         shell: bash -exuo pipefail {0}
       - name: Install Munki (latest)
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
