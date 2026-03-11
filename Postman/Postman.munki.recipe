@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the specified major version of Postman and imports it into a Munki repository.
 
-DOWNLOAD_ARCH=("osx_arm64","osx_x64")
+DOWNLOAD_ARCH=("osx_arm64","osx_64")
 MAJOR_VERSION=("10","11","12","N")
 SUPPORTED_ARCH=("arm64","x86_64")
 </string>
