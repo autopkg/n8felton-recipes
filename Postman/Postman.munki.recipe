@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the specified major version of Postman and imports it into a Munki repository.
+
+DOWNLOAD_ARCH=("osx_arm64","osx_x64")
+MAJOR_VERSION=("10","11","12","N")
+SUPPORTED_ARCH=("arm64","x86_64")
+</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.Postman.munki</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_ARCH</key>
+		<string>osx_arm64</string>
+		<key>MAJOR_VERSION</key>
+		<string>11</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Postman</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>arm64</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>Developer Tools</string>
+			<key>description</key>
+			<string>Create and send any HTTP request using the awesome Postman request builder. Write your own test cases to validate response data, response times, and more!</string>
+			<key>developer</key>
+			<string>Postman, Inc</string>
+			<key>display_name</key>
+			<string>Postman</string>
+			<key>name</key>
+			<string>%NAME% %MAJOR_VERSION%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.7.2</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.Postman.download</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%SUPPORTED_ARCH%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

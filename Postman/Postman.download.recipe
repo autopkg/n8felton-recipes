@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the specified major version of Postman.
+
+MAJOR_VERSION=("10","11","12","N")
+DOWNLOAD_ARCH=("osx_arm64","osx_x64")
+	</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.Postman.download</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_ARCH</key>
+		<string>osx_arm64</string>
+		<key>MAJOR_VERSION</key>
+		<string>11</string>
+		<key>NAME</key>
+		<string>Postman</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.7.6</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>keys</key>
+				<array>
+					<string>url</string>
+					<string>version</string>
+				</array>
+				<key>url</key>
+				<string>https://dl.pstmn.io/update/status?channel=stable&amp;currentVersion=%MAJOR_VERSION%.0.0&amp;platform=%DOWNLOAD_ARCH%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/JSONURLGetter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%DOWNLOAD_ARCH%-%version%.zip</string>
+				<key>url</key>
+				<string>%url%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Postman.app</string>
+				<key>requirement</key>
+				<string>identifier "com.postmanlabs.mac" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = H7H8Q7M5CK</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
