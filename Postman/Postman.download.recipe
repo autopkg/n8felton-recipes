@@ -5,8 +5,8 @@
 	<key>Description</key>
 	<string>Downloads the specified major version of Postman.
 
+DOWNLOAD_ARCH=("osx_arm64","osx_64")
 MAJOR_VERSION=("10","11","12","N")
-DOWNLOAD_ARCH=("osx_arm64","osx_x64")
 	</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.Postman.download</string>
