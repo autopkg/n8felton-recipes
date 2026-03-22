@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>BASE_URL</key>
-		<string>http://www.clustal.org/download/current</string>
+		<string>https://www.clustal.org/download/current</string>
 		<key>NAME</key>
 		<string>ClustalX</string>
 	</dict>
