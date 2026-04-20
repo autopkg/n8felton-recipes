@@ -42,10 +42,10 @@ class GPGSignatureVerifier(Processor):
         },
         "distribution_file": {"required": True, "description": "file to verify"},
         "signature_file": {"required": True, "description": "file with signature"},
-        "FAIL_IF_GPG_MISSING": {
+        "PASS_IF_GPG_MISSING": {
             "required": False,
-            "default": True,
-            "description": "Raise an error if the gpg binary is not found. Set to false to skip verification when gpg is not installed.",
+            "default": False,
+            "description": "Skip verification if the gpg binary is not found. Set to true to allow recipes to proceed when gpg is not installed.",
         },
     }
     output_variables = {"pathname": {"description": "path to the distribution file."}}
@@ -99,7 +99,7 @@ class GPGSignatureVerifier(Processor):
     def main(self) -> None:
         self.env["pathname"] = self.env["distribution_file"]
         if not self.gpg_found():
-            if self.env.get("FAIL_IF_GPG_MISSING", True):
+            if not self.env.get("PASS_IF_GPG_MISSING", False):
                 raise ProcessorError(
                     "[FAIL] gpg executable not found. Install GPG to verify signatures."
                 )
