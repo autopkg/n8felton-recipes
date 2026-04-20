@@ -67,7 +67,7 @@ jobs:
       - name: Install Munki (latest)
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
-          # Build a temp munki enviornment
+          # Build a temp munki environment
           MUNKI_REPO="/Users/Shared/munki"
           sudo mkdir -p "${MUNKI_REPO}"
           sudo chown root:admin "${MUNKI_REPO}"
