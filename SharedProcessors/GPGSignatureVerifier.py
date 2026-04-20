@@ -1,7 +1,7 @@
 #!/usr/local/autopkg/python
 #
 # Copyright 2020 Gerard Kok
-# Copyright 2026 Nathan Felton
+# Copyright 2026 Nathan Felton (n8felton)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
