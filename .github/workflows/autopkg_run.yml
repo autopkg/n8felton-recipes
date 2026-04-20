@@ -20,10 +20,6 @@ jobs:
         with:
           files: "**/**.recipe"
           separator: ","
-      - name: Install gnupg
-        if: steps.changed-recipe-files.outputs.any_changed == 'true'
-        run: brew install gnupg
-        shell: bash -exuo pipefail {0}
       - name: Install AutoPkg (latest)
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
