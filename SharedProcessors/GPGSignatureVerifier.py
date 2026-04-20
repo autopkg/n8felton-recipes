@@ -101,16 +101,16 @@ class GPGSignatureVerifier(Processor):
         if not self.gpg_found():
             if self.env.get("FAIL_IF_GPG_MISSING", True):
                 raise ProcessorError(
-                    "gpg executable not found. Install GPG to verify signatures."
+                    "[FAIL] gpg executable not found. Install GPG to verify signatures."
                 )
             self.output(
-                f"gpg executable not found, skipping signature verification for "
+                f"[FAIL] gpg executable not found, skipping signature verification for "
                 f"{self.env['distribution_file']}"
             )
             return
         self.import_key()
         self.verify()
-        self.output(f"Good signature for {self.env['distribution_file']}")
+        self.output(f"[PASS] Good signature for {self.env['distribution_file']}")
 
 
 if __name__ == "__main__":
