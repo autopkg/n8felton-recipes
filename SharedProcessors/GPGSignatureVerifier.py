@@ -17,6 +17,7 @@
 
 """Verifies a GPG signature for a downloaded file."""
 
+import shutil
 import subprocess
 
 from autopkglib import Processor, ProcessorError
@@ -31,7 +32,7 @@ class GPGSignatureVerifier(Processor):
     input_variables = {
         "gpg_path": {
             "required": False,
-            "default": "/usr/local/bin/gpg",
+            "default": shutil.which("gpg"),
             "description": "location of the gpg binary",
         },
         "public_key_id": {"required": True, "description": "public key id to import"},
