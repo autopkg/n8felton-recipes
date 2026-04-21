@@ -11,12 +11,12 @@ jobs:
           $(which curl) --version
           $(which jq) --version
         shell: bash -x {0}
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 2
       - name: Get changed files
         id: changed-recipe-files
-        uses: tj-actions/changed-files@2f7c5bfce28377bc069a65ba478de0a74aa0ca32
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
         with:
           files: "**/**.recipe"
           separator: ","
@@ -63,7 +63,7 @@ jobs:
       - name: Install Munki (latest)
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
-          # Build a temp munki enviornment
+          # Build a temp munki environment
           MUNKI_REPO="/Users/Shared/munki"
           sudo mkdir -p "${MUNKI_REPO}"
           sudo chown root:admin "${MUNKI_REPO}"
