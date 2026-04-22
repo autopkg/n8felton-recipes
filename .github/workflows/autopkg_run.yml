@@ -1,5 +1,8 @@
 name: Run `autopkg run`
-on: [push, pull_request]
+on:
+  pull_request:
+    paths:
+      - "**/**.recipe"
 jobs:
   autopkg_run:
     name: Install and configure AutoPkg
