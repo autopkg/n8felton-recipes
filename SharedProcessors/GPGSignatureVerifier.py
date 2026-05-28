@@ -32,7 +32,6 @@ class GPGSignatureVerifier(Processor):
     input_variables = {
         "gpg_path": {
             "required": False,
-            "default": shutil.which("gpg"),
             "description": "location of the gpg binary",
         },
         "public_key_id": {"required": True, "description": "public key id to import"},
@@ -99,6 +98,8 @@ class GPGSignatureVerifier(Processor):
 
     def main(self) -> None:
         self.env["pathname"] = self.env["distribution_file"]
+        if "gpg_path" not in self.env or not self.env["gpg_path"]:
+            self.env["gpg_path"] = shutil.which("gpg") or ""
         if not self.gpg_found():
             if not self.env.get("PASS_IF_GPG_MISSING", False):
                 raise ProcessorError(
