@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>RemoteSupport</string>
+		<string>BeyondTrustJumpClient</string>
 		<key>SITE_HOSTNAME</key>
 		<string>YOUR_TENANT.beyondtrustcloud.com</string>
 	</dict>
