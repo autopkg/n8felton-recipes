@@ -3,17 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of jamovi and imports it into Munki.</string>
+	<string>Downloads the latest version of jamovi and imports it into Munki.
+
+ARCH and SUPPORTED_ARCH must be overridden together:
+  ARCH=macos-arm64, SUPPORTED_ARCH=arm64   (Apple Silicon)
+  ARCH=macos-x64,   SUPPORTED_ARCH=x86_64  (Intel)</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.munki.jamovi</string>
 	<key>Input</key>
 	<dict>
+		<key>ARCH</key>
+		<string>macos-arm64</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>jamovi</string>
-		<key>RE_PATTERN</key>
-		<string>data-href="(?P&lt;download&gt;.*dmg)"</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>arm64</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -32,12 +38,16 @@
 			<string>10.13.0</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0</string>
+	<string>2.9.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.download.jamovi</string>
 	<key>Process</key>
