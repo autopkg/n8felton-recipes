@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the Generic BeyondTrust Jump Client Installer and imports it into Munki</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.beyondtrust.jumpclient.munki</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Jump Client</string>
+		<key>SITE_HOSTNAME</key>
+		<string>YOUR_TENANT.beyondtrustcloud.com</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>BeyondTrust Jump Clients are preinstalled on remote computers in anticipation of the need for remote access and support.</string>
+			<key>developer</key>
+			<string>BeyondTrust</string>
+			<key>display_name</key>
+			<string>BeyondTrust Jump Client</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.9</string>
+	<key>ParentRecipe</key>
+	<string>com.github.n8felton.beyondtrust.jumpclient.download</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
