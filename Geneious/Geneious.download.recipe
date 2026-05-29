@@ -23,7 +23,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 		<string>https://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>2.7.6</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -36,6 +36,21 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>find</key>
+				<string>-</string>
+				<key>input_string</key>
+				<string>%match%</string>
+				<key>replace</key>
+				<string>_</string>
+				<key>result_output_var_name</key>
+				<string>match</string>
+			</dict>
+			<key>Processor</key>
+			<string>FindAndReplace</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -54,7 +69,7 @@ See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersion
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Geneious.app</string>
+				<string>%pathname%/Geneious*.app</string>
 				<key>requirement</key>
 				<string>identifier "com.biomatters.Geneious" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3BTDDQD3L6"</string>
 			</dict>
