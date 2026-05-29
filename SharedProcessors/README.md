@@ -47,6 +47,44 @@ Determines the ESSENTIAL-REQUIRED software necessary for a given product\_number
 - **description:**
     - **description:** A description of the software.
 
+# JSONURLGetter
+
+## Description
+Fetches a JSON file from a URL and extracts values into autopkg environment variables.
+
+Accepts two forms for the `keys` input:
+
+**List form** — looks up top-level keys in a JSON object and assigns each to an env var of the same name:
+```xml
+<key>keys</key>
+<array>
+    <string>url</string>
+    <string>version</string>
+</array>
+```
+
+**Dict form** — maps output variable names to dotted path expressions that walk the JSON structure. Integer-like tokens index lists; string tokens index dicts:
+```xml
+<key>keys</key>
+<dict>
+    <key>version</key>
+    <string>0</string>
+    <key>file</key>
+    <string>2.mac_universal.link</string>
+</dict>
+```
+
+## Input Variables
+- **url:**
+    - **required:** True
+    - **description:** Full URL to the JSON file.
+- **keys:**
+    - **required:** True
+    - **description:** Keys to extract. List form: top-level object key names assigned to same-name env vars. Dict form: `{output_var: dotted.path.expression}` where integer tokens index lists and string tokens index dicts.
+
+## Output Variables
+Dynamic — variables are set in the autopkg environment according to the output var names specified in `keys`.
+
 # MD5Checksum
 
 ## Description
