@@ -4,12 +4,9 @@
 Provides links to downloads posted to the Apple support knowledge bases.
 
 ## Input Variables
-- **LOCALE:**
-    - **required:** False
-    - **description:** The ISO-639 language code and the ISO-3166 country code e.g. en\_US = English, American es\_ES = Español, Spain
 - **ARTICLE\_NUMBER:**
     - **required:** True
-    - **description:** The KB article number without the leading 'DL' e.g. https://support.apple.com/kb/dl907 ARTICLE\_NUMBER = 907
+    - **description:** The numeric Apple support article ID, e.g. https://support.apple.com/106384 -> ARTICLE\_NUMBER = 106384
 
 ## Output Variables
 - **url:**
