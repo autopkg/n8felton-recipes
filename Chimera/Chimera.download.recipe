@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Chimera.</string>
+	<string>Downloads the latest version of Chimera. DEPRECATED: Chimera has been replaced by ChimeraX. Use com.github.n8felton.ChimeraX.download instead.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.Chimera</string>
 	<key>Input</key>
@@ -18,9 +18,18 @@
 		<string>(?P&lt;file&gt;chimera-(?P&lt;version&gt;[^-]+)-mac64.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>1.1.0</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Chimera has been replaced by ChimeraX. This recipe is deprecated. Use com.github.n8felton.ChimeraX.download instead.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>

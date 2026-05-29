@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of UCSF ChimeraX.
+
+Valid RELEASE_TYPE values:
+- production (default): Latest stable release
+- candidate: Release candidate
+- daily: Latest daily build
+
+Valid PLATFORM values:
+- mac_universal (default): Apple Silicon and Intel universal binary
+- mac_arm64: Apple Silicon only
+- macosx: Intel only
+</string>
+	<key>Identifier</key>
+	<string>com.github.n8felton.ChimeraX.download</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ChimeraX</string>
+		<key>PLATFORM</key>
+		<string>mac_universal</string>
+		<key>RELEASE_TYPE</key>
+		<string>production</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>platform</key>
+				<string>%PLATFORM%</string>
+				<key>release_type</key>
+				<string>%RELEASE_TYPE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>ChimeraInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%version%.dmg</string>
+				<key>url</key>
+				<string>%url%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/ChimeraX*.app</string>
+				<key>requirement</key>
+				<string>identifier "edu.ucsf.cgl.ChimeraX" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = LWV8X224YF</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
