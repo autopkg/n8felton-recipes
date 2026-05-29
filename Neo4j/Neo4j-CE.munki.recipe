@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Neo4j Community Edition and imports it into Munki.</string>
+	<string>Downloads the latest version of Neo4j Community Edition and imports it into Munki.
+
+DEPRECATED: This recipe is deprecated and unmaintained. Neo4j Community Edition is no longer distributed as a macOS app. Use the Neo4j Desktop recipes in autopkg/dataJAR-recipes instead. It may be removed in the future.</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.neo4j-ce.munki</string>
 	<key>Input</key>
@@ -34,11 +36,20 @@ Default login is username &lt;strong&gt;'neo4j'&lt;/strong&gt; and password &lt;
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.9</string>
+	<string>1.1.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.neo4j-ce.download</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>This recipe is deprecated and unmaintained. Neo4j Community Edition is no longer distributed as a macOS app. Use the Neo4j Desktop recipes in autopkg/dataJAR-recipes instead. It may be removed in the future.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
