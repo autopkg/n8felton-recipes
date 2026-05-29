@@ -33,13 +33,29 @@ Valid PLATFORM values:
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>platform</key>
-				<string>%PLATFORM%</string>
-				<key>release_type</key>
-				<string>%RELEASE_TYPE%</string>
+				<key>keys</key>
+				<dict>
+					<key>file</key>
+					<string>2.%PLATFORM%.link</string>
+					<key>version</key>
+					<string>0</string>
+				</dict>
+				<key>url</key>
+				<string>https://www.cgl.ucsf.edu/chimerax/data/release-info/%RELEASE_TYPE%.json</string>
 			</dict>
 			<key>Processor</key>
-			<string>ChimeraInfoProvider</string>
+			<string>com.github.n8felton.shared/JSONURLGetter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>url=\/chimerax\/(?P&lt;match&gt;[^"]+)"</string>
+				<key>url</key>
+				<string>https://www.cgl.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py?file=%file%&amp;choice=Accept</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -47,7 +63,7 @@ Valid PLATFORM values:
 				<key>filename</key>
 				<string>%NAME%-%version%.dmg</string>
 				<key>url</key>
-				<string>%url%</string>
+				<string>https://www.cgl.ucsf.edu/chimerax/%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
