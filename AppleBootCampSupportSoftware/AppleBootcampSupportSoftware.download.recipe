@@ -21,7 +21,7 @@ NOTE: The ARTICLE_NUMBER changes with new releases and will need to be manually 
 			<key>Arguments</key>
 			<dict>
 				<key>ARTICLE_NUMBER</key>
-				<string>1837</string>
+				<string>106378</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.n8felton.shared/AppleSupportDownloadInfoProvider</string>

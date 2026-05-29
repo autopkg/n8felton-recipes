@@ -32,98 +32,57 @@ class AppleSupportDownloadInfoProvider(URLGetter):
         "ARTICLE_NUMBER": {
             "required": True,
             "description": (
-                "The KB article number without the leading 'DL' "
-                "e.g. https://support.apple.com/kb/dl907 "
-                "ARTICLE_NUMBER = 907"
-            ),
-        },
-        "LOCALE": {
-            "required": False,
-            "description": (
-                "The ISO-639 language code and the "
-                "ISO-3166 country code "
-                "e.g. en_US = English, American "
-                "es_ES = Español, Spain"
+                "The numeric Apple support article ID, "
+                "e.g. https://support.apple.com/106384 "
+                "-> ARTICLE_NUMBER = 106384"
             ),
         },
     }
     output_variables = {
         "article_url": {
-            "description": "The url for the KB article related to the download."
+            "description": "The URL for the support article related to the download."
         },
         "url": {"description": "The full url for the file you want to download."},
         "version": {"description": "The version of the support download"},
     }
 
-    def get_url(self, download_url):
-        """Follows HTTP 302 redirects to fetch the final url of a download."""
-        curl_cmd = self.prepare_curl_cmd()
-        curl_cmd.extend(
-            [
-                "--silent",
-                "--head",
-                "--write-out",
-                "%{url_effective}",
-                "--url",
-                download_url,
-                "--output",
-                "/dev/null",
-            ]
-        )
-        file_url = self.download_with_curl(curl_cmd)
-        return file_url
-
-    def get_html_title(self, article_url):
-        """Retrieve the HTML <title> from a webpage"""
-
-        head = self.download(article_url)[:8192].decode("utf-8")
-        head = re.sub("[\r\n\t ]", " ", head)
-        title = re.search(r"(?i)\<title\>(.*?)\</title\>", head)
-        if title:
-            title = title.group(1)
-            self.output("Article title: {title}".format(title=title), 2)
-            return title
-        else:
-            raise ProcessorError("Unable to determine version")
-
-    def get_version(self):
-        """Retrives the version of the download from the article title."""
-        article_url = self.env["article_url"]
-        title = self.get_html_title(article_url)
-        regex = r"(?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)"
-        match = re.search(regex, title)
+    def get_download_url(self, html: str) -> str:
+        """Extract the primary download URL from the support article page."""
+        # The download button uses class="cta gb-call-to-action" on new-style pages
+        match = re.search(r'<a[^>]+class="[^"]*cta[^"]*"[^>]+href="([^"]+)"', html)
         if match:
-            version = match.group(0)
-            self.output("Version: {version}".format(version=match.group(0)), 2)
+            url = match.group(1)
+            self.output(f"Download URL: {url}", 2)
+            return url
+        raise ProcessorError("Unable to find download URL")
+
+    def get_version(self, html: str) -> str:
+        """Extract version from the support article page title."""
+        title_match = re.search(r"(?is)<title[^>]*>(.*?)</title>", html)
+        if not title_match:
+            raise ProcessorError("Unable to determine version: no <title> found")
+        title = title_match.group(1)
+        self.output(f"Article title: {title}", 2)
+        # Match date-style (e.g. 2017-001) before dotted (e.g. 5.1.5769) to avoid
+        # truncating year-only from date strings
+        version_match = re.search(r"(\d{4}-\d{3}|\d+(?:\.\d+){1,3})", title)
+        if version_match:
+            version = version_match.group(1)
+            self.output(f"Version: {version}", 2)
             return version
-        else:
-            raise ProcessorError("Unable to determine version.")
+        raise ProcessorError("Unable to determine version")
 
-    def main(self):
+    def main(self) -> None:
         """Main process."""
-
-        # Capture input variables
         article_number = self.env["ARTICLE_NUMBER"]
-        locale = self.env.get("LOCALE", "en_US")
-
-        # Determine URL of article
-        article_url = "{base_url}/kb/DL{article_number}".format(
-            base_url=APPLE_SUPPORT_URL, article_number=article_number
-        )
+        article_url = f"{APPLE_SUPPORT_URL}/{article_number}"
         self.env["article_url"] = article_url
-        self.output("Article URL: {article_url}".format(article_url=article_url), 2)
+        self.output(f"Article URL: {article_url}", 2)
 
-        # Determine URL of associated download
-        download_url = "{base_url}/downloads/DL{article_number}/{locale}/&".format(
-            base_url=APPLE_SUPPORT_URL, article_number=article_number, locale=locale
-        )
-        self.output("Download URL: {download_url}".format(download_url=download_url), 2)
-        full_url = self.get_url(download_url)
-        self.output("Full URL: {full_url}".format(full_url=full_url), 2)
+        html = self.download(article_url).decode("utf-8")
 
-        # Set output variables
-        self.env["url"] = full_url
-        self.env["version"] = self.get_version()
+        self.env["url"] = self.get_download_url(html)
+        self.env["version"] = self.get_version(html)
 
 
 if __name__ == "__main__":
