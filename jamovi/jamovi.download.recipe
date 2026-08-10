@@ -48,6 +48,10 @@ CHANNEL selects the release track:
 				<key>filename</key>
 				<string>%NAME%-%version%-%ARCH%.dmg</string>
 				<key>request_headers</key>
+				<dict>
+					<key>Referer</key>
+					<string>https://www.jamovi.org/</string>
+				</dict>
 				<key>url</key>
 				<string>https://dl-cdn.jamovi.org/%NAME%-%version%-%ARCH%.dmg</string>
 			</dict>
