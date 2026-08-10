@@ -19,6 +19,8 @@
 		<key>S1_PACKAGE_VERSION</key>
 		<string></string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.1.0</string>
 	<key>Process</key>
 	<array>
 		<dict>

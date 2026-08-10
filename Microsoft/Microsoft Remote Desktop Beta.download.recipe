@@ -16,7 +16,7 @@
 		<string>https://api.appcenter.ms/v0.1/public/sparkle/apps/5e0c1442-89a5-1fca-2d3b-fa39ce7f2b06</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>1.1</string>
 	<key>Process</key>
 	<array>
 		<dict>

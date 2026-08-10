@@ -47,7 +47,7 @@
 		</array>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>0.3.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.GPGSuite.verify</string>
 	<key>Process</key>

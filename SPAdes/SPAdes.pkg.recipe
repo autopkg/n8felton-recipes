@@ -11,6 +11,8 @@
 		<key>NAME</key>
 		<string>SPAdes</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.n8felton.download.spades</string>
 	<key>Process</key>

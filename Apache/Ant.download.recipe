@@ -13,6 +13,8 @@
 		<key>NAME</key>
 		<string>Ant</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
 		<dict>
