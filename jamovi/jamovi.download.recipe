@@ -5,13 +5,22 @@
 	<key>Description</key>
 	<string>Downloads the latest version of jamovi.
 
-ARCH: macos-arm64 (Apple Silicon) or macos-x64 (Intel)</string>
+ARCH selects the architecture:
+- macos-arm64 (default): Apple Silicon
+- macos-x64: Intel
+CHANNEL selects the release track:
+- solid (default): the tried and tested release jamovi recommends
+- current: the newest features, ahead of solid
+- legacy: the previous long-term release
+</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.jamovi</string>
 	<key>Input</key>
 	<dict>
 		<key>ARCH</key>
 		<string>macos-arm64</string>
+		<key>CHANNEL</key>
+		<string>solid</string>
 		<key>NAME</key>
 		<string>jamovi</string>
 	</dict>
@@ -22,30 +31,25 @@ ARCH: macos-arm64 (Apple Silicon) or macos-x64 (Intel)</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>&lt;h2&gt;(?P&lt;version&gt;\d+\.\d+\.\d+)</string>
+				<key>keys</key>
+				<dict>
+					<key>version</key>
+					<string>macos.%CHANNEL%</string>
+				</dict>
 				<key>url</key>
-				<string>https://www.jamovi.org/release-notes.html</string>
+				<string>https://www.jamovi.org/versions.json</string>
 			</dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>version_long</key>
-				<string>%version%.0</string>
-			</dict>
-			<key>Processor</key>
-			<string>VariableSetter</string>
+			<string>com.github.n8felton.shared/JSONURLGetter</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%version_long%-%ARCH%.dmg</string>
+				<string>%NAME%-%version%-%ARCH%.dmg</string>
+				<key>request_headers</key>
 				<key>url</key>
-				<string>https://dl-cdn.jamovi.org/%NAME%-%version_long%-%ARCH%.dmg</string>
+				<string>https://dl-cdn.jamovi.org/%NAME%-%version%-%ARCH%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

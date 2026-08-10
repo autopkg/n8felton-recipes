@@ -7,7 +7,13 @@
 
 ARCH and SUPPORTED_ARCH must be overridden together:
   ARCH=macos-arm64, SUPPORTED_ARCH=arm64   (Apple Silicon)
-  ARCH=macos-x64,   SUPPORTED_ARCH=x86_64  (Intel)</string>
+  ARCH=macos-x64,   SUPPORTED_ARCH=x86_64  (Intel)
+
+CHANNEL selects the release track:
+- solid (default): the tried and tested release jamovi recommends
+- current: the newest features, ahead of solid
+- legacy: the previous long-term release
+</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.munki.jamovi</string>
 	<key>Input</key>
