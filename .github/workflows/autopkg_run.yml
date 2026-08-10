@@ -34,6 +34,11 @@ jobs:
       - name: Configure AutoPkg
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
+          set +x
+          echo "${{ secrets.GITHUB_TOKEN }}" > "${HOME}/.autopkg_gh_token"
+          chmod 600 "${HOME}/.autopkg_gh_token"
+          set -x
+
           AUTOPKG_DIR="/usr/local/autopkg"
           sudo mkdir -p "${AUTOPKG_DIR}"
           sudo chown root:admin "${AUTOPKG_DIR}"
