@@ -3,17 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads Amazon Corretto, a no-cost, multiplatform, production-ready distribution of OpenJDK</string>
+	<string>Downloads Amazon Corretto, a no-cost, multiplatform, production-ready distribution of OpenJDK.
+
+Set ARCH to "aarch64" for Apple silicon, or "x64" for Intel.
+</string>
 	<key>Identifier</key>
 	<string>com.github.n8felton.download.AmazonCorretto</string>
 	<key>Input</key>
 	<dict>
 		<key>ARCH</key>
-		<string>x64</string>
+		<string>aarch64</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://corretto.aws/downloads/latest/amazon-corretto-%MAJOR_VERSION%-%ARCH%-macos-jdk.pkg</string>
 		<key>MAJOR_VERSION</key>
-		<string>11</string>
+		<string>25</string>
 		<key>NAME</key>
 		<string>AmazonCorretto%MAJOR_VERSION%</string>
 	</dict>
