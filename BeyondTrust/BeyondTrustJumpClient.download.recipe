@@ -76,17 +76,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/*/*.app/Contents/Info.plist</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>input_plist_path</key>
-				<string>%found_filename%</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/BeyondTrust Jump Client - %SITE_HOSTNAME%.app/Contents/Info.plist</string>
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
