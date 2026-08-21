@@ -16,6 +16,8 @@
 		<string>YOUR_TENANT.beyondtrustcloud.com</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array/>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
