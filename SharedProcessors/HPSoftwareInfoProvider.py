@@ -18,7 +18,12 @@
 import json
 
 from autopkglib import ProcessorError, URLGetter
-from pkg_resources import packaging
+try:
+    import packaging.version
+except ImportError:
+    # AutoPkg < 3.0 only provides packaging via setuptools' pkg_resources,
+    # which AutoPkg 3.0 no longer bundles.
+    from pkg_resources import packaging
 from urllib.parse import urlparse, quote
 
 
