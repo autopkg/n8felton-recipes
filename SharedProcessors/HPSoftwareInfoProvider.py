@@ -149,7 +149,7 @@ class HPSoftwareInfoProvider(URLGetter):
         if parsed_url.scheme == "ftp":
             # urllib.parse.ParseResult is a subclass of namedtuple. So it
             # is iterable.
-            flat_url = "https://" + "".join([_u for _u in parsed_url[1:]])
+            flat_url = "https://" + "".join([*parsed_url[1:]])
         else:
             flat_url = parsed_url.geturl()
 
