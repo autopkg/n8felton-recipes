@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>content.*[^\d](?P&lt;content_id&gt;\d+)[^\d]*macOS Print and Scan Driver Installer</string>
+				<string>content.*[^\d](?P&lt;content_id&gt;\d+)[^\d]*macOS Print Driver Installer</string>
 				<key>url</key>
-				<string>https://www.support.xerox.com/en-us/product/versalink-c7020-c7025-c7030/downloads?platform=macOS10_15&amp;language=en</string>
+				<string>https://www.support.xerox.com/en-us/product/versalink-c7020-c7025-c7030/downloads?platform=macos+26+-+Tahoe&amp;category=&amp;language=en&amp;attributeId=</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
