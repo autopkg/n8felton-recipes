@@ -16,7 +16,7 @@
 		<string>Epic Games Launcher</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.3</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -41,6 +41,8 @@
 				<string>%pathname%/Epic Games Launcher.app</string>
 				<key>requirement</key>
 				<string>identifier "com.epicgames.EpicGamesLauncher" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "96DBZ92D3Y"</string>
+				<key>strict_verification</key>
+				<false/>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
