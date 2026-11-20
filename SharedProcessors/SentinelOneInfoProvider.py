@@ -72,6 +72,41 @@ class SentinelOneInfoProvider(URLGetter):
         },
     }
 
+    def _api_get(self, path, params):
+        """Return the parsed JSON of a GET to the S1 API.
+
+        Validate the console hostname, send the API token, and raise
+        ProcessorError when the API returns an error payload.
+        """
+        hostname = self.env.get("S1_CONSOLE_HOSTNAME")
+        if not HOSTNAME_RE.fullmatch(hostname or ""):
+            raise ProcessorError(
+                "S1_CONSOLE_HOSTNAME must be a plain hostname, for example "
+                "'example.sentinelone.net'. Do not include a scheme, port, "
+                "or path."
+            )
+        api_headers = {"Authorization": f"ApiToken {self.env.get('S1_API_TOKEN')}"}
+        url = f"https://{hostname}/web/api/v2.1/{path}?{urlencode(params)}"
+
+        response_json = json.loads(self.download(url, headers=api_headers))
+        self.output(json.dumps(response_json,
+                               sort_keys=True,
+                               indent=4,
+                               separators=(',', ': ')),
+                    2)
+
+        if "data" not in response_json:
+            # The API returns {"errors": [{"title": ..., "detail": ...}]}
+            # for a bad token or an invalid filter value.
+            errors = "; ".join(
+                f"{e.get('title')}: {e.get('detail')}"
+                for e in response_json.get("errors", [])
+            )
+            raise ProcessorError(
+                f"SentinelOne API error: {errors or 'no data returned'}"
+            )
+        return response_json
+
     def get_s1_updates(self, s1_pkg_status=None, s1_pkg_version=None):
         ("""Returns a JSON response of available agents from the SentinelOne
         API""")
@@ -92,41 +127,11 @@ class SentinelOneInfoProvider(URLGetter):
                                separators=(',', ': ')),
                     2)
 
-        api_headers = {"Authorization": f"ApiToken {self.env.get('S1_API_TOKEN')}"}
-
-        hostname = self.env.get("S1_CONSOLE_HOSTNAME")
-        if not HOSTNAME_RE.fullmatch(hostname or ""):
-            raise ProcessorError(
-                "S1_CONSOLE_HOSTNAME must be a plain hostname, for example "
-                "'example.sentinelone.net'. Do not include a scheme, port, "
-                "or path."
-            )
-        query = urlencode(update_args)
-        url = f"https://{hostname}/web/api/v2.1/update/agent/packages?{query}"
-
-        response = self.download(url, headers=api_headers)
-        updates_json = json.loads(response)
-
-        self.output(json.dumps(updates_json,
-                               sort_keys=True,
-                               indent=4,
-                               separators=(',', ': ')),
-                    2)
-        return updates_json
+        return self._api_get("update/agent/packages", update_args)
 
     def main(self):
         updates_json = self.get_s1_updates(self.env.get("S1_PACKAGE_STATUS"),
                                            self.env.get("S1_PACKAGE_VERSION"))
-        if "data" not in updates_json:
-            # The API returns {"errors": [{"title": ..., "detail": ...}]}
-            # for a bad token or an invalid filter value.
-            errors = "; ".join(
-                f"{e.get('title')}: {e.get('detail')}"
-                for e in updates_json.get("errors", [])
-            )
-            raise ProcessorError(
-                f"SentinelOne API error: {errors or 'no data returned'}"
-            )
         try:
             s1_package = updates_json["data"][0]
         except IndexError:
