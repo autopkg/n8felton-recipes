@@ -97,13 +97,11 @@ jobs:
           MUNKI_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/munki/munki/releases/latest)
           MUNKI_LATEST_URL=$(jq -r 'first(.assets[] | select(.name | endswith(".pkg")) | .browser_download_url)' <<< "${MUNKI_LATEST}")
           MUNKI_LATEST_SHA256=$(jq -r 'first(.assets[] | select(.name | endswith(".pkg")) | .digest | ltrimstr("sha256:"))' <<< "${MUNKI_LATEST}")
-          MUNKI_ADMIN_URL="https://raw.githubusercontent.com/n8felton/macOS-Scripts/master/munki/admin.xml"
           curl -LOJs "${MUNKI_LATEST_URL}"
-          curl -LOJs "${MUNKI_ADMIN_URL}"
           shasum -a 256 -c <<< "${MUNKI_LATEST_SHA256}  ${MUNKI_LATEST_URL##*/}"
           MUNKI_SIG=$(pkgutil --check-signature "${MUNKI_LATEST_URL##*/}")
           grep -qF '(T4SK8ZXCXG)' <<< "${MUNKI_SIG}"
-          sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
+          sudo /usr/sbin/installer -applyChoiceChangesXML "${GITHUB_WORKSPACE}/.github/munki-admin.xml" -pkg "${MUNKI_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Run AutoPkg for changed recipes
         if: steps.changed.outputs.any == 'true'
