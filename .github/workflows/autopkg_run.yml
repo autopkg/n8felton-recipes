@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - "**/**.recipe"
+permissions:
+  contents: read
 jobs:
   autopkg_run:
     name: Install and configure AutoPkg
