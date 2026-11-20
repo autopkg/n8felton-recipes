@@ -27,7 +27,7 @@ jobs:
         if: steps.changed-recipe-files.outputs.any_changed == 'true'
         run: |
           AUTOPKG_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/autopkg/autopkg/releases/latest)
-          AUTOPKG_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${AUTOPKG_LATEST})
+          AUTOPKG_LATEST_URL=$(jq -r 'first(.assets[] | select(.name | endswith(".pkg")) | .browser_download_url)' <<< "${AUTOPKG_LATEST}")
           curl -LOJs "${AUTOPKG_LATEST_URL}"
           sudo installer -pkg "${AUTOPKG_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
@@ -88,7 +88,7 @@ jobs:
 
           # Install Admin only version of Munki
           MUNKI_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/munki/munki/releases/latest)
-          MUNKI_LATEST_URL=$(jq -r '.["assets"][0]["browser_download_url"]' <<< ${MUNKI_LATEST})
+          MUNKI_LATEST_URL=$(jq -r 'first(.assets[] | select(.name | endswith(".pkg")) | .browser_download_url)' <<< "${MUNKI_LATEST}")
           MUNKI_ADMIN_URL="https://raw.githubusercontent.com/n8felton/macOS-Scripts/master/munki/admin.xml"
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_LATEST_URL}"
           curl -LOJs -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' "${MUNKI_ADMIN_URL}"
