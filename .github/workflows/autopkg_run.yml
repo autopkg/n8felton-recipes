@@ -21,13 +21,15 @@ jobs:
           fetch-depth: 2
           persist-credentials: false
       - name: Get changed files
-        id: changed-recipe-files
-        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96 # v47.0.6
-        with:
-          files: "**/**.recipe"
-          separator: ","
+        id: changed
+        run: |
+          # NUL-delimited list of added or modified recipes (HEAD^ is the base on a PR merge commit)
+          git diff -z --name-only --diff-filter=d HEAD^ HEAD -- '*.recipe' > "${RUNNER_TEMP}/changed.z"
+          tr '\0' '\n' < "${RUNNER_TEMP}/changed.z"
+          echo "any=$([ -s "${RUNNER_TEMP}/changed.z" ] && echo true || echo false)" >> "${GITHUB_OUTPUT}"
+        shell: bash -exuo pipefail {0}
       - name: Install AutoPkg (latest)
-        if: steps.changed-recipe-files.outputs.any_changed == 'true'
+        if: steps.changed.outputs.any == 'true'
         run: |
           AUTOPKG_LATEST=$(curl -Ls -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/autopkg/autopkg/releases/latest)
           AUTOPKG_LATEST_URL=$(jq -r 'first(.assets[] | select(.name | endswith(".pkg")) | .browser_download_url)' <<< "${AUTOPKG_LATEST}")
@@ -35,7 +37,7 @@ jobs:
           sudo installer -pkg "${AUTOPKG_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Configure AutoPkg
-        if: steps.changed-recipe-files.outputs.any_changed == 'true'
+        if: steps.changed.outputs.any == 'true'
         run: |
           set +x
           echo "${{ secrets.GITHUB_TOKEN }}" > "${HOME}/.autopkg_gh_token"
@@ -72,7 +74,7 @@ jobs:
           EOF
         shell: bash -exuo pipefail {0}
       - name: Install Munki (latest)
-        if: steps.changed-recipe-files.outputs.any_changed == 'true'
+        if: steps.changed.outputs.any == 'true'
         run: |
           # Build a temp munki environment
           MUNKI_REPO="/Users/Shared/munki"
@@ -98,19 +100,10 @@ jobs:
           sudo /usr/sbin/installer -applyChoiceChangesXML "${MUNKI_ADMIN_URL##*/}" -pkg "${MUNKI_LATEST_URL##*/}" -target /
         shell: bash -exuo pipefail {0}
       - name: Run AutoPkg for changed recipes
-        if: steps.changed-recipe-files.outputs.any_changed == 'true'
+        if: steps.changed.outputs.any == 'true'
         run: |
           export PYTHONUNBUFFERED=1
-          IFS=$',' read -a ALL_CHANGED_FILES <<< "${{ steps.changed-recipe-files.outputs.all_changed_files }}"
-          for changed_file in "${ALL_CHANGED_FILES[@]}"; do
-            echo "${changed_file}"
-            case "${changed_file}" in
-              *.recipe)
-                if [ -f "${changed_file}" ]; then
-                  autopkg run -vvvv "${changed_file}"
-                fi
-                ;;
-              *)
-                ;;
-            esac
-          done
+          while IFS= read -r -d '' recipe; do
+            echo "${recipe}"
+            autopkg run -vvvv "${recipe}"
+          done < "${RUNNER_TEMP}/changed.z"
