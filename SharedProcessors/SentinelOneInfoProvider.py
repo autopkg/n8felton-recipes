@@ -16,11 +16,19 @@
 """Information provider for SentinelOne Management consoles"""
 
 import json
+import re
 from urllib.parse import urlencode
 
 from autopkglib import ProcessorError, URLGetter
 
 __all__ = ["SentinelOneInfoProvider"]
+
+# Plain DNS hostname only: no scheme, port, path, or credentials. The API
+# token goes to this host, so reject anything that could redirect it.
+HOSTNAME_RE = re.compile(
+    r"(?=.{1,253}$)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?"
+    r"(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*"
+)
 
 
 class SentinelOneInfoProvider(URLGetter):
@@ -87,6 +95,12 @@ class SentinelOneInfoProvider(URLGetter):
         api_headers = {"Authorization": f"ApiToken {self.env.get('S1_API_TOKEN')}"}
 
         hostname = self.env.get("S1_CONSOLE_HOSTNAME")
+        if not HOSTNAME_RE.fullmatch(hostname or ""):
+            raise ProcessorError(
+                "S1_CONSOLE_HOSTNAME must be a plain hostname, for example "
+                "'example.sentinelone.net'. Do not include a scheme, port, "
+                "or path."
+            )
         query = urlencode(update_args)
         url = f"https://{hostname}/web/api/v2.1/update/agent/packages?{query}"
 
