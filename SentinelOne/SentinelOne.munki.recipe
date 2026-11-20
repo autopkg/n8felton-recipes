@@ -134,7 +134,7 @@ exit ${RETURN_CODE}
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--item=%NAME%.pkg</string>
+					<string>--itemname=%NAME%.pkg</string>
 					<string>--destinationpath=/tmp</string>
 					<string>--unattended_install</string>
 					<string>--pkgvers=%version%</string>
