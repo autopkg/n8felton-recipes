@@ -14,6 +14,45 @@ Provides links to downloads posted to the Apple support knowledge bases.
 - **version:**
     - **description:** The version of the support download
 
+# GPGSignatureVerifier
+
+## Description
+Verifies a GPG signature for a downloaded file. The key is imported into a temporary keyring that is deleted after the check, so only that key can satisfy the check and `~/.gnupg` is not read or changed. gpg must report `GOODSIG`, which a signature by an expired or revoked key does not. When `expected_fingerprint` is set, or `public_key_id` is a full fingerprint, the signing key or its primary key must also match that fingerprint; a short or long key ID logs a warning instead.
+
+Keys fetched from `keyserver` do not use settings from `~/.gnupg/dirmngr.conf`, such as a proxy or a keyserver CA.
+
+## Input Variables
+- **gpg\_path:**
+    - **required:** False
+    - **description:** location of the gpg binary
+- **public\_key\_id:**
+    - **required:** False
+    - **description:** public key id to import from keyserver. Required unless public\_key\_file is set. A full 40- or 64-hex fingerprint also pins the signer when expected\_fingerprint is not set.
+- **public\_key\_file:**
+    - **required:** False
+    - **description:** local file that contains the public key, armored or binary, imported instead of fetching public\_key\_id from keyserver
+- **expected\_fingerprint:**
+    - **required:** False
+    - **description:** full fingerprint (40 or 64 hex; spaces and 0x are ignored) that the signing key or its primary key must match
+- **keyserver:**
+    - **default:** hkps://keys.openpgp.org
+    - **required:** False
+    - **description:** key server to retrieve public key from
+- **distribution\_file:**
+    - **required:** True
+    - **description:** file to verify
+- **signature\_file:**
+    - **required:** True
+    - **description:** file with signature
+- **PASS\_IF\_GPG\_MISSING:**
+    - **default:** False
+    - **required:** False
+    - **description:** Skip verification if the gpg binary is not found. Set to true to allow recipes to proceed when gpg is not installed.
+
+## Output Variables
+- **pathname:**
+    - **description:** path to the distribution file.
+
 # HPSoftwareInfoProvider
 
 ## Description
