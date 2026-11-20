@@ -17,13 +17,7 @@
 
 import json
 
-from autopkglib import ProcessorError, URLGetter
-try:
-    import packaging.version
-except ImportError:
-    # AutoPkg < 3.0 only provides packaging via setuptools' pkg_resources,
-    # which AutoPkg 3.0 no longer bundles.
-    from pkg_resources import packaging
+from autopkglib import APLooseVersion, ProcessorError, URLGetter
 from urllib.parse import urlparse, quote
 
 
@@ -133,14 +127,13 @@ class HPSoftwareInfoProvider(URLGetter):
         # Get software list and iterate through it
         software_list = self.get_hp_software_list(software_url)
         self.output(software_list, 3)
-        # Create a packaging.version.Version object with all zeroes.
-        greatest_version = packaging.version.parse("0.0.0.0")
+        greatest_version = APLooseVersion("0.0.0.0")
         recent_software = None
         for software in software_list:
             # Skip any key that isn't "ESSENTIAL-REQUIRED"
             if software["Type"] != "ESSENTIAL-REQUIRED":
                 continue
-            software_version = packaging.version.parse(software["Version"])
+            software_version = APLooseVersion(software["Version"])
             # Find the greatest version of the HP Essentials.
             if greatest_version < software_version:
                 greatest_version = software_version
