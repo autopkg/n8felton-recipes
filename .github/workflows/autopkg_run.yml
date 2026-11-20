@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   autopkg_run:
-    name: Install and configure AutoPkg
+    name: Run changed recipes
     runs-on: macos-latest
     steps:
       - name: Dump environment information
