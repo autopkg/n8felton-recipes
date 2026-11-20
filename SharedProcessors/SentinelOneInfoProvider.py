@@ -103,6 +103,16 @@ class SentinelOneInfoProvider(URLGetter):
     def main(self):
         updates_json = self.get_s1_updates(self.env.get("S1_PACKAGE_STATUS"),
                                            self.env.get("S1_PACKAGE_VERSION"))
+        if "data" not in updates_json:
+            # The API returns {"errors": [{"title": ..., "detail": ...}]}
+            # for a bad token or an invalid filter value.
+            errors = "; ".join(
+                f"{e.get('title')}: {e.get('detail')}"
+                for e in updates_json.get("errors", [])
+            )
+            raise ProcessorError(
+                f"SentinelOne API error: {errors or 'no data returned'}"
+            )
         try:
             s1_package = updates_json["data"][0]
         except IndexError:
