@@ -30,6 +30,10 @@
 				<string>%S1_API_TOKEN%</string>
 				<key>S1_CONSOLE_HOSTNAME</key>
 				<string>%S1_CONSOLE_HOSTNAME%</string>
+				<key>S1_PACKAGE_STATUS</key>
+				<string>%S1_PACKAGE_STATUS%</string>
+				<key>S1_PACKAGE_VERSION</key>
+				<string>%S1_PACKAGE_VERSION%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.n8felton.shared/SentinelOneInfoProvider</string>
