@@ -16,7 +16,6 @@
 """Information provider for SentinelOne Management consoles"""
 
 import json
-import logging
 from urllib.parse import urlencode
 
 from autopkglib import ProcessorError, URLGetter
@@ -102,10 +101,6 @@ class SentinelOneInfoProvider(URLGetter):
         return updates_json
 
     def main(self):
-        # disable module debug logging if we're not looking for debug logging
-        if not self.env.get('verbose') == '3':
-            logger = logging.getLogger()
-            logger.setLevel(logging.WARNING)
         updates_json = self.get_s1_updates(self.env.get("S1_PACKAGE_STATUS"),
                                            self.env.get("S1_PACKAGE_VERSION"))
         try:
