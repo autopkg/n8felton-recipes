@@ -60,7 +60,7 @@ class SentinelOneInfoProvider(URLGetter):
             "description": "The version of the software."
         },
         "sha1": {
-            "description": "A description of the software."
+            "description": "The SHA-1 checksum of the package."
         },
     }
 
