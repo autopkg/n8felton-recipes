@@ -16,6 +16,8 @@
 		<string>YOUR_TENANT.beyondtrustcloud.com</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array/>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
@@ -30,6 +32,11 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/sh
+"/Applications/BeyondTrust Jump Client - %SITE_HOSTNAME%.app/Contents/MacOS/sra-pin" --uninstall</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -47,6 +54,23 @@
 					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/BeyondTrust Jump Client - %SITE_HOSTNAME%.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
